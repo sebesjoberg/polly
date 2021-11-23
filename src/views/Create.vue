@@ -1,6 +1,6 @@
 <template>
   <div>
-    Poll link: 
+    Poll link:
     <input type="text" v-model="pollId">
     <button v-on:click="createPoll">
       Create poll
@@ -10,8 +10,8 @@
       <input type="text" v-model="question">
       <div>
         Answers:
-        <input v-for="(_, i) in answers" 
-               v-model="answers[i]" 
+        <input v-for="(_, i) in answers"
+               v-model="answers[i]"
                v-bind:key="'answer'+i">
         <button v-on:click="addAnswer">
           Add answer alternative
@@ -50,6 +50,7 @@ export default {
   created: function () {
     this.lang = this.$route.params.lang;
     socket.emit("pageLoaded", this.lang);
+
     socket.on("init", (labels) => {
       this.uiLabels = labels
     })
