@@ -8,7 +8,7 @@
     v-bind:to="'/create/'+lang"
     v-slot="{href, navigate}"
     >
-      <button :href="href" @click="navigate" class='whatever-you-want'>
+      <button :href="href" @click="navigate" class="join">
         {{uiLabels.createPoll}}
       </button>
   </router-link>
