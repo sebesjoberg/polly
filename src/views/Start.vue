@@ -1,16 +1,13 @@
 <template>
   <section class="wrapper">
   <div class="wrap_Left">
-
-    <input v-model="id" type="text" v-bind:placeholder="uiLabels.inputId">
     <router-link
-    v-bind:to="'/poll/'+id"
+    v-bind:to="'/poll/'"
     v-slot="{href, navigate}"
     >
       <button :href="href" @click="navigate" class="join">
         {{uiLabels.participatePoll}}
-      </button>
-  </router-link>
+      </button></router-link>
 
     </div>
   <div class="wrap_Right">
@@ -18,7 +15,7 @@
     v-bind:to="'/create/'+lang"
     v-slot="{href, navigate}"
     >
-      <button :href="href" @click="navigate" class="join">
+      <button :href="href" @click="navigate" class="create">
         {{uiLabels.createPoll}}
       </button>
   </router-link>
@@ -28,10 +25,7 @@
 
 </section>
 
-    <router-link v-bind:to="'/create/'+lang">{{uiLabels.createPoll}}</router-link>
 
-
-    <router-link v-bind:to="'/poll/'+id" tag="button">{{uiLabels.participatePoll}}</router-link>
 
 </template>
 
@@ -68,6 +62,8 @@ export default {
   @import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
 
 .wrapper{
+  padding:0;
+  margin:0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   width: 100vw;
@@ -76,9 +72,31 @@ export default {
 
 .wrap_Left{
   background-color: black;
+  justify-content: center; /*this aligns all items in center*/
+    align-items: center;
+    display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
 }
 
 .wrap_Right{
   background-color: Blue;
+  justify-content: center;
+    align-items: center;
+    display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
+
+.join{
+  background-color:blue;
+  color:white;
+}
+
+.create{
+  background-color:black;
+  color:white;
+}
+
 </style>
