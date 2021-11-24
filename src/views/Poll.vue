@@ -26,7 +26,8 @@ export default {
       pollId: "inactive poll"
     }
   },
-  created: function () {
+  created: function () {//kanske göra så dett ainte körs på created?
+    //utan att vi först anger kod? och kanske användarnamn också?
     this.pollId = this.$route.params.id
     socket.emit('joinPoll', this.pollId)
     socket.on("newQuestion", q =>
