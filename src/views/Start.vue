@@ -38,7 +38,7 @@ export default {
   data: function () {
     return {
       uiLabels: {},
-      id: "",
+      id: "123",
       lang: "en"
     }
   },
@@ -71,7 +71,7 @@ export default {
 }
 
 .wrap_Left{
-  background-color: black;
+  background-color: #455879;
   justify-content: center; /*this aligns all items in center*/
     align-items: center;
     display: flex;
@@ -81,7 +81,7 @@ export default {
 }
 
 .wrap_Right{
-  background-color: Blue;
+  background-color: #0097a7;
   justify-content: center;
     align-items: center;
     display: flex;
@@ -90,12 +90,12 @@ export default {
 }
 
 .join{
-  background-color:blue;
+  background-color: #0097a7;
   color:white;
 }
 
 .create{
-  background-color:black;
+  background-color: #455879;
   color:white;
 }
 
