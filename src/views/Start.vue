@@ -11,6 +11,10 @@
 
     </div>
   <div class="wrap_Right">
+     <button v-on:click="switchLanguage" class="changeLanguage">
+     <img v-bind:src='this.flag_Url'
+   class="flag">{{uiLabels.changeLanguage}}</button>
+
     <router-link
     v-bind:to="'/create/'+lang"
     v-slot="{href, navigate}"
@@ -27,6 +31,7 @@
 
 
 
+
 </template>
 
 <script>
@@ -39,7 +44,8 @@ export default {
     return {
       uiLabels: {},
       id: "123",
-      lang: "en"
+      lang: "en",
+      flag_Url: "https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1200px-Flag_of_the_United_Kingdom.svg.png"
     }
   },
   created: function () {
@@ -71,8 +77,9 @@ export default {
 }
 
 .wrap_Left{
-background-color: #455879;
+  background-color: #455879;
 position: relative;
+
 }
 
 .wrap_Right{
@@ -104,5 +111,20 @@ transform: translate(-50%,-50%);
 
   border-radius: 10px;
 }
+.changeLanguage{
+  left:75%;
+  position:absolute;
+  width:25%;
+  height: 5%;
+  font-size: 1vw;
+ }
+
+ .flag{
+   width:3vw;
+   height:auto;
+
+
+ }
+
 
 </style>
