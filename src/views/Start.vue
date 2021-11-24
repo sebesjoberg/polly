@@ -88,25 +88,27 @@ position: relative;
 }
 
 .join{
+  font-size: 3vh;
   background-color: #0097a7;
   color:white;
   border-radius: 10px;
   position:absolute;
   left:50%;
   top:50%;
-  width:15%;
-  height: 10%;
+  aspect-ratio:9/6;
+  height: 15%;
   transform: translate(-50%,-50%);
 }
 
 .create{
+  font-size: 3vh;
   background-color: #455879;
   color:white;
   position:absolute;
 left:50%;
 top:50%;
-width:15%;
-height: 10%;
+aspect-ratio:9/6;
+height: 15%;
 transform: translate(-50%,-50%);
 
   border-radius: 10px;
@@ -114,7 +116,7 @@ transform: translate(-50%,-50%);
 .changeLanguage{
   left:75%;
   position:absolute;
-  width:25%;
+  width: 25%;
   height: 5%;
   font-size: 1vw;
  }
