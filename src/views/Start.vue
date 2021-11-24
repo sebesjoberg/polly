@@ -38,7 +38,7 @@ export default {
   data: function () {
     return {
       uiLabels: {},
-      id: "",
+      id: "123",
       lang: "en"
     }
   },
@@ -71,32 +71,57 @@ export default {
 }
 
 .wrap_Left{
+<<<<<<< HEAD
   background-color: black;
+position: relative;
+=======
+  background-color: #455879;
   justify-content: center; /*this aligns all items in center*/
     align-items: center;
     display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+>>>>>>> 550a6033d5e1922d38b22d9189a9339b84350394
 
 }
 
 .wrap_Right{
+<<<<<<< HEAD
   background-color: Blue;
+  position: relative;
+=======
+  background-color: #0097a7;
   justify-content: center;
     align-items: center;
     display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+>>>>>>> 550a6033d5e1922d38b22d9189a9339b84350394
 }
 
 .join{
-  background-color:blue;
+  background-color: #0097a7;
   color:white;
+  border-radius: 10px;
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:15%;
+  height: 10%;
+  transform: translate(-50%,-50%);
 }
 
 .create{
-  background-color:black;
+  background-color: #455879;
   color:white;
+  position:absolute;
+left:50%;
+top:50%;
+width:15%;
+height: 10%;
+transform: translate(-50%,-50%);
+
+  border-radius: 10px;
 }
 
 </style>
