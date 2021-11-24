@@ -71,32 +71,13 @@ export default {
 }
 
 .wrap_Left{
-<<<<<<< HEAD
-  background-color: black;
+background-color: #455879;
 position: relative;
-=======
-  background-color: #455879;
-  justify-content: center; /*this aligns all items in center*/
-    align-items: center;
-    display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
->>>>>>> 550a6033d5e1922d38b22d9189a9339b84350394
-
 }
 
 .wrap_Right{
-<<<<<<< HEAD
-  background-color: Blue;
-  position: relative;
-=======
   background-color: #0097a7;
-  justify-content: center;
-    align-items: center;
-    display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
->>>>>>> 550a6033d5e1922d38b22d9189a9339b84350394
+  position: relative;
 }
 
 .join{
