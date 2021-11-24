@@ -72,31 +72,38 @@ export default {
 
 .wrap_Left{
   background-color: black;
-  justify-content: center; /*this aligns all items in center*/
-    align-items: center;
-    display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+position: relative;
 
 }
 
 .wrap_Right{
   background-color: Blue;
-  justify-content: center;
-    align-items: center;
-    display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  position: relative;
 }
 
 .join{
   background-color:blue;
   color:white;
+  border-radius: 10px;
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:15%;
+  height: 10%;
+  transform: translate(-50%,-50%);
 }
 
 .create{
   background-color:black;
   color:white;
+  position:absolute;
+left:50%;
+top:50%;
+width:15%;
+height: 10%;
+transform: translate(-50%,-50%);
+
+  border-radius: 10px;
 }
 
 </style>
