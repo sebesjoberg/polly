@@ -1,7 +1,17 @@
 <template>
   <section class="wrapper">
   <div class="wrap_Left">
-  <button class="join">join</button>
+
+    <input v-model="id" type="text" v-bind:placeholder="uiLabels.inputId">
+    <router-link
+    v-bind:to="'/poll/'+id"
+    v-slot="{href, navigate}"
+    >
+      <button :href="href" @click="navigate" class="join">
+        {{uiLabels.participatePoll}}
+      </button>
+  </router-link>
+
     </div>
   <div class="wrap_Right">
     <router-link
@@ -13,7 +23,7 @@
       </button>
   </router-link>
 
-  <button class="Host">Host</button>
+
   </div>
 
 </section>
