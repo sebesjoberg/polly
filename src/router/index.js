@@ -7,7 +7,7 @@ const routes = [
     name: 'Start',
     component: Start
   },
-    {
+  {
     path: '/poll/:id',
     name: 'Poll',
     component: () => import(/* webpackChunkName: "about" */ '../views/Poll.vue')

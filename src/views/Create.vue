@@ -1,19 +1,19 @@
 <template>
   <div>
     Poll link:
-    <input type="text" v-model="pollId">
+    <input type="text" v-model="pollId"> <!-- Använder vi denna länk? -->
     <button v-on:click="createPoll">
       Create poll
     </button>
     <div>
-      {{uiLabels.question}}:
-      <input type="text" v-model="question">
+      {{uiLabels.question}}: <!-- Importerad från labels, dynamiskt språkbyte  -->
+      <input type="text" v-model="question"> <!-- Skriv in frågor -->
       <div>
         Answers:
         <input v-for="(_, i) in answers"
                v-model="answers[i]"
-               v-bind:key="'answer'+i">
-        <button v-on:click="addAnswer">
+               v-bind:key="'answer'+i">  <!-- Skapar flera svar -->
+        <button v-on:click="addAnswer"> <!-- lägg till svar genom addAnswer funktionen--> 
           Add answer alternative
         </button>
       </div>
