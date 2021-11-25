@@ -1,5 +1,5 @@
 <template>
-  <section class="wrapper">
+  <section class="wrapper" v-on:mousemove="LoadFix">
   <div class="wrap_Left">
     <router-link
     v-bind:to="'/poll/'"
@@ -36,6 +36,7 @@
 
 <script>
 import io from 'socket.io-client';
+
 const socket = io();
 
 export default {
@@ -59,6 +60,11 @@ export default {
         this.lang = "sv"
       else
         this.lang = "en"
+      socket.emit("switchLanguage", this.lang)
+    },
+    LoadFix : function(){
+      //återanvänder koden för language för att kunna gå fram och tillbaka
+      //mellan sidor utan att förlora labels
       socket.emit("switchLanguage", this.lang)
     }
   }

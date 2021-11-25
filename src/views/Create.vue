@@ -1,4 +1,5 @@
 <template>
+  <section class="wrapper">
   <div>
     Poll link:
     <input type="text" v-model="pollId"> <!-- Använder vi denna länk? -->
@@ -28,6 +29,7 @@
     {{data}}
     <router-link to="/result/">Check result</router-link>
   </div>
+    </section>
 </template>
 
 <script>
@@ -76,3 +78,68 @@ export default {
   }
 }
 </script>
+<style>
+@import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
+
+.wrapper{
+  padding:0;
+  margin:0;
+  display: grid;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+.wrap_Left{
+  background-color: #455879;
+  position: relative;
+
+}
+
+.wrap_Right{
+  background-color: #0097a7;
+  position: relative;
+}
+
+.join{
+  font-size: 3vh;
+  background-color: #0097a7;
+  color:white;
+  border-radius: 10px;
+  position:absolute;
+  left:50%;
+  top:50%;
+  aspect-ratio:9/6;
+  height: 15%;
+  transform: translate(-50%,-50%);
+}
+
+.create{
+  font-size: 3vh;
+  background-color: #455879;
+  color:white;
+  position:absolute;
+  left:50%;
+  top:50%;
+  aspect-ratio:9/6;
+  height: 15%;
+  transform: translate(-50%,-50%);
+
+  border-radius: 10px;
+}
+.changeLanguage{
+  left:75%;
+  position:absolute;
+  width: 25%;
+  height: 5%;
+  font-size: 1vw;
+}
+
+.flag{
+  width:3vw;
+  height:auto;
+
+
+}
+
+</style>
