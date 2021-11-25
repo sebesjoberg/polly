@@ -1,11 +1,13 @@
 <template>
   <section class="wrapper">
   <div>
-    Poll link:
+    <div class ="PollCreation" >
+      <p style="float:left">Poll link:</p>
     <input type="text" v-model="pollId"> <!-- Använder vi denna länk? -->
-    <button v-on:click="createPoll">
+    <button v-on:click="createPoll" class ="button">
       Create poll
     </button>
+    </div>
     <div>
       {{uiLabels.question}}: <!-- Importerad från labels, dynamiskt språkbyte  -->
       <input type="text" v-model="question"> <!-- Skriv in frågor -->
@@ -14,7 +16,7 @@
         <input v-for="(_, i) in answers"
                v-model="answers[i]"
                v-bind:key="'answer'+i">  <!-- Skapar flera svar -->
-        <button v-on:click="addAnswer"> <!-- lägg till svar genom addAnswer funktionen--> 
+        <button v-on:click="addAnswer" > <!-- lägg till svar genom addAnswer funktionen-->
           Add answer alternative
         </button>
       </div>
@@ -29,7 +31,7 @@
     {{data}}
     <router-link to="/result/">Check result</router-link>
   </div>
-    </section>
+  </section>
 </template>
 
 <script>
@@ -81,65 +83,26 @@ export default {
 <style>
 @import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
 
-.wrapper{
-  padding:0;
-  margin:0;
+.wrapper {
+  padding: 0;
+  margin: 0;
   display: grid;
-
+  background-color: #455879;
   width: 100vw;
   height: 100vh;
 }
-
-.wrap_Left{
-  background-color: #455879;
-  position: relative;
-
-}
-
-.wrap_Right{
-  background-color: #0097a7;
-  position: relative;
-}
-
-.join{
-  font-size: 3vh;
-  background-color: #0097a7;
-  color:white;
-  border-radius: 10px;
+.PollCreation{
   position:absolute;
   left:50%;
   top:50%;
   aspect-ratio:9/6;
-  height: 15%;
   transform: translate(-50%,-50%);
 }
-
-.create{
+.button{
   font-size: 3vh;
-  background-color: #455879;
+  background-color: #0097a7;
   color:white;
-  position:absolute;
-  left:50%;
-  top:50%;
-  aspect-ratio:9/6;
-  height: 15%;
-  transform: translate(-50%,-50%);
-
   border-radius: 10px;
+  height: 15%;
 }
-.changeLanguage{
-  left:75%;
-  position:absolute;
-  width: 25%;
-  height: 5%;
-  font-size: 1vw;
-}
-
-.flag{
-  width:3vw;
-  height:auto;
-
-
-}
-
 </style>
