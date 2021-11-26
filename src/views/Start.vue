@@ -48,6 +48,7 @@ export default {
       uiLabels: {},
       id: "123",
       languages: ['en', 'sv'],
+      lang: 'en',
 
     }
   },
@@ -64,6 +65,7 @@ export default {
     switchLanguage: function() {
       var b = this.languages.shift();
       this.languages.push(b);
+      this.lang=this.languages[0];
       socket.emit("switchLanguage", this.languages[0])
     },
     LoadFix : function(){
