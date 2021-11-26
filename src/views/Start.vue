@@ -12,8 +12,10 @@
     </div>
   <div class="wrap_Right">
      <button v-on:click="switchLanguage" class="changeLanguage">
-     <img v-bind:src='this.flag_Url'
+     <img v-bind:src="getFlagUrl()"
    class="flag">{{uiLabels.changeLanguage}}</button>
+
+
 
     <router-link
     v-bind:to="'/create/'+lang"
@@ -45,8 +47,8 @@ export default {
     return {
       uiLabels: {},
       id: "123",
-      lang: "en",
-      flag_Url: "https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1200px-Flag_of_the_United_Kingdom.svg.png"
+      languages: ['en', 'sv'],
+
     }
   },
   created: function () {
@@ -55,17 +57,19 @@ export default {
     })
   },
   methods: {
+    getFlagUrl: function(){
+
+      return require('../../data/flag-'+this.languages[1]+'.png')
+    },
     switchLanguage: function() {
-      if (this.lang === "en")
-        this.lang = "sv"
-      else
-        this.lang = "en"
-      socket.emit("switchLanguage", this.lang)
+      var b = this.languages.shift();
+      this.languages.push(b);
+      socket.emit("switchLanguage", this.languages[0])
     },
     LoadFix : function(){
       //återanvänder koden för language för att kunna gå fram och tillbaka
       //mellan sidor utan att förlora labels
-      socket.emit("switchLanguage", this.lang)
+      socket.emit("switchLanguage", this.languages[0])
     }
   }
 }
@@ -83,12 +87,16 @@ export default {
 }
 
 .wrap_Left{
+  padding:0;
+  margin:0;
   background-color: #455879;
 position: relative;
 
 }
 
 .wrap_Right{
+  padding:0;
+  margin:0;
   background-color: #0097a7;
   position: relative;
 }
@@ -128,7 +136,7 @@ transform: translate(-50%,-50%);
  }
 
  .flag{
-   width:3vw;
+   width:2vw;
    height:auto;
 
 
