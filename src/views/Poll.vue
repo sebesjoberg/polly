@@ -1,8 +1,13 @@
 <template>
-  <div>
-    {{pollId}}
+
+
+  <div v-if="this.inLobby">
+    {{this.pollId}}
     <Question v-bind:question="question"
               v-on:answer="submitAnswer"/>
+  </div>
+  <div v-else>
+    notinlobby
   </div>
 </template>
 
@@ -23,21 +28,21 @@ export default {
         q: "",
         a: []
       },
-      pollId: "inactive poll"
+      pollId: "55",
+      inLobby: false
     }
   },
-  created: function () {//kanske göra så dett ainte körs på created?
-    //utan att vi först anger kod? och kanske användarnamn också?
-    this.pollId = this.$route.params.id
-    socket.emit('joinPoll', this.pollId)
-    socket.on("newQuestion", q =>
-      this.question = q
-    )
-  },
+
   methods: {
     submitAnswer: function (answer) {
       socket.emit("submitAnswer", {pollId: this.pollId, answer: answer})
     }
+  },
+  joinPoll: function(){
+    socket.emit('joinPoll', this.pollId)
+    socket.on("newQuestion", q =>
+      this.question = q
+    )
   }
 }
 </script>
