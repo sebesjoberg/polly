@@ -1,17 +1,14 @@
 <template>
-  <section class="wrapper" v-on:mousemove="LoadFix">
+  <section class="wrapper" v-on:mousemove="LoadFix" v-if="this.notclicked">
   <div class="wrap_Left">
-    <router-link
-    v-bind:to="'/poll/'"
-    v-slot="{href, navigate}"
-    >
-      <button :href="href" @click="navigate" class="join">
+
+      <button class="join_1" v-on:click="join">
         {{uiLabels.participatePoll}}
-      </button></router-link>
+      </button>
 
     </div>
   <div class="wrap_Right">
-     <button v-on:click="switchLanguage" class="changeLanguage">
+     <button v-on:click="switchLanguage" class="changeLanguage_1">
      <img v-bind:src="getFlagUrl()"
    class="flag">{{uiLabels.changeLanguage}}</button>
 
@@ -30,6 +27,24 @@
   </div>
 
 </section>
+<section class="second_wrapper" v-else v-on:mousemove="Loadfix">
+  <div class="input">
+
+      <label for="input">{{uiLabels.inputId}}</label><br>
+      <input v-model="id" type="text" class="input" >
+  </div>
+    <router-link
+    v-bind:to="'/poll/'+this.id"
+    v-slot="{href, navigate}"
+    >
+      <button :href="href" @click="navigate" class="join_2">
+        {{uiLabels.participatePoll}}
+      </button></router-link>
+      <button v-on:click="switchLanguage" class="changeLanguage_2">
+      <img v-bind:src="getFlagUrl()"
+    class="flag">{{uiLabels.changeLanguage}}</button>
+
+</section>
 
 
 
@@ -46,9 +61,10 @@ export default {
   data: function () {
     return {
       uiLabels: {},
-      id: "123",
+      id: "",
       languages: ['en', 'sv'],
       lang: 'en',
+      notclicked: true,
 
     }
   },
@@ -72,6 +88,9 @@ export default {
       //återanvänder koden för language för att kunna gå fram och tillbaka
       //mellan sidor utan att förlora labels
       socket.emit("switchLanguage", this.languages[0])
+    },
+    join: function(){
+      this.notclicked=false;
     }
   }
 }
@@ -103,7 +122,7 @@ position: relative;
   position: relative;
 }
 
-.join{
+.join_1{
   font-size: 3vh;
   background-color: #0097a7;
   color:white;
@@ -115,6 +134,19 @@ position: relative;
   height: 15%;
   transform: translate(-50%,-50%);
 }
+.join_2{
+  font-size: 3vh;
+  background-color: #0097a7;
+  color:white;
+  border-radius: 10px;
+  position:absolute;
+  left:50%;
+  top:65%;
+  aspect-ratio:9/6;
+  height: 15%;
+  transform: translate(-50%,-65%);
+}
+
 
 .create{
   font-size: 3vh;
@@ -129,20 +161,44 @@ transform: translate(-50%,-50%);
 
   border-radius: 10px;
 }
-.changeLanguage{
+.input{
+  font-size: 3vh;
+  background-color: #455879;
+  color:white;
+  border-radius: 10px;
+  position:absolute;
+  left:50%;
+  top:50%;
+  aspect-ratio:9/6;
+  height: 15%;
+  transform: translate(-50%,-50%);
+}
+.changeLanguage_1{
   left:75%;
   position:absolute;
   width: 25%;
   height: 5%;
   font-size: 1vw;
  }
+ .changeLanguage_2{
+   left:87.5%;
+   position:absolute;
+   width: 12.5%;
+   height: 5%;
+   font-size: 1vw;
+  }
 
  .flag{
    width:2vw;
    height:auto;
-
-
- }
+}
+.second_wrapper{
+  padding:0;
+  margin:0;
+  background-color: #455879;
+  width: 100vw;
+  height: 100vh;
+}
 
 
 </style>
