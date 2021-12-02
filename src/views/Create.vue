@@ -16,17 +16,17 @@
         <input v-for="(_, i) in answers"
                v-model="answers[i]"
                v-bind:key="'answer'+i">
-        <button v-on:click="addAnswer" >
+        <button v-on:click="addAnswer" class ="button">
           Add answer alternative
         </button>
     </div>
     <div class="AddQuestion">
-    <button v-on:click="addQuestion">
+    <button v-on:click="addQuestion" class ="button">
       Add question
     </button>
     <input type="number" v-model="questionNumber">
     </div>
-    <button v-on:click="runQuestion">
+    <button v-on:click="runQuestion" class="question" >
       Run question
     </button>
     {{data}}
@@ -110,6 +110,12 @@ export default {
 }
 .AddQuestion{
 
+}
+.question{
+  font-size: 3vh;
+  background-color: #0097a7;
+  color:white;
+  border-radius: 10px;
 }
 
 .button{
