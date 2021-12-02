@@ -26,7 +26,7 @@
     </button>
     <input type="number" v-model="questionNumber">
     </div>
-    <button v-on:click="runQuestion" class="question" >
+    <button v-on:click="runQuestion" class="questionButton" >
       Run question
     </button>
     {{data}}
@@ -111,11 +111,12 @@ export default {
 .AddQuestion{
 
 }
-.question{
+.questionButton{
   font-size: 3vh;
   background-color: #0097a7;
   color:white;
   border-radius: 10px;
+  width: 60%;
 }
 
 .button{
