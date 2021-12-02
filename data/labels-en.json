@@ -10,5 +10,6 @@
 	"addQuestion": "Add question",
 	"runQuestion": "Run question",
 	"answersInCreate": "Answers",
-	"AddAnswerAlternative": "Add answer alternative"
+	"AddAnswerAlternative": "Add answer alternative",
+	"removeAnswer": "Remove answer alternative"
 }

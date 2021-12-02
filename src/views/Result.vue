@@ -1,8 +1,10 @@
 <template>
-  <div>
-    {{question}}
+  <div class="wrapper">
+    <div>
+      {{question}}
+    </div>
+    <Bars v-bind:data="data"/>
   </div>
-  <Bars v-bind:data="data"/>
 </template>
 
 <script>
@@ -37,3 +39,13 @@ export default {
   }
 }
 </script>
+
+<style>
+.wrapper {
+  display: grid;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  background-color: #455879;
+}
+</style>

@@ -153,12 +153,11 @@ position: relative;
   background-color: #455879;
   color:white;
   position:absolute;
-left:50%;
-top:50%;
-aspect-ratio:9/6;
-height: 15%;
-transform: translate(-50%,-50%);
-
+  left:50%;
+  top:50%;
+  aspect-ratio:9/6;
+  height: 15%;
+  transform: translate(-50%,-50%);
   border-radius: 10px;
 }
 .input{
