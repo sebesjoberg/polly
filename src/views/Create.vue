@@ -4,7 +4,7 @@
     <!--  <p style="float:left">Poll link:</p> -->
     <input type="text" v-model="pollId" placeholder="Poll link"> <br>
     <button v-on:click="createPoll" class ="button">
-      Create poll
+      {{uiLabels.creatingPoll}}
     </button>
     </div>
     <div class="Question">
@@ -12,22 +12,22 @@
       <input type="text" v-model="question">
     </div>
     <div class= "Answers">
-        Answers:
+      {{uiLabels.answersInCreate}}
         <input v-for="(_, i) in answers"
                v-model="answers[i]"
                v-bind:key="'answer'+i">
         <button v-on:click="addAnswer" class ="button">
-          Add answer alternative
+          {{uiLabels.AddAnswerAlternative}}
         </button>
     </div>
     <div class="AddQuestion">
     <button v-on:click="addQuestion" class ="button">
-      Add question
+      {{uiLabels.addQuestion}}
     </button>
     <input type="number" v-model="questionNumber">
     </div>
     <button v-on:click="runQuestion" class="questionButton" >
-      Run question
+      {{uiLabels.runQuestion}}
     </button>
     {{data}}
     <router-link v-bind:to="'/result/'+pollId">Check result</router-link>
