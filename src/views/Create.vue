@@ -2,7 +2,7 @@
   <section class="wrapper">
     <div class ="PollCreation" >
     <!--  <p style="float:left">Poll link:</p> -->
-    <input type="text" v-model="pollId" placeholder="Poll link"> <br>
+    <input type="text" class="pollId" v-model="pollId" placeholder="Poll link"> <br>
     <button v-on:click="createPoll" class ="button">
       Create poll
     </button>
@@ -95,8 +95,7 @@ export default {
   grid-row:1;
   grid-column-start: 1;
   grid-column-end: span 2;
-  justify-self: stretch;
-  align-self: center;
+  place-self: center;
   top: -50%;
   font-size: 80%;
   /* aspect-ratio:9/6; */
@@ -117,7 +116,18 @@ export default {
   background-color: #0097a7;
   color:white;
   border-radius: 10px;
-  height: 15%;
-
+  height: 50%;
+  width: 50%;
 }
+
+
+
+.pollId {
+  margin: 10px;
+  width: 40vw;
+  height: 5vw;
+  border-radius: 10px;
+  text-align: center;
+}
+
 </style>
