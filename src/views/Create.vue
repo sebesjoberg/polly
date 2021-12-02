@@ -1,36 +1,36 @@
 <template>
   <section class="wrapper">
-  <div>
     <div class ="PollCreation" >
-      <p style="float:left">Poll link:</p>
-    <input type="text" v-model="pollId"> <!-- Använder vi denna länk? -->
+    <!--  <p style="float:left">Poll link:</p> -->
+    <input type="text" v-model="pollId" placeholder="Poll link"> <br>
     <button v-on:click="createPoll" class ="button">
       Create poll
     </button>
     </div>
-    <div>
-      {{uiLabels.question}}: <!-- Importerad från labels, dynamiskt språkbyte  -->
-      <input type="text" v-model="question"> <!-- Skriv in frågor -->
-      <div>
+    <div class="Question">
+      {{uiLabels.question}}:
+      <input type="text" v-model="question">
+    </div>
+    <div class= "Answers">
         Answers:
         <input v-for="(_, i) in answers"
                v-model="answers[i]"
-               v-bind:key="'answer'+i">  <!-- Skapar flera svar -->
-        <button v-on:click="addAnswer" > <!-- lägg till svar genom addAnswer funktionen-->
+               v-bind:key="'answer'+i">
+        <button v-on:click="addAnswer" >
           Add answer alternative
         </button>
-      </div>
     </div>
+    <div class="AddQuestion">
     <button v-on:click="addQuestion">
       Add question
     </button>
     <input type="number" v-model="questionNumber">
+    </div>
     <button v-on:click="runQuestion">
       Run question
     </button>
     {{data}}
     <router-link v-bind:to="'/result/'+pollId">Check result</router-link>
-  </div>
   </section>
 </template>
 
@@ -84,19 +84,20 @@ export default {
 @import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
 
 .wrapper {
+  display: grid;
+  justify-content: center;
   padding: 0;
   margin: 0;
-  display: grid;
   background-color: #455879;
-  width: 100vw;
-  height: 100vh;
+
 }
 .PollCreation{
-  position:absolute;
-  left:50%;
-  top:50%;
-  aspect-ratio:9/6;
-  transform: translate(-50%,-50%);
+  grid-row:1;
+  grid-column: 2;
+  top: -50%;
+  font-size: 80%;
+  /* aspect-ratio:9/6; */
+
 }
 .button{
   font-size: 3vh;
@@ -104,5 +105,6 @@ export default {
   color:white;
   border-radius: 10px;
   height: 15%;
+
 }
 </style>
