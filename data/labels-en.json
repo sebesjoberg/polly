@@ -5,5 +5,10 @@
 	"participatePoll": "Participate in poll",
 	"question": "Question",
 	"changeLanguage": "Byt till svenska",
-	"inputId": "Enter quiz ID"
+	"inputId": "Enter quiz ID",
+	"creatingPoll": "create Poll",
+	"addQuestion": "Add question",
+	"runQuestion": "Run question",
+	"answersInCreate": "Answers",
+	"AddAnswerAlternative": "Add answer alternative"
 }

@@ -5,5 +5,10 @@
 	"participatePoll": "Delta i röstning",
 	"question": "Fråga",
 	"changeLanguage": "Change to English",
-	"inputId": "Ange kod"
+	"inputId": "Ange kod",
+	"creatingPoll": "skapa Poll",
+	"addQuestion": "Lägg till fråga",
+	"runQuestion": "Kör fråga",
+	"answersInCreate": "Svar",
+	"AddAnswerAlternative": "lägg till svarsalternativ"
 }
