@@ -93,12 +93,25 @@ export default {
 }
 .PollCreation{
   grid-row:1;
-  grid-column: 2;
+  grid-column-start: 1;
+  grid-column-end: span 2;
+  justify-self: stretch;
+  align-self: center;
   top: -50%;
   font-size: 80%;
   /* aspect-ratio:9/6; */
 
 }
+.Question{
+
+}
+.Answers{
+
+}
+.AddQuestion{
+
+}
+
 .button{
   font-size: 3vh;
   background-color: #0097a7;
