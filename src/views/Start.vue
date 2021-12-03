@@ -1,5 +1,29 @@
 <template>
-  <section class="wrapper" v-on:mousemove="LoadFix" v-if="this.notclicked">
+<section class="second_wrapper" v-if="this.clickedjoin" v-on:mousemove="Loadfix">
+  <div class="input">
+
+      <label for="input">{{uiLabels.inputId}}</label><br>
+      <input v-model="id" type="text" class="input" >
+  </div>
+    <router-link
+    v-bind:to="'/poll/'+this.id"
+    v-slot="{href, navigate}"
+    >
+      <button :href="href" @click="navigate" class="join_2">
+        {{uiLabels.participatePoll}}
+      </button></router-link>
+      <button v-on:click="switchLanguage" class="changeLanguage_2">
+      <img v-bind:src="getFlagUrl()"
+    class="flag">{{uiLabels.changeLanguage}}</button>
+</section>
+<section class="third_wrapper" v-else-if="this.clickedhost" v-on:mousemove="Loadfix">
+
+</section>
+
+
+
+
+  <section class="wrapper" v-on:mousemove="LoadFix" v-else>
   <div class="wrap_Left">
 
       <button class="join_1" v-on:click="join">
@@ -27,24 +51,7 @@
   </div>
 
 </section>
-<section class="second_wrapper" v-else v-on:mousemove="Loadfix">
-  <div class="input">
 
-      <label for="input">{{uiLabels.inputId}}</label><br>
-      <input v-model="id" type="text" class="input" >
-  </div>
-    <router-link
-    v-bind:to="'/poll/'+this.id"
-    v-slot="{href, navigate}"
-    >
-      <button :href="href" @click="navigate" class="join_2">
-        {{uiLabels.participatePoll}}
-      </button></router-link>
-      <button v-on:click="switchLanguage" class="changeLanguage_2">
-      <img v-bind:src="getFlagUrl()"
-    class="flag">{{uiLabels.changeLanguage}}</button>
-
-</section>
 
 
 
@@ -64,7 +71,8 @@ export default {
       id: "",
       languages: ['en', 'sv'],
       lang: 'en',
-      notclicked: true,
+      clickedjoin: false,
+      clickedhost: false
 
     }
   },
@@ -90,7 +98,7 @@ export default {
       socket.emit("switchLanguage", this.languages[0])
     },
     join: function(){
-      this.notclicked=false;
+      this.clickedjoin=true;
     }
   }
 }
