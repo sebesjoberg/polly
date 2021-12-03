@@ -57,7 +57,7 @@ export default {
   created: function () {
     this.lang = this.$route.params.lang;
     socket.emit("pageLoaded", this.lang);
-    //lägg till något som get ett unikt id
+    //lägg till något som get ett unikt id man får bara välja namn
 
     socket.on("init", (labels) => {
       this.uiLabels = labels
