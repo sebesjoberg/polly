@@ -23,11 +23,12 @@ export default {
         a: []
       },
       pollId: "inactive poll"
+
     }
   },
   created: function () {
     this.pollId = this.$route.params.id //check if null return then
-    socket.emit('joinPoll', this.pollId)
+    socket.emit('joinPoll', this.pollId) //borde vilja få alla frågor med detta id
     socket.on("newQuestion", q =>
       this.question = q
     )

@@ -1,9 +1,9 @@
 <template>
 <section class="second_wrapper" v-if="this.clickedjoin" v-on:mousemove="Loadfix">
-  <div class="input">
+  <div class="input_1">
 
-      <label for="input">{{uiLabels.inputId}}</label><br>
-      <input v-model="id" type="text" class="input" >
+      <label for="input_1">{{uiLabels.inputId}}</label><br>
+      <input v-model="id" type="text" class="input_1" >
   </div>
     <router-link
     v-bind:to="'/poll/'+this.id"
@@ -17,11 +17,22 @@
     class="flag">{{uiLabels.changeLanguage}}</button>
 </section>
 <section class="third_wrapper" v-else-if="this.clickedhost" v-on:mousemove="Loadfix">
+  <div class="input_2">
 
+      <label for="input_2">{{uiLabels.inputId}}</label><br>
+      <input v-model="id" type="text" class="input_2" >
+  </div>
+    <router-link
+    v-bind:to="'/host/'+this.id"
+    v-slot="{href, navigate}"
+    >
+      <button :href="href" @click="navigate" class="host">
+        {{uiLabels.HostPoll}}
+      </button></router-link>
+      <button v-on:click="switchLanguage" class="changeLanguage_2">
+      <img v-bind:src="getFlagUrl()"
+    class="flag">{{uiLabels.changeLanguage}}</button>
 </section>
-
-
-
 
   <section class="wrapper" v-on:mousemove="LoadFix" v-else>
   <div class="wrap_Left">
@@ -35,9 +46,6 @@
      <button v-on:click="switchLanguage" class="changeLanguage_1">
      <img v-bind:src="getFlagUrl()"
    class="flag">{{uiLabels.changeLanguage}}</button>
-
-
-
     <router-link
     v-bind:to="'/create/'+lang"
     v-slot="{href, navigate}"
@@ -47,8 +55,8 @@
       </button>
   </router-link>
   <button class="host" v-on:click="host">
-    {{uiLabels.participatePoll}}
-  </button>
+{{uiLabels.HostPoll}}
+</button>
 
 
   </div>
@@ -101,7 +109,11 @@ export default {
       socket.emit("switchLanguage", this.languages[0])
     },
     join: function(){
-      this.clickedjoin=true;
+      this.clickedjoin=!this.clickedjoin;
+    },
+    host: function(){
+      this.clickedhost=!this.clickedhost;
+
     }
   }
 }
@@ -131,7 +143,7 @@ position: relative;
   margin:0;
   background-color: #0097a7;
   position: relative;
-  
+
 }
 
 .join_1{
@@ -159,22 +171,45 @@ position: relative;
   transform: translate(-50%,-65%);
 }
 
-
+.host{
+  font-size: 3vh;
+  background-color: #455879;
+  color:white;
+  position:absolute;
+  left:50%;
+  top:65%;
+  aspect-ratio:9/6;
+  height: 15%;
+  transform: translate(-50%,-65%);
+  border-radius: 10px;
+}
 .create{
   font-size: 3vh;
   background-color: #455879;
   color:white;
   position:absolute;
   left:50%;
+  top:35%;
+  aspect-ratio:9/6;
+  height: 15%;
+  transform: translate(-50%,-35%);
+  border-radius: 10px;
+}
+.input_1{
+  font-size: 3vh;
+  background-color: #455879;
+  color:white;
+  border-radius: 10px;
+  position:absolute;
+  left:50%;
   top:50%;
   aspect-ratio:9/6;
   height: 15%;
   transform: translate(-50%,-50%);
-  border-radius: 10px;
 }
-.input{
+.input_2{
   font-size: 3vh;
-  background-color: #455879;
+  background-color: #0097a7;
   color:white;
   border-radius: 10px;
   position:absolute;
@@ -207,6 +242,13 @@ position: relative;
   padding:0;
   margin:0;
   background-color: #455879;
+  width: 100vw;
+  height: 100vh;
+}
+.third_wrapper{
+  padding:0;
+  margin:0;
+  background-color: #0097a7;
   width: 100vw;
   height: 100vh;
 }

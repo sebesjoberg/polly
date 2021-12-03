@@ -32,7 +32,11 @@
   </button>
   {{data}}
   <router-link v-bind:to="'/result/'+pollId">{{uiLabels.CheckResult}}</router-link>
+  <button v-on:click="switchLanguage" class="changeLanguage">
+  <img v-bind:src="getFlagUrl()"
+  class="flag">{{uiLabels.changeLanguage}}</button>
 </section>
+
 </template>
 
 <script>
@@ -49,7 +53,8 @@ export default {
       answers: ["", ""],
       questionNumber: 0,
       data: {},
-      uiLabels: {}
+      uiLabels: {},
+      languages: ['en', 'sv']
     }
   },
   created: function() {
@@ -67,6 +72,16 @@ export default {
       this.data = data)
   },
   methods: {
+    getFlagUrl: function(){
+
+      return require('../../data/flag-'+this.languages[1]+'.png')
+    },
+    switchLanguage: function() {
+      var b = this.languages.shift();
+      this.languages.push(b);
+      this.lang=this.languages[0];
+      socket.emit("switchLanguage", this.languages[0])
+    },
     createPoll: function() {
       socket.emit("createPoll", {
         pollId: this.pollId,
@@ -105,6 +120,13 @@ export default {
   margin: 0;
   background-color: #455879;
 }
+.changeLanguage{
+  left:87.5%;
+  position:absolute;
+  width: 12.5%;
+  height: 5%;
+  font-size: 1vw;
+ }
 
 .PollCreation {
   grid-row: 1;
