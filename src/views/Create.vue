@@ -33,7 +33,7 @@
       {{uiLabels.runQuestion}}
     </button>
     {{data}}
-    <router-link v-bind:to="'/result/'+pollId">Check result</router-link>
+    <router-link v-bind:to="'/result/'+pollId">{{uiLabels.CheckResult}}</router-link>
   </section>
 </template>
 

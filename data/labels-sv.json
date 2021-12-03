@@ -11,5 +11,6 @@
 	"runQuestion": "Kör fråga",
 	"answersInCreate": "Svar",
 	"AddAnswerAlternative": "lägg till svarsalternativ",
-	"removeAnswer": "Ta bort svarsalternativ"
+	"removeAnswer": "Ta bort svarsalternativ",
+	"CheckResult": "Kolla resultat"
 }
