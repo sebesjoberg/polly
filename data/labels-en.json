@@ -12,5 +12,6 @@
 	"answersInCreate": "Answers",
 	"AddAnswerAlternative": "Add answer alternative",
 	"removeAnswer": "Remove answer alternative",
-	"CheckResult": "Check result"
+	"CheckResult": "Check result",
+	"Hostpoll": "Host poll"
 }

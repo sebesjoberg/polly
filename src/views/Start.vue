@@ -46,6 +46,9 @@
         {{uiLabels.createPoll}}
       </button>
   </router-link>
+  <button class="host" v-on:click="host">
+    {{uiLabels.participatePoll}}
+  </button>
 
 
   </div>
@@ -128,6 +131,7 @@ position: relative;
   margin:0;
   background-color: #0097a7;
   position: relative;
+  
 }
 
 .join_1{
