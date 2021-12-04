@@ -22,14 +22,24 @@
     </button>
   </div>
   <div class="AddQuestion">
-    <button v-on:click="addQuestion" class="button">
-      {{uiLabels.addQuestion}}
-    </button>
+      <nav v-on:click="addQuestion">
+        <ul>
+          <li>
+            {{uiLabels.addQuestion}}
+            <span></span><span></span><span></span><span></span>
+          </li>
+        </ul>
+      </nav>
     <input type="number" v-model="questionNumber">
   </div>
-  <button v-on:click="runQuestion" class="questionButton">
-    {{uiLabels.runQuestion}}
-  </button>
+    <nav v-on:click="runQuestion">
+      <ul>
+        <li>
+          {{uiLabels.runQuestion}}
+          <span></span><span></span><span></span><span></span>
+        </li>
+      </ul>
+    </nav>
   {{data}}
   <router-link v-bind:to="'/result/'+pollId">{{uiLabels.CheckResult}}</router-link>
   <button v-on:click="switchLanguage" class="changeLanguage">
@@ -135,8 +145,6 @@ export default {
   place-self: center;
   top: -50%;
   font-size: 80%;
-  /* aspect-ratio:9/6; */
-
 }
 
 .Question {}
@@ -145,22 +153,81 @@ export default {
 
 .AddQuestion {}
 
-.questionButton {
-  font-size: 3vh;
-  background-color: #0097a7;
-  color: white;
-  border-radius: 10px;
-  width: 60%;
-}
 
 .button {
   font-size: 3vh;
-  background-color: #0097a7;
+  background-color: transparent;
   color: white;
   border-radius: 10px;
   height: 50%;
   width: 50%;
 }
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  height: 50%;
+  width: 50%;
+}
+
+nav ul li {
+  --c: #0097a7;
+  color: black;
+  font-size: 16px;
+  border: 0.3em solid var(--c);
+  border-radius: 0.5em;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: sans-serif;
+  letter-spacing: 0.1em;
+  text-align: center;
+  line-height: 3em;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: 0.5s;
+
+}
+
+nav ul li span {
+  position: absolute;
+  width: 25%;
+  height: 100%;
+  background-color: var(--c);
+  transform: translateY(150%);
+  border-radius: 50%;
+  left: calc((var(--n) - 1) * 25%);
+  transition: 0.5s;
+  transition-delay: calc((var(--n) - 1) * 0.1s);
+  z-index: -1;
+}
+
+nav ul li:hover {
+  color: white;
+}
+
+nav ul li:hover span {
+  transform: translateY(0) scale(2);
+}
+
+nav ul li span:nth-child(1) {
+  --n: 1;
+}
+
+nav ul li span:nth-child(2) {
+  --n: 2;
+}
+
+nav ul li span:nth-child(3) {
+  --n: 3;
+}
+
+nav ul li span:nth-child(4) {
+  --n: 4;
+}
+
+
+
 
 
 
