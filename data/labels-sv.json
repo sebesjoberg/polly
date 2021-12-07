@@ -13,5 +13,6 @@
 	"AddAnswerAlternative": "lägg till svarsalternativ",
 	"removeAnswer": "Ta bort svarsalternativ",
 	"CheckResult": "Kolla resultat",
-	"HostPoll": "Starta quiz"
+	"HostPoll": "Starta quiz",
+	"goBack": "Gå tillbaks"
 }

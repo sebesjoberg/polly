@@ -13,5 +13,6 @@
 	"AddAnswerAlternative": "Add answer alternative",
 	"removeAnswer": "Remove answer alternative",
 	"CheckResult": "Check result",
-	"HostPoll": "Host poll"
+	"HostPoll": "Host poll",
+	"goBack": "Go back"
 }
