@@ -2,11 +2,11 @@
 
 <template>
 <section class="wrapper">
-  <div class="Question">
+  <div class="Question"> <!-- Create question name -->
     {{uiLabels.question}}: <br>
     <input type="text" v-model="question">
   </div>
-  <div class="Answers">
+  <div class="Answers">  <!-- Create answers -->
     {{uiLabels.answersInCreate}} <br>
     <input v-for="(_, i) in answers" v-model="answers[i]" v-bind:key="'answer'+i">
     <button v-on:click="addAnswer" class="button">
@@ -16,7 +16,7 @@
       {{uiLabels.removeAnswer}}
     </button>
   </div>
-  <div class="addQuestion">
+  <div class="addQuestion"> <!-- Adds question to the poll, should also move onto crete another question -->
     <button v-on:click="addQuestion" class="button">
       {{uiLabels.addQuestion}}
     </button>
@@ -43,9 +43,9 @@ export default {
     }
   },
   created: function() {
-  //  this.lang = this.$route.params.lang; //Läs in språk från tidigare sida
+  this.lang = this.$route.params.lang; //Läs in språk från tidigare sida
   //  this.pollId = this.$route.params.id;
-  //  socket.emit("pageLoaded", this.lang); //ladda in sidan med rätt språk
+  socket.emit("pageLoaded", this.lang); //ladda in sidan med rätt språk
 
     socket.on("init", (labels) => {
       this.uiLabels = labels

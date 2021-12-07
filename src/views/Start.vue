@@ -1,3 +1,5 @@
+<!-- <html> -->
+
 <template>
 <section class="second_wrapper" v-if="this.clickedjoin" v-on:mousemove="Loadfix">
   <div class="input_1">
