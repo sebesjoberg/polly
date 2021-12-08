@@ -133,8 +133,8 @@
       margin:0;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      width: 100vw;
-      height: 100vh;
+      width: 99vw;
+      height: 97vh;
     }
 
     .wrap_Left{
