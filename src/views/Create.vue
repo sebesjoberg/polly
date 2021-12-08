@@ -17,14 +17,21 @@
     <input type="text" v-model="question">
   </div>
   <div class="AddQuestion">
-      <nav v-on:click="addQuestion">
-        <ul>
-          <li>
-            {{uiLabels.addQuestion}}
-            <span></span><span></span><span></span><span></span>
-          </li>
-        </ul>
-      </nav>
+    <router-link
+        v-bind:to="'/QuestionMaker/'+lang"
+        v-slot="{href, navigate}"
+    >
+      <div>
+        <nav v-on:click="addQuestion">
+          <ul>
+            <li :href="href" @click="navigate">
+              {{uiLabels.addQuestion}}
+              <span></span><span></span><span></span><span></span>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </router-link>
     <input type="number" v-model="questionNumber">
   </div>
   <div>
