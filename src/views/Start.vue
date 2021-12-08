@@ -16,6 +16,7 @@
     <button :href="href" @click="navigate" class="join_2">
       {{uiLabels.participatePoll}}
     </button></router-link>
+
     <button v-on:click="switchLanguage" class="changeLanguage_2">
       <img v-bind:src="getFlagUrl()"
       class="flag">{{uiLabels.changeLanguage}}</button>
@@ -135,8 +136,8 @@
       margin:0;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      width: 100vw;
-      height: 100vh;
+      width: 99vw;
+      height: 97vh;
     }
 
     .wrap_Left{
