@@ -14,5 +14,6 @@
 	"removeAnswer": "Remove answer alternative",
 	"CheckResult": "Check result",
 	"HostPoll": "Host poll",
-	"goBack": "Go back"
+	"goBack": "Go back",
+	"saveAndReturn": "Save and return"
 }

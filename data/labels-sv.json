@@ -10,9 +10,10 @@
 	"addQuestion": "Lägg till fråga",
 	"runQuestion": "Kör fråga",
 	"answersInCreate": "Svar",
-	"AddAnswerAlternative": "lägg till svarsalternativ",
+	"AddAnswerAlternative": "Lägg till svarsalternativ",
 	"removeAnswer": "Ta bort svarsalternativ",
 	"CheckResult": "Kolla resultat",
 	"HostPoll": "Starta quiz",
-	"goBack": "Gå tillbaks"
+	"goBack": "Gå tillbaks",
+	"saveAndReturn": "Spara och avsluta"
 }
