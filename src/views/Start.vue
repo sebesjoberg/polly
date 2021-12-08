@@ -14,6 +14,7 @@
     <button :href="href" @click="navigate" class="join_2">
       {{uiLabels.participatePoll}}
     </button></router-link>
+
     <button v-on:click="switchLanguage" class="changeLanguage_2">
       <img v-bind:src="getFlagUrl()"
       class="flag">{{uiLabels.changeLanguage}}</button>

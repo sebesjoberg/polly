@@ -3,23 +3,18 @@
   <div class="PollCreation">
     <!--  <p style="float:left">Poll link:</p> -->
     <input type="text" class="pollId" v-model="pollId" placeholder="Poll link"> <br>
-    <button v-on:click="createPoll" class="button">
-      {{uiLabels.creatingPoll}}
-    </button>
+      <nav v-on:click="createPoll">
+        <ul>
+          <li>
+            {{uiLabels.creatingPoll}}
+            <span></span><span></span><span></span><span></span>
+          </li>
+        </ul>
+      </nav>
   </div>
   <div class="Question">
     {{uiLabels.question}}:
     <input type="text" v-model="question">
-  </div>
-  <div class="Answers">
-    {{uiLabels.answersInCreate}}
-    <input v-for="(_, i) in answers" v-model="answers[i]" v-bind:key="'answer'+i">
-    <button v-on:click="addAnswer" class="button">
-      {{uiLabels.AddAnswerAlternative}}
-    </button>
-    <button v-on:click="RemoveAnswer" class="button">
-      {{uiLabels.removeAnswer}}
-    </button>
   </div>
   <div class="AddQuestion">
       <nav v-on:click="addQuestion">
@@ -32,6 +27,7 @@
       </nav>
     <input type="number" v-model="questionNumber">
   </div>
+  <div>
     <nav v-on:click="runQuestion">
       <ul>
         <li>
@@ -40,6 +36,24 @@
         </li>
       </ul>
     </nav>
+  </div>
+  <router-link
+      v-bind:to="'/#/'+lang"
+      v-slot="{href, navigate}"
+  >
+    <div>
+      <nav v-on:click="goBack">
+        <ul>
+          <li :href="href" @click="navigate">
+            {{uiLabels.goBack}}
+            <span></span><span></span><span></span><span></span>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </router-link>
+
+
   {{data}}
   <router-link v-bind:to="'/result/'+pollId">{{uiLabels.CheckResult}}</router-link>
   <button v-on:click="switchLanguage" class="changeLanguage">
@@ -226,9 +240,18 @@ nav ul li span:nth-child(4) {
   --n: 4;
 }
 
-
-
-
+/*<div class="Answers"> här ligger kod för answerknappar
+detta eftersom det inte funkat att kommentera bort dem
+i template
+    {{uiLabels.answersInCreate}}
+    <input v-for="(_, i) in answers" v-model="answers[i]" v-bind:key="'answer'+i">
+    <button v-on:click="addAnswer" class="button">
+      {{uiLabels.AddAnswerAlternative}}
+    </button>
+    <button v-on:click="RemoveAnswer" class="button">
+      {{uiLabels.removeAnswer}}
+    </button>
+  </div>*/
 
 
 .pollId {
