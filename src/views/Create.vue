@@ -131,9 +131,6 @@ export default {
     addAnswer: function() {
       this.answers.push("");
     },
-    RemoveAnswer: function() {
-      this.answers.pop();
-    },
     runQuestion: function() {
       socket.emit("runQuestion", {
         pollId: this.pollId,
