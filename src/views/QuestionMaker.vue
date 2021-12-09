@@ -7,7 +7,7 @@
     <div class="Question">
       <!-- Create question name -->
       {{uiLabels.question}}: <br>
-      <input type="text" v-model="question">
+      <input type="text" v-model="question" class="question">
     </div>
     <div class="Answers">
       <!-- Create answers -->
@@ -16,27 +16,27 @@
         <input v-for="(_, i) in answers" v-model="answers[i]" v-bind:key="'answer'+i" class="answers">
       </div>
       <div class="answerButtons">
-      <button v-on:click="addAnswer" class="button">
-        {{uiLabels.AddAnswerAlternative}}
-      </button>
-      <button v-on:click="removeAnswer" class="button">
-        {{uiLabels.removeAnswer}}
-      </button>
-    </div>
-    </div>
-    <div class="addQuestion">
-      <!-- Adds question to the poll, should also move onto crete another question -->
-      <button v-on:click="addQuestion" class="button">
-        {{uiLabels.addQuestion}}
-      </button>
-      <input type="number" v-model="questionNumber">
+        <button v-on:click="removeAnswer" class="button">
+          {{uiLabels.removeAnswer}}
+        </button>
+        <button v-on:click="addAnswer" class="button">
+          {{uiLabels.AddAnswerAlternative}}
+        </button>
+      </div>
     </div>
     <div class="return">
       <router-link v-bind:to="'/create/'+lang" v-slot="{href, navigate}">
-      <button :href="href" @click="navigate" class="button">
-        {{uiLabels.saveAndReturn}}
-      </button>
+        <button :href="href" @click="navigate" class="button">
+          {{uiLabels.saveAndReturn}}
+        </button>
       </router-link>
+    </div>
+    <div class="addQuestion">
+      <!-- Adds question to the poll, should also move onto create another question -->
+      <button v-on:click="addQuestion" class="button">
+        {{uiLabels.addQuestion}}
+      </button>
+      <!--  <input type="number" v-model="questionNumber"> -->
     </div>
   </section>
 </template>
@@ -49,20 +49,20 @@
     name: 'Create',
     data: function() {
       return {
-        lang: 'en',
+        lang: "",
         pollId: "",
         question: "",
         answers: ["", ""],
         questionNumber: 0,
         data: {},
         uiLabels: {},
-        languages: ["sv", "en"]
+        languages: ["en", "sv"]
       }
     },
     created: function() {
-      // this.lang = this.$route.params.lang; //Läs in språk från tidigare sida
-      //  this.pollId = this.$route.params.id;
-      // socket.emit("pageLoaded", this.lang); //ladda in sidan med rätt språk
+      this.lang = this.$route.params.lang; //Läs in språk från tidigare sida
+      this.pollId = this.$route.params.id;
+      //socket.emit("pageLoaded", this.lang); //ladda in sidan med rätt språk
 
       socket.on("init", (labels) => {
         this.uiLabels = labels
@@ -76,10 +76,12 @@
     methods: {
       //createPoll sker i create
       addQuestion: function() {
+        this.questionNumber += 1;
         socket.emit("addQuestion", {
           pollId: this.pollId,
           q: this.question,
-          a: this.answers
+          a: this.answers,
+          qnr: this.questionNumber
         })
       },
       addAnswer: function() {
@@ -89,7 +91,6 @@
         this.answers.pop();
       },
       getFlagUrl: function() {
-
         return require('../../data/flag-' + this.languages[1] + '.png')
       },
       switchLanguage: function() {
@@ -99,7 +100,7 @@
         socket.emit("switchLanguage", this.languages[0])
       }
       // runQuestion har legat här men borde inte behövas på create sidan
-      // lägg till en funktion för att komma tillbaka till Create.vue
+      // lägg till en funktion för att komma tillbaka till Create.vue med sparade frågor
       // trippelchecka kommunikationen mellan de sidorna.
     }
   }
@@ -130,9 +131,16 @@
     position: relative;
   }
 
-  .answers{
+  .question {
     width: 40vw;
-    height: 10vh;
+    height: 7vh;
+  }
+
+  .answers {
+    width: 40vw;
+    height: 7vh;
+    text-align: center;
+    overflow: scroll;
   }
 
   .Answers {
@@ -143,6 +151,7 @@
     grid-template-rows: auto 1fr 1fr;
     /*justify-content: center; */
   }
+
   .answerGrid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -153,7 +162,7 @@
     place-self: center;
   }
 
-  .answerButtons{
+  .answerButtons {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 0%;
