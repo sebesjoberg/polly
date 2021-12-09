@@ -23,11 +23,12 @@ Data.prototype.createPoll = function(pollId, lang="en") {
     let poll = {};
     poll.lang = lang;
     poll.questions = [];
-    poll.joinable=true; //använd joinable till att se om man kan joina kanske ej är dett
+    poll.joinable=true; //använd joinable till att se om man kan joina kanske ej är det
     //då den körs?
     //använd sedan onquestion för att handla diverse mellanfönster och så
     poll.onQuestion=false;
-    poll.answers = [];
+    poll.answers = []; //en array med correctAnswers som man jämför med/skickar ut en bit av
+    poll.correctAnswers=[]
     poll.currentQuestion = 0;
     this.polls[pollId] = poll;
     console.log("poll created", pollId, poll);

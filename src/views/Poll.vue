@@ -19,6 +19,7 @@ waiting for actions to be made
 </template>
 
 <script>
+
 // @ is an alias to /src
 import Question from '@/components/Question.vue';
 import LeaderBoard from '@/components/Leaderboard.vue';
@@ -57,12 +58,17 @@ export default {
         this.question = q;
         this.lobby=false;
         this.onQuestion=true;
-        this.result:false;
-      );
-      socket.on("")
-    }
+        this.result=false;
+      });
+      //server skickar leaderBoard vill vi visa den? kan ha if runt result
+      socket.on("LeaderBoard", function(LeaderBoard){
+        this.leaderBoard=LeaderBoard;
+        this.lobby=false;
+        this.onQuestion=false;
+        this.result=true;
+      })
 
-    )//gör en metod med allt vi vill här?
+    //gör en metod med allt vi vill här?
     //kanske mer sockets som handlar typ leaderboard och liknandeö
   },
   methods: {
