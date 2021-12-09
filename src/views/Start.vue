@@ -3,7 +3,7 @@
 <template>
 
   <!--Denna section innehåller join -->
-  <section class="second_wrapper" v-if="this.clickedjoin" v-on:mousemove="Loadfix">
+  <section class="second_wrapper" v-if="this.clickedjoin">
     <div class="input_1">
 
       <label for="input_1">{{uiLabels.inputId}}</label><br>
@@ -98,6 +98,7 @@
         }
       },
       created: function () {
+        socket.emit("pageLoaded", this.lang);
         socket.on("init", (labels) => {
           this.uiLabels = labels
         })
@@ -111,11 +112,6 @@
           var b = this.languages.shift();
           this.languages.push(b);
           this.lang=this.languages[0];
-          socket.emit("switchLanguage", this.languages[0])
-        },
-        LoadFix : function(){
-          //återanvänder koden för language för att kunna gå fram och tillbaka
-          //mellan sidor utan att förlora labels
           socket.emit("switchLanguage", this.languages[0])
         },
         join: function(){

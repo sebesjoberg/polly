@@ -60,9 +60,9 @@
       }
     },
     created: function() {
-      // this.lang = this.$route.params.lang; //Läs in språk från tidigare sida
-      //  this.pollId = this.$route.params.id;
-      // socket.emit("pageLoaded", this.lang); //ladda in sidan med rätt språk
+      this.lang = this.$route.params.lang; //Läs in språk från tidigare sida
+      //this.pollId = this.$route.params.id;
+      socket.emit("pageLoaded", this.lang); //ladda in sidan med rätt språk
 
       socket.on("init", (labels) => {
         this.uiLabels = labels
