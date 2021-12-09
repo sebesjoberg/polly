@@ -21,10 +21,15 @@ Data.prototype.getUILabels = function (lang = "en") {
 Data.prototype.createPoll = function(pollId, lang="en") {
   if (typeof this.polls[pollId] === "undefined") {
     let poll = {};
-    poll.lang = lang;  
+    poll.lang = lang;
     poll.questions = [];
-    poll.answers = [];
-    poll.currentQuestion = 0;              
+    poll.joinable=true; //använd joinable till att se om man kan joina kanske ej är det
+    //då den körs?
+    //använd sedan onquestion för att handla diverse mellanfönster och så
+    poll.onQuestion=false;
+    poll.answers = []; //en array med correctAnswers som man jämför med/skickar ut en bit av
+    poll.correctAnswers=[]
+    poll.currentQuestion = 0;
     this.polls[pollId] = poll;
     console.log("poll created", pollId, poll);
   }
@@ -80,6 +85,3 @@ Data.prototype.getAnswers = function(pollId) {
   return {}
 }
 module.exports = Data;
-
-
-
