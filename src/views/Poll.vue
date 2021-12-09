@@ -1,6 +1,6 @@
 <template>
 <div class="lobby" v-if="this.lobby">
-gothere
+lobby here
 </div>
 
 <Question v-bind:question="question"

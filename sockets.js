@@ -25,7 +25,8 @@ function sockets(io, socket, data) {
     socket.emit('dataUpdate', data.getAnswers(pollId));
   });
   socket.on('hostPoll', function(pollId){
-
+//funktioner som lägger en host osv ska man joina socket också? antar inte detta är endast
+//för newquestion
   });
 
   socket.on('runQuestion', function(d) {
