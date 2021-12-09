@@ -19,14 +19,10 @@ function sockets(io, socket, data) {
   });
 
   socket.on('joinPoll', function(pollId) {
-    socket.join(pollId);//denna skickar ett undefined om id ej existerar använd detta till
-    //att skicka något så man fattar att den inte finns?
-    socket.emit('newQuestion', data.getQuestion(pollId))
-    socket.emit('dataUpdate', data.getAnswers(pollId));
-  });
+    socket.join(pollId);
+    });
   socket.on('hostPoll', function(pollId){
-//funktioner som lägger en host osv ska man joina socket också? antar inte detta är endast
-//för newquestion
+   socket.join(pollId)
   });
 
   socket.on('runQuestion', function(d) {

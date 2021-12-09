@@ -61,13 +61,13 @@
     },
     created: function() {
       this.lang = this.$route.params.lang; //Läs in språk från tidigare sida
-<<<<<<< HEAD
+
       this.pollId = this.$route.params.id;
       //socket.emit("pageLoaded", this.lang); //ladda in sidan med rätt språk
-=======
+
       //this.pollId = this.$route.params.id;
       socket.emit("pageLoaded", this.lang); //ladda in sidan med rätt språk
->>>>>>> a1fd6a0d6251a41cda60091d2f955ed33b35693f
+
 
       socket.on("init", (labels) => {
         this.uiLabels = labels

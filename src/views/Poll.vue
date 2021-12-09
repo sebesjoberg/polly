@@ -1,6 +1,6 @@
 <template>
 <div class="lobby" v-if="this.lobby">
-lobby here
+lobby here man väljer nick och sen emitas detta
 </div>
 
 <Question v-bind:question="question"
@@ -52,8 +52,9 @@ export default {
     }
   },
   created: function () {
-    this.pollId = this.$route.params.id //check if null return then
-    socket.emit('joinPoll', this.pollId)
+    this.pollId = this.$route.params.id
+    socket.emit('joinPoll', this.pollId) //gör en socket som gör så man får alla nicks hela tiden
+    //kolla sedan om ens nick redan finns och skicka den isf
     socket.on("newQuestion", function(q){
         this.question = q;
         this.lobby=false;
