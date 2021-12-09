@@ -34,7 +34,7 @@ export default {
   methods: {
     answer: function (answer) {
       this.$emit("answer", answer);
-      
+
     }
   }
 }
