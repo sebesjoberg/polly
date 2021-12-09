@@ -1,6 +1,8 @@
 <template>
-
-
+<div class="lobby" v-if="this.lobby">
+gothere
+</div>
+ta ett nickname och gör en quiztakers object osm har poängen/antalet rött svar
 
     <Question v-bind:question="question"
               v-on:answer="submitAnswer"
@@ -24,13 +26,14 @@ export default {
         q: "",
         a: []
       },
-      pollId: "inactive poll"
+      pollId: "inactive poll",
+      lobby: true
 
     }
   },
   created: function () {
     this.pollId = this.$route.params.id //check if null return then
-    socket.emit('joinPoll', this.pollId) //borde vilja få alla frågor med detta id
+    socket.emit('joinPoll', this.pollId)
     socket.on("newQuestion", q =>
       this.question = q
     )
@@ -38,6 +41,7 @@ export default {
   methods: {
     submitAnswer: function (answer) {
       socket.emit("submitAnswer", {pollId: this.pollId, answer: answer})
+      this.question={  q: "",a: []};
 
     }
   }

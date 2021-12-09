@@ -20,7 +20,7 @@ export default {
    }
   },
   watch: {
-    //detta är från w3schools
+    //detta är från w3schools alltså setpropert och :root i style
     question: function(){
     var r = document.querySelector(':root');
     r.style.setProperty('--row', Math.ceil(this.question.a.length/2));
@@ -34,6 +34,7 @@ export default {
   methods: {
     answer: function (answer) {
       this.$emit("answer", answer);
+      
     }
   }
 }

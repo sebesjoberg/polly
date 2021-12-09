@@ -21,10 +21,13 @@ Data.prototype.getUILabels = function (lang = "en") {
 Data.prototype.createPoll = function(pollId, lang="en") {
   if (typeof this.polls[pollId] === "undefined") {
     let poll = {};
-    poll.lang = lang;  
-    poll.questions = [];
+    poll.lang = lang;
+    poll.questions = [];//lägg till så den första frågan är en slags wait window?
+    //även något slags bool på varje fråga då också kanske
+    //man kan även lägga till en slags waitwindow bool i poll.bool kanske om man är där i körningen
+    
     poll.answers = [];
-    poll.currentQuestion = 0;              
+    poll.currentQuestion = 0;
     this.polls[pollId] = poll;
     console.log("poll created", pollId, poll);
   }
@@ -80,6 +83,3 @@ Data.prototype.getAnswers = function(pollId) {
   return {}
 }
 module.exports = Data;
-
-
-
