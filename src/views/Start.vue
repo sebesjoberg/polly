@@ -26,7 +26,7 @@
     </section>
 
     <!--Denna section innehåller Host -->
-    <section class="third_wrapper" v-else-if="this.clickedhost" v-on:mousemove="Loadfix">
+    <section class="third_wrapper" v-else-if="this.clickedhost">
       <div class="input_2">
         <label for="input_2">{{uiLabels.inputId}}</label><br>
         <input v-model="id" type="text" class="input_2" >
@@ -47,7 +47,7 @@
       </section>
 
       <!--Denna section är starten på hemsidan -->
-      <section class="wrapper" v-on:mousemove="LoadFix" v-else>
+      <section class="wrapper" v-else>
         <div class="wrap_Left">
 
           <button class="join_1" v-on:click="join">
