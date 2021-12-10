@@ -73,11 +73,15 @@
 </template>
 
 <script>
+import QuestionMaker from '@/components/QuestionMaker.vue'
 import io from 'socket.io-client';
 const socket = io();
 
 export default {
   name: 'Create',
+  components: {
+    QuestionMaker
+  },
   data: function() {
     return {
       lang: "",

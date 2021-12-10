@@ -2,7 +2,12 @@ function sockets(io, socket, data) {
   socket.emit('init', data.getUILabels());
 
   socket.on('pageLoaded', function (lang) {
-    socket.emit('init', data.getUILabels(lang));
+    var languages=['sv','en'];
+    if(lang in languages){
+    socket.emit('init', data.getUILabels(lang));}
+    else{
+        socket.emit('init', data.getUILabels('en'));
+    }
   });
 
   socket.on('switchLanguage', function(lang) {

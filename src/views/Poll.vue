@@ -50,8 +50,8 @@ export default {
         scores:[]
       },
       pollId: "inactive poll",
-      lobby: true,
-      onQuestion: false,
+      lobby: false,
+      onQuestion: true,
       correctAnswer: false,
       result: false,
       nickname:"",
