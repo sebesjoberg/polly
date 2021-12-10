@@ -1,7 +1,7 @@
 <!-- <html> -->
 
 <template>
-<section class="wrapper">
+<section class="wrapper" v-if="this.inOverview">
   <div class="PollCreation">
     <!--  <p style="float:left">Poll link:</p> -->
     <input type="text" class="pollId" v-model="pollId" placeholder="Poll link"> <br>
@@ -19,33 +19,20 @@
     <input type="text" v-model="question">
   </div>
   <div class="AddQuestion">
-    <router-link
-        v-bind:to="'/QuestionMaker/'+lang"
-        v-slot="{href, navigate}"
-    >
-      <div>
-        <nav v-on:click="addQuestion">
+
+      <button>
+        <nav v-on:click="goTo">
           <ul>
-            <li :href="href" @click="navigate">
               {{uiLabels.addQuestion}}
               <span></span><span></span><span></span><span></span>
-            </li>
+
           </ul>
         </nav>
-      </div>
-    </router-link>
-    <input type="number" v-model="questionNumber">
+      </button>
+
+
   </div>
-  <div>
-    <nav v-on:click="runQuestion">
-      <ul>
-        <li>
-          {{uiLabels.runQuestion}}
-          <span></span><span></span><span></span><span></span>
-        </li>
-      </ul>
-    </nav>
-  </div>
+
   <router-link
       v-bind:to="'/#/'+lang"
       v-slot="{href, navigate}"
@@ -62,16 +49,19 @@
     </div>
   </router-link>
 
-  <QuestionMaker v-bind:lang='this.lang'
-                 v-if='this.inQuestionMaker'/>
+  <button v-on:click="switchLanguage" class="changeLanguage">
+                 <img v-bind:src="getFlagUrl()"
+                 class="flag">{{uiLabels.changeLanguage}}</button>
 
 
   {{data}}
   <router-link v-bind:to="'/result/'+pollId">{{uiLabels.CheckResult}}</router-link>
-  <button v-on:click="switchLanguage" class="changeLanguage">
-  <img v-bind:src="getFlagUrl()"
-  class="flag">{{uiLabels.changeLanguage}}</button>
+
 </section>
+<QuestionMaker v-bind:lang='this.lang'
+               v-bind:uiLabels='this.uiLabels'
+               v-if='this.inQuestionMaker'
+               v-on:madeQuestion="addQuestion(question)"/>
 
 </template>
 
@@ -96,6 +86,7 @@ export default {
       uiLabels: {},
       languages: ['en', 'sv'],
       inQuestionMaker: false,
+      inOverview: true
     }
   },
   created: function() {
@@ -113,6 +104,10 @@ export default {
       this.data = data)
   },
   methods: {
+    goTo: function(){
+      this.inOverview=false;
+      this.inQuestionMaker=true;
+    },
     getFlagUrl: function(){
 
       return require('../../data/flag-'+this.languages[1]+'.png')
@@ -129,11 +124,11 @@ export default {
         lang: this.lang
       })
     },
-    addQuestion: function() {
+    addQuestion: function(load) {
       socket.emit("addQuestion", {
         pollId: this.pollId,
-        q: this.question,
-        a: this.answers
+        q: load.question,
+        a: load.answers
       })
     },
     addAnswer: function() {

@@ -1,8 +1,7 @@
 <!-- <html> -->
 
 <template>
-  <button v-on:click="switchLanguage" class="changeLanguage">
-    <img v-bind:src="getFlagUrl()" class="flag">{{uiLabels.changeLanguage}}</button>
+
   <section class="wrapper">
     <div class="Question">
       <!-- Create question name -->
@@ -47,40 +46,25 @@
 
   export default {
     name: 'Create',
+    props:{
+      uiLabels: Object,
+      lang: String
+    },
     data: function() {
       return {
-        lang: "",
         pollId: "",
         question: "",
         answers: ["", ""],
         questionNumber: 0,
         data: {},
-        uiLabels: {},
         languages: ["en", "sv"]
       }
     },
-    created: function() {
-      this.lang = this.$route.params.lang; //Läs in språk från tidigare sida
-      console.log(this.lang)
-      this.pollId = this.$route.params.id;
-      //socket.emit("pageLoaded", this.lang); //ladda in sidan med rätt språk
 
-      //this.pollId = this.$route.params.id;
-      socket.emit("pageLoaded", this.lang); //ladda in sidan med rätt språk
-
-
-      socket.on("init", (labels) => {
-        this.uiLabels = labels
-      })
-      socket.on("dataUpdate", (data) =>
-        this.data = data
-      )
-      socket.on("pollCreated", (data) =>
-        this.data = data)
-    },
     methods: {
       //createPoll sker i create
-      addQuestion: function() {
+      addQuestion: function() {//skickas kanske inte exakt det som behövs för tillfället
+
         this.questionNumber += 1;
         socket.emit("addQuestion", {
           pollId: this.pollId,
@@ -94,15 +78,6 @@
       },
       removeAnswer: function() {
         this.answers.pop();
-      },
-      getFlagUrl: function() {
-        return require('../../data/flag-' + this.languages[1] + '.png')
-      },
-      switchLanguage: function() {
-        var b = this.languages.shift();
-        this.languages.push(b);
-        this.lang = this.languages[0];
-        socket.emit("switchLanguage", this.languages[0])
       }
       // runQuestion har legat här men borde inte behövas på create sidan
       // lägg till en funktion för att komma tillbaka till Create.vue med sparade frågor
