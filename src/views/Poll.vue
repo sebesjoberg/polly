@@ -1,6 +1,14 @@
 <template>
 <div class="lobby" v-if="this.lobby">
-lobby here man väljer nick och sen emitas detta
+
+
+    <label for="nick">pl</label><br>
+    <input v-model="id" type="text" class="nickName" >
+
+
+  <button>
+    pl
+  </button>
 </div>
 
 <Question v-bind:question="question"
@@ -46,6 +54,10 @@ export default {
       onQuestion: false,
       correctAnswer: false,
       result: false,
+      nickname:"",
+      setNick: false,
+      lang:"",
+      uiLabels:{}
 
 
 
@@ -53,13 +65,19 @@ export default {
   },
   created: function () {
     this.pollId = this.$route.params.id
+    this.lang = this.$route.params.lang
+    socket.emit("pageLoaded", this.lang);
+    socket.on("init", (labels) => {
+      this.uiLabels = labels
+    })
     socket.emit('joinPoll', this.pollId) //gör en socket som gör så man får alla nicks hela tiden
     //kolla sedan om ens nick redan finns och skicka den isf
     socket.on("newQuestion", function(q){
+        if(this.setNick){
         this.question = q;
         this.lobby=false;
         this.onQuestion=true;
-        this.result=false;
+        this.result=false;}
       });
       //server skickar leaderBoard vill vi visa den? kan ha if runt result
       socket.on("LeaderBoard", function(LeaderBoard){

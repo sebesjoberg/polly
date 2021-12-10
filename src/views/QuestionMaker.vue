@@ -61,7 +61,7 @@
     },
     created: function() {
       this.lang = this.$route.params.lang; //Läs in språk från tidigare sida
-
+      console.log(this.lang)
       this.pollId = this.$route.params.id;
       //socket.emit("pageLoaded", this.lang); //ladda in sidan med rätt språk
 

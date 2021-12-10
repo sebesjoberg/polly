@@ -10,7 +10,7 @@
       <input v-model="id" type="text" class="input_1" >
     </div>
     <router-link
-    v-bind:to="'/poll/'+this.id"
+    v-bind:to="'/poll/'+this.lang+'/'+this.id"
     v-slot="{href, navigate}"
     >
     <button :href="href" @click="navigate" class="join_2">

@@ -85,4 +85,13 @@ Data.prototype.getAnswers = function(pollId) {
   }
   return {}
 }
+
+Data.prototype.getLeaderBoard = function(pollId){
+  const poll = this.polls[pollId];
+  if(typeof poll !== 'undefined'){
+  return this.polls[pollId].leaderBoard;}
+  else{
+    return null
+  }
+}
 module.exports = Data;

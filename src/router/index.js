@@ -8,7 +8,7 @@ const routes = [
     component: Start
   },
   {
-    path: '/poll/:id',
+    path: '/poll/:lang/:id',
     name: 'Poll',
     component: () => import(/* webpackChunkName: "about" */ '../views/Poll.vue')
   },
@@ -37,7 +37,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/Host.vue')
   },
   {
-    path: '/questionMaker/:id',
+    path: '/questionMaker/:id',//questionmaker gör sig bättre som component
     name: 'QuestionMaker',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
