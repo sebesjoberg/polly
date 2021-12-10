@@ -3,8 +3,13 @@ import Start from '../views/Start.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/:lang',
     name: 'Start',
+    component: Start
+  },
+  {
+    path: '/',
+    name: 'Start1',
     component: Start
   },
   {

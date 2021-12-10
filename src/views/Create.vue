@@ -19,22 +19,18 @@
     <input type="text" v-model="question">
   </div>
   <div class="AddQuestion">
-
-      <button>
         <nav v-on:click="goTo">
           <ul>
+            <li>
               {{uiLabels.addQuestion}}
               <span></span><span></span><span></span><span></span>
-
+            </li>
           </ul>
         </nav>
-      </button>
-
-
   </div>
 
   <router-link
-      v-bind:to="'/#/'+lang"
+      v-bind:to="'/'+lang"
       v-slot="{href, navigate}"
   >
     <div>

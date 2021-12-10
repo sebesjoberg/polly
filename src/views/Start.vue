@@ -76,7 +76,6 @@
 
 
 
-
     </template>
 
     <script>
@@ -98,7 +97,8 @@
         }
       },
       created: function () {
-        socket.emit("pageLoaded", this.lang);
+        this.lang = this.$route.params.lang;
+        socket.emit("pageLoaded", this.lang || "en");
         socket.on("init", (labels) => {
           this.uiLabels = labels
         })
