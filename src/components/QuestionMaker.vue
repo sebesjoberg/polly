@@ -1,5 +1,6 @@
 <!-- <html> -->
-
+<!-- grid view till svaren med något maxtak
+och att denna då alltid håller samma storlek så sidan blir nsygg -->
 <template>
 
   <section class="wrapper">
@@ -66,8 +67,7 @@
       addQuestion: function() {//skickas kanske inte exakt det som behövs för tillfället
 
         this.questionNumber += 1;
-        socket.emit("addQuestion", {
-          pollId: this.pollId,
+        socket.$emit("madeQuestion", {
           q: this.question,
           a: this.answers,
           qnr: this.questionNumber
