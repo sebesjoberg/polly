@@ -62,6 +62,9 @@
     </div>
   </router-link>
 
+  <QuestionMaker v-bind:lang='this.lang'
+                 v-if='this.inQuestionMaker'/>
+
 
   {{data}}
   <router-link v-bind:to="'/result/'+pollId">{{uiLabels.CheckResult}}</router-link>
@@ -91,7 +94,8 @@ export default {
       questionNumber: 0,
       data: {},
       uiLabels: {},
-      languages: ['en', 'sv']
+      languages: ['en', 'sv'],
+      inQuestionMaker: false,
     }
   },
   created: function() {
