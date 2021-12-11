@@ -19,7 +19,7 @@
     <input type="text" v-model="question">
   </div>
   <div class="AddQuestion">
-        <nav v-on:click="goTo">
+        <nav v-on:click="goToAddQuestion">
           <ul>
             <li>
               {{uiLabels.addQuestion}}
@@ -57,7 +57,8 @@
 <QuestionMaker v-bind:lang='this.lang'
                v-bind:uiLabels='this.uiLabels'
                v-if='this.inQuestionMaker'
-               v-on:madeQuestion="addQuestion(question)"/>
+               v-on:madeQuestion="addQuestion(question)"
+               v-on:return="goBackToCreate"/>
 
 </template>
 
@@ -105,9 +106,13 @@ export default {
       this.data = data)
   },
   methods: {
-    goTo: function(){
+    goToAddQuestion: function(){
       this.inOverview=false;
       this.inQuestionMaker=true;
+    },
+    goBackToCreate: function(){
+      this.inOverview=true;
+      this.inQuestionMaker=false;
     },
     getFlagUrl: function(){
 

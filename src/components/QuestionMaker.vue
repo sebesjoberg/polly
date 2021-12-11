@@ -1,7 +1,7 @@
 <!-- <html> -->
 <!-- grid view till svaren med något maxtak
 och att denna då alltid håller samma storlek så sidan blir nsygg -->
-<template>
+<template v-if='this.inQuestionMaker'>
 
   <section class="wrapper">
     <div class="Question">
@@ -25,11 +25,9 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
       </div>
     </div>
     <div class="return">
-      <router-link v-bind:to="'/create/'+lang" v-slot="{href, navigate}">
-        <button :href="href" @click="navigate" class="button">
+        <button class="button" v-on:click="goBackToCreate">
           {{uiLabels.saveAndReturn}}
         </button>
-      </router-link>
     </div>
     <div class="addQuestion">
       <!-- Adds question to the poll, should also move onto create another question -->
@@ -58,7 +56,9 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
         answers: ["", ""],
         questionNumber: 0,
         data: {},
-        languages: ["en", "sv"]
+        languages: ["en", "sv"],
+        inQuestionMaker: true,
+        inOverview: false
       }
     },
 
@@ -72,6 +72,9 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
           a: this.answers,
           qnr: this.questionNumber
         })
+      },
+      goBackToCreate: function(){
+        this.$parent.goBackToCreate();
       },
       addAnswer: function() {
         this.answers.push("");
