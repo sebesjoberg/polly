@@ -74,7 +74,7 @@ export default {
   },
   data: function() {
     return {
-      lang: "",
+      lang: 'en',
       pollId: "",
       question: "",
       answers: ["", ""],
@@ -87,9 +87,15 @@ export default {
     }
   },
   created: function() {
+    if(this.languages.includes(this.$route.params.lang)){
     this.lang = this.$route.params.lang;
+  }
+    while(this.lang!==this.languages[0]){
+  var b = this.languages.shift();
+  this.languages.push(b);
+}
     //kollar så languages är i rätt ordning
-    
+
     socket.emit("pageLoaded", this.lang);
     //lägg till något som get ett unikt id
 

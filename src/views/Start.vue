@@ -97,10 +97,16 @@
         }
       },
       created: function () {
-
+        if(this.languages.includes(this.$route.params.lang)){
+        this.lang = this.$route.params.lang;
+      }
+      while(this.lang!==this.languages[0]){
+  var b = this.languages.shift();
+  this.languages.push(b);
+}
 
         //kollar så languages är i rätt ordning
-        
+
         socket.emit("pageLoaded", this.lang || "en");
         socket.on("init", (labels) => {
           this.uiLabels = labels
