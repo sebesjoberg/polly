@@ -94,4 +94,9 @@ Data.prototype.getLeaderBoard = function(pollId){
     return null
   }
 }
+
+Data.prototype.getnickNames = function(pollId){
+  const poll = this.polls[pollId];
+  return poll.leaderBoard.nicknames;
+}
 module.exports = Data;

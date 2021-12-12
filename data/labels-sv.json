@@ -15,5 +15,7 @@
 	"CheckResult": "Kolla resultat",
 	"HostPoll": "Starta quiz",
 	"goBack": "Gå tillbaks",
-	"saveAndReturn": "Spara och avsluta"
+	"saveAndReturn": "Spara och avsluta",
+	"nickName": "Smeknamn",
+	"setNick":"Sätt smeknamn"
 }

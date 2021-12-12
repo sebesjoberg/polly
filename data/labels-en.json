@@ -15,5 +15,7 @@
 	"CheckResult": "Check result",
 	"HostPoll": "Host poll",
 	"goBack": "Go back",
-	"saveAndReturn": "Save and return"
+	"saveAndReturn": "Save and return",
+	"nickName": "Nickname",
+	"setNick":"Set nickName"
 }

@@ -1,15 +1,16 @@
 <template>
-<div class="lobby" v-if="this.lobby">
-
-
-    <label for="nick">pl</label><br>
-    <input v-model="id" type="text" class="nickName" >
-
-
-  <button>
-    pl
-  </button>
+<section class="lobbyWrapper" v-if="this.lobby">
+  <div class="nickName">
+  <label for="nickName">{{uiLabels.nickName}}</label><br>
+  <input v-model="id" type="text" class="nickName" >
 </div>
+<button class="setNick">
+  {{uiLabels.setNick}}
+</button>
+<button v-on:click="switchLanguage" class="changeLanguage">
+  <img v-bind:src="getFlagUrl()"
+  class="flag">{{uiLabels.changeLanguage}}</button>
+</section>
 
 <Question v-bind:question="question"
           v-on:answer="submitAnswer"
@@ -50,14 +51,16 @@ export default {
         scores:[]
       },
       pollId: "inactive poll",
-      lobby: false,
-      onQuestion: true,
+      lobby: true,
+      onQuestion: false,
       correctAnswer: false,
       result: false,
       nickname:"",
       setNick: false,
-      lang:"",
-      uiLabels:{}
+      lang:'en',
+      uiLabels:{},
+      languages: ['en', 'sv'],
+      invalid: false,
 
 
 
@@ -65,14 +68,19 @@ export default {
   },
   created: function () {
     this.pollId = this.$route.params.id
-    this.lang = this.$route.params.lang
-    
+    if(this.languages.includes(this.$route.params.lang)){
+    this.lang = this.$route.params.lang;
+  }
+  while(this.lang!==this.languages[0]){
+var b = this.languages.shift();
+this.languages.push(b);
+}
+
     socket.emit("pageLoaded", this.lang);
     socket.on("init", (labels) => {
       this.uiLabels = labels
     })
-    socket.emit('joinPoll', this.pollId) //gör en socket som gör så man får alla nicks hela tiden
-    //kolla sedan om ens nick redan finns och skicka den isf
+    socket.emit('joinPoll', this.pollId)
     socket.on("newQuestion", function(q){
         if(this.setNick){
         this.question = q;
@@ -86,12 +94,28 @@ export default {
         this.lobby=false;
         this.onQuestion=false;
         this.result=true;
+      });//här får vi alla nickNames som är valda kan även användas till att kolla om pollen existerar
+      socket.on("nickNames", function(nickNames){
+        this.nickNames=nickNames;
+        if(typeof nickNames == 'undefined'){
+          this.invalid=true;
+        }
       })
 
     //gör en metod med allt vi vill här?
     //kanske mer sockets som handlar typ leaderboard och liknandeö
   },
   methods: {
+    switchLanguage: function() {
+      var b = this.languages.shift();
+      this.languages.push(b);
+      this.lang=this.languages[0];
+      socket.emit("switchLanguage", this.languages[0])
+    },
+    getFlagUrl: function(){
+
+      return require('../../data/flag-'+this.languages[1]+'.png')
+    },
     submitAnswer: function (answer) {
       socket.emit("submitAnswer", {pollId: this.pollId, answer: answer})
       //gör så man får ett waitwindow medans man väntar på svar stora sitt svar någontstans
@@ -101,6 +125,42 @@ export default {
 }
 </script>
 <style>
-
-
+.setNick{
+  font-size: 3vh;
+  background-color: #0097a7;
+  color:white;
+  border-radius: 10px;
+  position:absolute;
+  left:50%;
+  top:70%;
+  aspect-ratio:9/6;
+  height: 15%;
+  transform: translate(-50%,-70%);
+}
+.nickName{
+  font-size: 3vh;
+  background-color: #455879;
+  color:white;
+  border-radius: 10px;
+  position:absolute;
+  left:50%;
+  top:50%;
+  aspect-ratio:9/6;
+  height: 15%;
+  transform: translate(-50%,-50%);
+}
+.lobbyWrapper{
+  padding:0;
+  margin:0;
+  background-color: #455879;
+  width: 100vw;
+  height: 100vh;
+}
+.changeLanguage{
+  left:87.5%;
+  position:absolute;
+  width: 12.5%;
+  height: 5%;
+  font-size: 1vw;
+}
 </style>

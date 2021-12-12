@@ -21,7 +21,7 @@ function sockets(io, socket, data) {
 
   socket.on('joinPoll', function(pollId) {
     socket.join(pollId);
-    io.to(pollId).emit('nickNames',data.getLeaderBoard(pollId));
+    io.to(pollId).emit('nickNames',data.getnickNames(pollId));
     });
   socket.on('hostPoll', function(pollId){
    socket.join(pollId)
