@@ -22,6 +22,7 @@ function sockets(io, socket, data) {
   socket.on('joinPoll', function(pollId) {
     socket.join(pollId);
     io.to(pollId).emit('nickNames',data.getnickNames(pollId));
+
     });
   socket.on('hostPoll', function(pollId){
    socket.join(pollId)
@@ -35,6 +36,11 @@ function sockets(io, socket, data) {
   socket.on('submitAnswer', function(d) {
     data.submitAnswer(d.pollId, d.answer);
     io.to(d.pollId).emit('dataUpdate', data.getAnswers(d.pollId));
+  });
+
+  socket.on('setNickname',function(d){
+  data.setNickname(d);
+  io.to(d.pollId).emit('nickNames',data.getnickNames(d.pollId));
   });
 //kolla på denna vid nystart av quiz? reseta typ answers och så
   socket.on('resetAll', () => {

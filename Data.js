@@ -97,6 +97,19 @@ Data.prototype.getLeaderBoard = function(pollId){
 
 Data.prototype.getnickNames = function(pollId){
   const poll = this.polls[pollId];
-  return poll.leaderBoard.nicknames;
+  if(typeof poll !== 'undefined'){
+
+  return poll.leaderBoard.nicknames;}
+  else{
+    return null
+  }
+}
+
+Data.prototype.setNickname = function(d){
+  const poll = this.polls[d.pollId];
+  if(typeof poll !== 'undefined'){
+    poll.leaderBoard.nicknames.push(d.nickname);
+
+  }
 }
 module.exports = Data;

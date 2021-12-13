@@ -17,5 +17,7 @@
 	"goBack": "Go back",
 	"saveAndReturn": "Save and return",
 	"nickName": "Nickname",
-	"setNick":"Set nickName"
+	"setNick":"Set nickName",
+	"bigger": "Choose a nickname with more than three characters",
+	"occupied":"Choose another nickname that one is taken"
 }

@@ -2,9 +2,9 @@
 <section class="lobbyWrapper" v-if="this.lobby">
   <div class="nickName">
   <label for="nickName">{{uiLabels.nickName}}</label><br>
-  <input v-model="id" type="text" class="nickName" >
+  <input v-model="nickname" type="text" class="nickName" >
 </div>
-<button class="setNick">
+<button class="setNick" v-on:click="setNickname">
   {{uiLabels.setNick}}
 </button>
 <button v-on:click="switchLanguage" class="changeLanguage">
@@ -46,10 +46,8 @@ export default {
         q: "",
         a: []
       },
-      leaderBoard:{
-        nicknames:[],
-        scores:[]
-      },
+      leaderBoard:{nicknames:[],
+      scores:[]    },
       pollId: "inactive poll",
       lobby: true,
       onQuestion: false,
@@ -64,9 +62,11 @@ export default {
 
 
 
+
     }
   },
   created: function () {
+
     this.pollId = this.$route.params.id
     if(this.languages.includes(this.$route.params.lang)){
     this.lang = this.$route.params.lang;
@@ -95,17 +95,39 @@ this.languages.push(b);
         this.onQuestion=false;
         this.result=true;
       });//här får vi alla nickNames som är valda kan även användas till att kolla om pollen existerar
-      socket.on("nickNames", function(nickNames){
-        this.nickNames=nickNames;
-        if(typeof nickNames == 'undefined'){
-          this.invalid=true;
-        }
-      })
+      socket.on("nickNames", (nicknames) =>{
+
+              if(nicknames == null){
+                this.invalid=true;//här kan vi göra lite grejer som ska hända om
+                //pollen ej existerar
+              }else{
+                //undefined här ska fixas
+              this.leaderBoard.nicknames = nicknames
+              console.log(this.leaderBoard.nicknames)
+            }
+      });
 
     //gör en metod med allt vi vill här?
     //kanske mer sockets som handlar typ leaderboard och liknandeö
   },
   methods: {
+
+    setNickname: function(){
+      //tar bort alla whitespaces från nickname
+      this.nickname = this.nickname.replace(/\s/g, "")
+
+      if(this.nickname.length>=3){
+
+      if(!this.leaderBoard.nicknames.includes(this.nickname)){
+        socket.emit("setNickname", {pollId: this.pollId, nickname: this.nickname});
+        //gör lite mer här efter man satt nick
+      }else{
+      alert(this.uiLabels.occupied)
+      }
+      }else{
+        alert(this.uiLabels.bigger);
+      }
+    },
     switchLanguage: function() {
       var b = this.languages.shift();
       this.languages.push(b);
@@ -117,7 +139,7 @@ this.languages.push(b);
       return require('../../data/flag-'+this.languages[1]+'.png')
     },
     submitAnswer: function (answer) {
-      socket.emit("submitAnswer", {pollId: this.pollId, answer: answer})
+      socket.emit("submitAnswer", {pollId: this.pollId, answer: answer});
       //gör så man får ett waitwindow medans man väntar på svar stora sitt svar någontstans
 
     }

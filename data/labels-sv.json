@@ -17,5 +17,7 @@
 	"goBack": "Gå tillbaks",
 	"saveAndReturn": "Spara och avsluta",
 	"nickName": "Smeknamn",
-	"setNick":"Sätt smeknamn"
+	"setNick":"Sätt smeknamn",
+	"bigger":"Välj ett smeknamn med mer än 3 karaktärer",
+	"occupied":"Välj ett annat smeknamn ditt nuvarande är upptaget"
 }
