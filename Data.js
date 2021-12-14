@@ -91,14 +91,14 @@ Data.prototype.getLeaderBoard = function(pollId){
   if(typeof poll !== 'undefined'){
   return this.polls[pollId].leaderBoard;}
   else{
-    return null
+    return {}
   }
 }
 
 Data.prototype.getnickNames = function(pollId){
   const poll = this.polls[pollId];
-  if(typeof poll !== 'undefined'){
 
+  if(typeof poll !== 'undefined'){
   return poll.leaderBoard.nicknames;}
   else{
     return null

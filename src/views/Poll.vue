@@ -1,5 +1,9 @@
 <template>
-<section class="lobbyWrapper" v-if="this.lobby">
+<div class="error" v-if="this.invalid">
+{{uiLabels.invalid}}{{this.pollId}}
+</div>
+
+<section class="lobbyWrapper" v-else-if="this.lobby">
   <div class="nickName">
   <label for="nickName">{{uiLabels.nickName}}</label><br>
   <input v-model="nickname" type="text" class="nickName" >
@@ -97,14 +101,11 @@ this.languages.push(b);
       });//här får vi alla nickNames som är valda kan även användas till att kolla om pollen existerar
       socket.on("nickNames", (nicknames) =>{
 
-              if(nicknames == null){
-                this.invalid=true;//här kan vi göra lite grejer som ska hända om
-                //pollen ej existerar
+              if(nicknames !== null){
+                this.leaderBoard.nicknames = nicknames
               }else{
-                //undefined här ska fixas
-              this.leaderBoard.nicknames = nicknames
-              console.log(this.leaderBoard.nicknames)
-            }
+              this.invalid=true;
+             }
       });
 
     //gör en metod med allt vi vill här?

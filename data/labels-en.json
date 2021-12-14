@@ -19,5 +19,6 @@
 	"nickName": "Nickname",
 	"setNick":"Set nickName",
 	"bigger": "Choose a nickname with more than three characters",
-	"occupied":"Choose another nickname that one is taken"
+	"occupied":"Choose another nickname that one is taken",
+	"invalid": "No poll with id:"
 }
