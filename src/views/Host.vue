@@ -1,6 +1,10 @@
 <template>
-<section class="beforeQuiz"><!--allt innan quizen börjar -->
-
+  <section class="bigWrapper">
+<section class="beforeQuiz"> <!--allt innan quizen börjar -->
+ <div class="participants">
+ <button class="participant" v-for="i in this.leaderBoard.nicknames.length"
+v-bind:key=i> {{this.leaderBoard.nicknames[i-1]}}
+</button></div>
 </section>
 
 <section class="betweenQuestion"><!--allt mellan frågor -->
@@ -14,6 +18,9 @@
 
 <section class="afterQuiz"><!--allt som händer när quizen är färdig -->
 </section>
+
+<section class="invalid"><!--allt som händer när quizen inte finns -->
+</section></section>
 </template>
 
 <script>
@@ -26,12 +33,53 @@ window.onbeforeunload = function(){
     return null;
 }
 export default {
+  data: function(){
+    return{
+      leaderBoard:{nicknames:["tester1","tester2"],
+      scores:[]    },
+      pollId: "inactive poll",
+    }
+  },
     created: function () {
     this.pollId = this.$route.params.id
-    socket.emit('hostPoll', this.pollId)}
+    socket.emit("pageLoaded", this.lang || "en");
+
+    socket.emit('hostPoll', this.pollId)
+    socket.on("init", (labels) => {
+      this.uiLabels = labels
+    })
+    socket.on("nickNames", (nicknames) =>{
+
+            if(nicknames !== null){
+              this.leaderBoard.nicknames = nicknames
+
+            }else{
+            this.invalid=true;
+          }})
+        }
 
 }
+
 </script>
 
 <style>
+.bigWrapper{
+  background-color: #0097a7;
+}
+.participant{
+  text-align: center;
+  overflow:hidden;
+  margin:10px;
+  background-color:#455879;
+}
+.participant:hover{
+  background-color: #ff2929;
+}
+.participants{
+  width: 99vw;
+  height: 95vh;
+  display:grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9,1fr);
+}
 </style>

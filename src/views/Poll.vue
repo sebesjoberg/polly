@@ -105,7 +105,7 @@ this.languages.push(b);
                 this.leaderBoard.nicknames = nicknames
               }else{
               this.invalid=true;
-              
+
              }
       });
 
