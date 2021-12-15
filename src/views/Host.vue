@@ -3,6 +3,7 @@
 <section class="beforeQuiz"> <!--allt innan quizen börjar -->
  <div class="participants">
  <button class="participant" v-for="i in this.leaderBoard.nicknames.length"
+ v-on:click="kickfunchere"
 v-bind:key=i> {{this.leaderBoard.nicknames[i-1]}}
 </button></div>
 </section>
