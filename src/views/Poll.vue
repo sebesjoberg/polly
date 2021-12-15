@@ -85,7 +85,7 @@ this.languages.push(b);
       this.uiLabels = labels
     })
     socket.emit('joinPoll', this.pollId)
-    socket.on("newQuestion", function(q){
+    socket.on("newQuestion", (q) => {
         if(this.setNick){
         this.question = q;
         this.lobby=false;
@@ -93,7 +93,7 @@ this.languages.push(b);
         this.result=false;}
       });
       //server skickar leaderBoard vill vi visa den? kan ha if runt result
-      socket.on("LeaderBoard", function(LeaderBoard){
+      socket.on("LeaderBoard", (LeaderBoard) => {
         this.leaderBoard=LeaderBoard;
         this.lobby=false;
         this.onQuestion=false;
@@ -122,7 +122,7 @@ this.languages.push(b);
 
       if(!this.leaderBoard.nicknames.includes(this.nickname)){
         socket.emit("setNickname", {pollId: this.pollId, nickname: this.nickname});
-        //gör lite mer här efter man satt nick
+        //gör lite mer här efter man satt nick ex gå till question
       }else{
       alert(this.uiLabels.occupied)
       }

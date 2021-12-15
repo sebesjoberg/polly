@@ -3,7 +3,7 @@
 <div class="answers">
 <button v-for="i in question.a.length" v-on:click="answer(question.a[i-1])" v-bind:key="i"
 v-bind:style="{backgroundColor: this.Colors[i-1]}">
-  {{ question.a[i-1] }} 
+  {{ question.a[i-1] }}
 </button>
 </div>
 </template>
@@ -17,6 +17,7 @@ export default {
   data: function(){
    return{
      Colors: ["blue", "red", "purple", "green"]
+     //mer färger om man vill ha fler än 4 frågor
    }
   },
   watch: {

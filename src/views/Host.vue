@@ -12,8 +12,9 @@ v-bind:key=i> {{this.leaderBoard.nicknames[i-1]}}
 </section>
 
   <section class="onQuestion"> <!--allt som händer under en fråga -->
-  <button class="nextQuestion">
+  <button class="endQuestion">
   </button>
+  <!--här ska frågan visas anväänd componenten -->
 </section>
 
 <section class="afterQuiz"><!--allt som händer när quizen är färdig -->
@@ -35,7 +36,7 @@ window.onbeforeunload = function(){
 export default {
   data: function(){
     return{
-      leaderBoard:{nicknames:["tester1","tester2"],
+      leaderBoard:{nicknames:[],
       scores:[]    },
       pollId: "inactive poll",
     }
