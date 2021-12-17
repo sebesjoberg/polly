@@ -1,4 +1,5 @@
 <template>
+  <section class="wrapper">
 <div class="error" v-if="this.invalid">
 {{uiLabels.invalid}}{{this.pollId}}
 </div>
@@ -26,7 +27,7 @@
 <div class="waiting" v-else>
 waiting for actions to be made
 </div>
-
+</section>
 
 
 </template>
@@ -149,6 +150,11 @@ this.languages.push(b);
 }
 </script>
 <style>
+.wrapper{
+  background-color: #455879;
+  width: 98vw;
+  height: 97vh;
+}
 .setNick{
   font-size: 3vh;
   background-color: #0097a7;
@@ -176,15 +182,16 @@ this.languages.push(b);
 .lobbyWrapper{
   padding:0;
   margin:0;
-  background-color: #455879;
-  width: 100vw;
-  height: 100vh;
+
 }
 .changeLanguage{
-  left:87.5%;
+  left:86%;
   position:absolute;
   width: 12.5%;
   height: 5%;
   font-size: 1vw;
+}
+.error{
+
 }
 </style>

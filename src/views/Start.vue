@@ -3,7 +3,7 @@
 <template>
 
   <!--Denna section innehåller join -->
-  <section class="second_wrapper" v-if="this.clickedjoin">
+  <section class="join_wrapper" v-if="this.clickedjoin">
     <div class="input_1">
 
       <label for="input_1">{{uiLabels.inputId}}</label><br>
@@ -26,7 +26,7 @@
     </section>
 
     <!--Denna section innehåller Host -->
-    <section class="third_wrapper" v-else-if="this.clickedhost">
+    <section class="host_wrapper" v-else-if="this.clickedhost">
       <div class="input_2">
         <label for="input_2">{{uiLabels.inputId}}</label><br>
         <input v-model="id" type="text" class="input_2" >
@@ -45,7 +45,15 @@
           {{uiLabels.goBack}}
         </button>
       </section>
-
+<section class="result" v-else-if="this.clickedresult">
+  <router-link
+  v-bind:to="'/result/'+this.lang+'/'+this.id"
+  v-slot="{href, navigate}"
+  >
+  <button :href="href" @click="navigate" class="result_2">
+    {{uiLabels.CheckResult}}
+  </button></router-link>
+</section>
       <!--Denna section är starten på hemsidan -->
       <section class="wrapper" v-else>
         <div class="wrap_Left">
@@ -70,6 +78,9 @@
           <button class="host_1" v-on:click="host">
             {{uiLabels.HostPoll}}
           </button>
+          <button class="result_1" v-on:click="result">
+            {{uiLabels.CheckResult}}
+          </button>
         </div>
       </section>
 
@@ -92,7 +103,8 @@
           languages: ['en', 'sv'],
           lang: 'en',
           clickedjoin: false,
-          clickedhost: false
+          clickedhost: false,
+          clickedresult: false,
 
         }
       },
@@ -162,111 +174,111 @@
     }
 
     .join_1{
-      font-size: 3vh;
+      font-size: 2vw;
       background-color: #0097a7;
       color:white;
       border-radius: 10px;
       position:absolute;
       left:50%;
       top:50%;
-      aspect-ratio:9/6;
+      width:22.5%;
       height: 15%;
       transform: translate(-50%,-50%);
     }
     .join_2{
-      font-size: 3vh;
+      font-size: 2vw;
       background-color: #0097a7;
       color:white;
       border-radius: 10px;
       position:absolute;
       left:60%;
       top:70%;
-      aspect-ratio:9/6;
+      width:11.25%;
       height: 15%;
       transform: translate(-60%,-70%);
     }
 
     .host_1{
-      font-size: 3vh;
+      font-size: 2vw;
       background-color: #455879;
       color:white;
       position:absolute;
       left:50%;
       top:65%;
-      aspect-ratio:9/6;
+      width:22.5%;
       height: 15%;
       transform: translate(-50%,-65%);
       border-radius: 10px;
     }
     .host_2{
-      font-size: 3vh;
+      font-size: 2vw;
       background-color: #455879;
       color:white;
       position:absolute;
       left:60%;
       top:70%;
-      aspect-ratio:9/6;
+      width:11.25%;
       height: 15%;
       transform: translate(-60%,-70%);
       border-radius: 10px;
     }
     .goBack_1{
-      font-size: 3vh;
+      font-size: 2vw;
       background-color: #0097a7;
       color:white;
       position:absolute;
       left:40%;
       top:70%;
-      aspect-ratio:9/6;
+      width:11.25%;
       height: 15%;
       transform: translate(-40%,-70%);
       border-radius: 10px;
     }
     .goBack_2{
-      font-size: 3vh;
+      font-size: 2vw;
       background-color: #455879;
       color:white;
       position:absolute;
       left:40%;
       top:70%;
-      aspect-ratio:9/6;
+      width:11.25%;
       height: 15%;
       transform: translate(-40%,-70%);
       border-radius: 10px;
     }
     .create{
-      font-size: 3vh;
+      font-size: 2vw;
       background-color: #455879;
       color:white;
       position:absolute;
       left:50%;
       top:35%;
-      aspect-ratio:9/6;
+      width:22.5%;
       height: 15%;
       transform: translate(-50%,-35%);
       border-radius: 10px;
     }
     .input_1{
-      font-size: 3vh;
+      font-size: 3vw;
       background-color: #455879;
       color:white;
       border-radius: 10px;
       position:absolute;
       left:50%;
       top:50%;
-      aspect-ratio:9/6;
+      width:50%;
       height: 15%;
       transform: translate(-50%,-50%);
     }
     .input_2{
-      font-size: 3vh;
+      font-size: 3vw;
       background-color: #0097a7;
       color:white;
       border-radius: 10px;
       position:absolute;
       left:50%;
       top:50%;
-      aspect-ratio:9/6;
+      width:50%;
       height: 15%;
       transform: translate(-50%,-50%);
     }
@@ -289,19 +301,21 @@
       width:2vw;
       height:auto;
     }
-    .second_wrapper{
+    .join_wrapper{
       padding:0;
       margin:0;
       background-color: #455879;
-      width: 100vw;
-      height: 100vh;
+      width: 99vw;
+      height: 97vh;
+      position: relative;
     }
-    .third_wrapper{
+    .host_wrapper{
       padding:0;
       margin:0;
       background-color: #0097a7;
-      width: 100vw;
-      height: 100vh;
+      width: 99vw;
+      height: 97vh;
+      position: relative;
     }
 
 
