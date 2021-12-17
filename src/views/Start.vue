@@ -204,10 +204,10 @@
       color:white;
       position:absolute;
       left:50%;
-      top:65%;
+      top:50%;
       width:22.5%;
       height: 15%;
-      transform: translate(-50%,-65%);
+      transform: translate(-50%,-50%);
       border-radius: 10px;
     }
     .host_2{
@@ -252,10 +252,22 @@
       color:white;
       position:absolute;
       left:50%;
-      top:35%;
+      top:20%;
       width:22.5%;
       height: 15%;
-      transform: translate(-50%,-35%);
+      transform: translate(-50%,-20%);
+      border-radius: 10px;
+    }
+    .result_1{
+      font-size: 2vw;
+      background-color: #455879;
+      color:white;
+      position:absolute;
+      left:50%;
+      top:80%;
+      width:22.5%;
+      height: 15%;
+      transform: translate(-50%,-80%);
       border-radius: 10px;
     }
     .input_1{
