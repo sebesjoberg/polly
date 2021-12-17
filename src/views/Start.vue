@@ -140,7 +140,9 @@
         },
         host: function(){
           this.clickedhost=!this.clickedhost;
-
+        },
+        result: function(){
+          this.clickedresult=!this.clickedhost;
         }
       }
     }
