@@ -14,10 +14,12 @@
         </ul>
       </nav>
   </div>
-  <div class="Question">
-    {{uiLabels.question}}:
-    <input type="text" v-model="question">
-  </div>
+
+
+    <div class="Question">
+      {{uiLabels.question}}:
+      <input type="text" v-model="question">
+    </div>
   <div class="AddQuestion">
         <nav v-on:click="goToAddQuestion">
           <ul>
@@ -32,6 +34,7 @@
   <router-link
       v-bind:to="'/'+this.lang"
       v-slot="{href, navigate}"
+      class="goBackButton"
   >
     <div>
       <nav>
@@ -49,9 +52,6 @@
                  <img v-bind:src="getFlagUrl()"
                  class="flag">{{uiLabels.changeLanguage}}</button>
 
-
-  {{data}}
-  <router-link v-bind:to="'/result/'+pollId">{{uiLabels.CheckResult}}</router-link>
 
 </section>
 <QuestionMaker v-bind:lang='this.lang'
@@ -157,6 +157,8 @@ export default {
 
 .wrapper {
   display: grid;
+  grid-template-columns: repeat(7,1fr);
+  grid-template-rows: repeat(7,1fr);
   justify-content: center;
   padding: 0;
   margin: 0;
@@ -171,35 +173,32 @@ export default {
  }
 
 .PollCreation {
-  grid-row: 1;
-  grid-column-start: 1;
-  grid-column-end: span 2;
+  grid-row: 2;
+  grid-column: 4;
   place-self: center;
-  top: -50%;
-  font-size: 80%;
 }
 
-.Question {}
-
-.Answers {}
-
-.AddQuestion {}
-
-
-.button {
-  font-size: 3vh;
-  background-color: transparent;
-  color: white;
-  border-radius: 10px;
-  height: 50%;
-  width: 50%;
+.goBackButton {
+  grid-row: 5;
+  grid-column: 4;
 }
+
+.AddQuestion {
+  grid-row: 4;
+  grid-column: 4;
+  text-align: center;
+}
+.Question{
+  grid-row: 4;
+  grid-column: 4;
+}
+
 nav ul {
   list-style-type: none;
-  margin: 0;
+  margin-top: 45px;
   padding: 0;
   height: 50%;
-  width: 50%;
+  width: 100%;
 }
 
 nav ul li {
@@ -273,10 +272,7 @@ i template
 
 
 .pollId {
-  margin: 10px;
-  width: 40vw;
-  height: 5vw;
-  border-radius: 10px;
+  height: 30px;
   text-align: center;
 }
 </style>
