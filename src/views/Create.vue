@@ -1,10 +1,10 @@
 <!-- <html> -->
 
 <template>
-<section class="wrapper" v-if="this.inOverview">
-  <div class="PollCreation">
-    <!--  <p style="float:left">Poll link:</p> -->
-    <input type="text" class="pollId" v-model="pollId" placeholder="Poll link"> <br>
+  <section class="wrapper" v-if="this.inOverview">
+    <div class="PollCreation">
+      <!--  <p style="float:left">Poll link:</p> -->
+      <input type="text" class="pollId" v-model="pollId" placeholder="Poll link"> <br>
       <nav v-on:click="createPoll">
         <ul>
           <li>
@@ -13,52 +13,50 @@
           </li>
         </ul>
       </nav>
-  </div>
-
-
-    <div class="Question">
+    </div>
+    <div class="QuestionName">
       {{uiLabels.question}}:
       <input type="text" v-model="question">
     </div>
-  <div class="AddQuestion">
-        <nav v-on:click="goToAddQuestion">
-          <ul>
-            <li>
-              {{uiLabels.addQuestion}}
-              <span></span><span></span><span></span><span></span>
-            </li>
-          </ul>
-        </nav>
-  </div>
-
-  <router-link
-      v-bind:to="'/'+this.lang"
-      v-slot="{href, navigate}"
-      class="goBackButton"
-  >
-    <div>
-      <nav>
+    <div class="AddQuestion">
+      <nav v-on:click="goToAddQuestion">
         <ul>
-          <li :href="href" @click="navigate">
-            {{uiLabels.goBack}}
+          <li>
+            {{uiLabels.addQuestion}}
             <span></span><span></span><span></span><span></span>
           </li>
         </ul>
       </nav>
     </div>
-  </router-link>
 
-  <button v-on:click="switchLanguage" class="changeLanguage">
-                 <img v-bind:src="getFlagUrl()"
-                 class="flag">{{uiLabels.changeLanguage}}</button>
+    <router-link
+        v-bind:to="'/'+this.lang"
+        v-slot="{href, navigate}"
+        class="GoBackButton"
+    >
+      <div>
+        <nav>
+          <ul>
+            <li :href="href" @click="navigate">
+              {{uiLabels.goBack}}
+              <span></span><span></span><span></span><span></span>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </router-link>
+
+    <button v-on:click="switchLanguage" class="changeLanguage">
+      <img v-bind:src="getFlagUrl()"
+           class="flag">{{uiLabels.changeLanguage}}</button>
 
 
-</section>
-<QuestionMaker v-bind:lang='this.lang'
-               v-bind:uiLabels='this.uiLabels'
-               v-if='this.inQuestionMaker'
-               v-on:madeQuestion="addQuestion(question)"
-               v-on:return="goBackToCreate"/>
+  </section>
+  <QuestionMaker v-bind:lang='this.lang'
+                 v-bind:uiLabels='this.uiLabels'
+                 v-if='this.inQuestionMaker'
+                 v-on:madeQuestion="addQuestion(question)"
+                 v-on:return="goBackToCreate"/>
 
 </template>
 
@@ -66,7 +64,6 @@
 import QuestionMaker from '@/components/QuestionMaker.vue'
 import io from 'socket.io-client';
 const socket = io();
-
 export default {
   name: 'Create',
   components: {
@@ -88,25 +85,23 @@ export default {
   },
   created: function() {
     if(this.languages.includes(this.$route.params.lang)){
-    this.lang = this.$route.params.lang;
-  }
+      this.lang = this.$route.params.lang;
+    }
     while(this.lang!==this.languages[0]){
-  var b = this.languages.shift();
-  this.languages.push(b);
-}
+      var b = this.languages.shift();
+      this.languages.push(b);
+    }
     //kollar så languages är i rätt ordning
-
     socket.emit("pageLoaded", this.lang);
     //lägg till något som get ett unikt id
-
     socket.on("init", (labels) => {
       this.uiLabels = labels
     })
     socket.on("dataUpdate", (data) =>
-      this.data = data
+        this.data = data
     )
     socket.on("pollCreated", (data) =>
-      this.data = data)
+        this.data = data)
   },
   methods: {
     goToAddQuestion: function(){
@@ -118,7 +113,6 @@ export default {
       this.inQuestionMaker=false;
     },
     getFlagUrl: function(){
-
       return require('../../data/flag-'+this.languages[1]+'.png')
     },
     switchLanguage: function() {
@@ -154,11 +148,8 @@ export default {
 </script>
 <style>
 @import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
-
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(7,1fr);
-  grid-template-rows: repeat(7,1fr);
   justify-content: center;
   padding: 0;
   margin: 0;
@@ -170,37 +161,36 @@ export default {
   width: 12.5%;
   height: 5%;
   font-size: 1vw;
- }
-
+}
 .PollCreation {
-  grid-row: 2;
-  grid-column: 4;
+  width: 40vw;
+  height: 70vh;
   place-self: center;
 }
-
-.goBackButton {
-  grid-row: 5;
-  grid-column: 4;
+.QuestionName {
+  grid-row: 1;
+  grid-column: 2;
+  margin-left: -10%;
+  margin-top: 35%;
 }
 
 .AddQuestion {
-  grid-row: 4;
-  grid-column: 4;
-  text-align: center;
+  grid-row: 1;
+  grid-column: 2;
+  margin-top: 40%;
+  margin-left: 20%;
 }
-.Question{
-  grid-row: 4;
-  grid-column: 4;
+.GoBackButton{
+  margin-left: 30%;
 }
 
 nav ul {
   list-style-type: none;
-  margin-top: 45px;
+  margin: 0;
   padding: 0;
   height: 50%;
-  width: 100%;
+  width: 50%;
 }
-
 nav ul li {
   --c: #0097a7;
   color: black;
@@ -217,9 +207,7 @@ nav ul li {
   overflow: hidden;
   z-index: 1;
   transition: 0.5s;
-
 }
-
 nav ul li span {
   position: absolute;
   width: 25%;
@@ -232,31 +220,24 @@ nav ul li span {
   transition-delay: calc((var(--n) - 1) * 0.1s);
   z-index: -1;
 }
-
 nav ul li:hover {
   color: white;
 }
-
 nav ul li:hover span {
   transform: translateY(0) scale(2);
 }
-
 nav ul li span:nth-child(1) {
   --n: 1;
 }
-
 nav ul li span:nth-child(2) {
   --n: 2;
 }
-
 nav ul li span:nth-child(3) {
   --n: 3;
 }
-
 nav ul li span:nth-child(4) {
   --n: 4;
 }
-
 /*<div class="Answers"> här ligger kod för answerknappar
 detta eftersom det inte funkat att kommentera bort dem
 i template
@@ -269,10 +250,11 @@ i template
       {{uiLabels.removeAnswer}}
     </button>
   </div>*/
-
-
 .pollId {
-  height: 30px;
+  margin: 10px;
+  width: 40vw;
+  height: 5vw;
+  border-radius: 10px;
   text-align: center;
 }
 </style>
