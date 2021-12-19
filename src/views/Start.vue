@@ -35,7 +35,7 @@
       v-bind:to="'/host/'+this.id"
       v-slot="{href, navigate}"
       >
-      <button :href="href" @click="navigate" class="host_2">
+      <button :href="href" @click="navigate" class="host_result">
         {{uiLabels.HostPoll}}
       </button></router-link>
       <button v-on:click="switchLanguage" class="changeLanguage_2">
@@ -45,14 +45,25 @@
           {{uiLabels.goBack}}
         </button>
       </section>
-<section class="result" v-else-if="this.clickedresult">
+      <!--Denna section innehåller result -->
+<section class="result_wrapper" v-else-if="this.clickedresult">
+  <div class="input_2">
+    <label for="input_2">{{uiLabels.inputId}}</label><br>
+    <input v-model="id" type="text" class="input_2" >
+  </div>
   <router-link
   v-bind:to="'/result/'+this.lang+'/'+this.id"
   v-slot="{href, navigate}"
   >
-  <button :href="href" @click="navigate" class="result_2">
+  <button :href="href" @click="navigate" class="host_result">
     {{uiLabels.CheckResult}}
   </button></router-link>
+  <button v-on:click="switchLanguage" class="changeLanguage_2">
+    <img v-bind:src="getFlagUrl()"
+    class="flag">{{uiLabels.changeLanguage}}</button>
+    <button class="goBack_2" v-on:click="result">
+      {{uiLabels.goBack}}
+    </button>
 </section>
       <!--Denna section är starten på hemsidan -->
       <section class="wrapper" v-else>
@@ -142,7 +153,7 @@
           this.clickedhost=!this.clickedhost;
         },
         result: function(){
-          this.clickedresult=!this.clickedhost;
+          this.clickedresult=!this.clickedresult;
         }
       }
     }
@@ -212,7 +223,7 @@
       transform: translate(-50%,-50%);
       border-radius: 10px;
     }
-    .host_2{
+    .host_result{
       font-size: 2vw;
       background-color: #455879;
       color:white;
@@ -281,7 +292,7 @@
       left:50%;
       top:50%;
       width:50%;
-      height: 15%;
+      height: 22.5%;
       transform: translate(-50%,-50%);
     }
     .input_2{
@@ -293,7 +304,7 @@
       left:50%;
       top:50%;
       width:50%;
-      height: 15%;
+      height: 22.5%;
       transform: translate(-50%,-50%);
     }
     .changeLanguage_1{
@@ -331,6 +342,15 @@
       height: 97vh;
       position: relative;
     }
+    .result_wrapper{
+      padding:0;
+      margin:0;
+      background-color: #0097a7;
+      width: 99vw;
+      height: 97vh;
+      position: relative;
+    }
+
 
 
     </style>
