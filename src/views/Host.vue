@@ -1,18 +1,22 @@
 <template>
   <section class="bigWrapper">
+
 <section class="beforeQuiz"> <!--allt innan quizen börjar -->
  <div class="participants">
  <button class="participant" v-for="i in this.leaderBoard.nicknames.length"
  v-on:click="kickfunchere(i)"
 v-bind:key=i> {{this.leaderBoard.nicknames[i-1]}}
-</button></div>
+</button>
+</div>
 </section>
 
-<section class="betweenQuestion"><!--allt mellan frågor -->
 
+
+
+<section class="betweenQuestion"> <!--allt mellan frågor -->
 </section>
 
-  <section class="onQuestion"> <!--allt som händer under en fråga -->
+<section class="onQuestion"> <!--allt som händer under en fråga -->
   <button class="endQuestion">
   </button>
   <!--här ska frågan visas anväänd componenten -->
@@ -22,8 +26,12 @@ v-bind:key=i> {{this.leaderBoard.nicknames[i-1]}}
 </section>
 
 <section class="invalid"><!--allt som händer när quizen inte finns -->
-</section></section>
+</section>
+
+</section>
 </template>
+
+
 
 <script>
 import io from 'socket.io-client';
@@ -64,6 +72,8 @@ export default {
 
 </script>
 
+
+
 <style>
 .bigWrapper{
   background-color: #0097a7;
@@ -84,4 +94,19 @@ export default {
   grid-template-columns: repeat(9, 1fr);
   grid-template-rows: repeat(9,1fr);
 }
+
+.head{
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 150px;
+}
+
+.head > h1{
+  font-size: 30px;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 </style>
