@@ -169,6 +169,32 @@
       width: 99vw;
       height: 97vh;
     }
+    .join_wrapper{
+      padding:0;
+      margin:0;
+      background-color: #455879;
+      width: 99vw;
+      height: 97vh;
+      position: relative;
+    }
+    .host_wrapper{
+      padding:0;
+      margin:0;
+      background-color: #0097a7;
+      width: 99vw;
+      height: 97vh;
+      position: relative;
+    }
+    .result_wrapper{
+      padding:0;
+      margin:0;
+      background-color: #0097a7;
+      width: 99vw;
+      height: 97vh;
+      position: relative;
+    }
+
+
 
     .wrap_Left{
       padding:0;
@@ -326,31 +352,6 @@
       width:2vw;
       height:auto;
     }
-    .join_wrapper{
-      padding:0;
-      margin:0;
-      background-color: #455879;
-      width: 99vw;
-      height: 97vh;
-      position: relative;
-    }
-    .host_wrapper{
-      padding:0;
-      margin:0;
-      background-color: #0097a7;
-      width: 99vw;
-      height: 97vh;
-      position: relative;
-    }
-    .result_wrapper{
-      padding:0;
-      margin:0;
-      background-color: #0097a7;
-      width: 99vw;
-      height: 97vh;
-      position: relative;
-    }
-
 
 
     </style>
