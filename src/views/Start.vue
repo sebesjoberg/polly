@@ -292,7 +292,7 @@
       left:50%;
       top:50%;
       width:50%;
-      height: 22.5%;
+      height: 30%;
       transform: translate(-50%,-50%);
     }
     .input_2{
@@ -304,7 +304,7 @@
       left:50%;
       top:50%;
       width:50%;
-      height: 22.5%;
+      height: 30%;
       transform: translate(-50%,-50%);
     }
     .changeLanguage_1{

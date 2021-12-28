@@ -153,7 +153,8 @@ export default {
   justify-content: center;
   padding: 0;
   margin: 0;
-  background-color: #455879;
+  position: relative;
+  background-color: #0097a7;
 }
 .changeLanguage{
   left:87.5%;
@@ -192,7 +193,7 @@ nav ul {
   width: 50%;
 }
 nav ul li {
-  --c: #0097a7;
+  --c: #455879;
   color: black;
   font-size: 16px;
   border: 0.3em solid var(--c);
