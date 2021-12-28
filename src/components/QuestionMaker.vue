@@ -93,9 +93,10 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
   .wrapper {
     display: grid;
     justify-content: center;
+    position: relative;
     padding: 0;
     margin: 0;
-    background-color: #455879;
+    background-color:#0097a7;
   }
 
   .changeLanguage {
@@ -157,7 +158,7 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
 
   .button {
     font-size: 3vh;
-    background-color: #0097a7;
+    background-color:  #455879;
     color: white;
     border-radius: 10px;
     height: 50%;
