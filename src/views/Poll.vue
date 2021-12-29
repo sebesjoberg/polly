@@ -1,8 +1,8 @@
 <template>
-  <section class="wrapper">
-<div class="error" v-if="this.invalid">
+
+<section class="errorwrapper" v-if="this.invalid">
 {{uiLabels.invalid}}{{this.pollId}}
-</div>
+</section>
 
 <section class="lobbyWrapper" v-else-if="this.lobby">
   <div class="nickName">
@@ -24,10 +24,10 @@
 <LeaderBoard v-bind:leaderBoard="leaderBoard"
              v-bind:correctAnswer="correctAnswer"
              v-else-if="this.result"/>
-<div class="waiting" v-else>
-waiting for actions to be made
-</div>
+<section class="waitwrapper" v-else>
+<div class="loader"></div>
 </section>
+
 
 
 </template>
@@ -105,7 +105,7 @@ this.languages.push(b);
               if(nicknames !== null){
                 this.leaderBoard.nicknames = nicknames
               }else{
-              this.invalid=true;
+              this.invalid=true
 
              }
       });
@@ -123,6 +123,11 @@ this.languages.push(b);
 
       if(!this.leaderBoard.nicknames.includes(this.nickname)){
         socket.emit("setNickname", {pollId: this.pollId, nickname: this.nickname});
+        this.setNick = true;
+        this.lobby = false;
+        this.onQuestion = false;
+
+        this.result = false;
         //gör lite mer här efter man satt nick ex gå till question
       }else{
       alert(this.uiLabels.occupied)
@@ -150,48 +155,74 @@ this.languages.push(b);
 }
 </script>
 <style>
-.wrapper{
+.lobbyWrapper{
   background-color: #455879;
+  position: relative;
+  width: 98vw;
+  height: 97vh;
+}
+.waitwrapper{
+  background-color: #455879;
+  position: relative;
+  width: 98vw;
+  height: 97vh;
+}
+.errorwrapper{
+  background-color: #455879;
+  position: relative;
   width: 98vw;
   height: 97vh;
 }
 .setNick{
-  font-size: 3vh;
+  font-size: 2vw;
   background-color: #0097a7;
   color:white;
   border-radius: 10px;
   position:absolute;
   left:50%;
   top:70%;
-  aspect-ratio:9/6;
+  width: 11.25%;
   height: 15%;
   transform: translate(-50%,-70%);
 }
 .nickName{
-  font-size: 3vh;
+  font-size: 3vw;
   background-color: #455879;
   color:white;
   border-radius: 10px;
   position:absolute;
   left:50%;
   top:50%;
-  aspect-ratio:9/6;
-  height: 15%;
+  width:50%;
+  height: 30%;
   transform: translate(-50%,-50%);
 }
-.lobbyWrapper{
-  padding:0;
-  margin:0;
 
-}
 .changeLanguage{
-  left:86%;
+  left:87.5%;
   position:absolute;
   width: 12.5%;
   height: 5%;
   font-size: 1vw;
 }
-.error{
 
+.loader{
+  border: 16px solid  #f3f3f3;
+  border-top: 16px solid #455879; /* w3schools loader */
+  border-radius: 50%;
+  width: 20%;
+  aspect-ratio:1;
+  animation: spin 2s linear infinite;
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform:  translate(-50%,-50%);
+
+}
+
+@keyframes spin {
+
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 </style>

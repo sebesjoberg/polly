@@ -1,5 +1,7 @@
 <template>
+  <section class="wrapper">
 hello
+</section>
 </template>
 <script>
 
@@ -19,5 +21,10 @@ export default {
 }
 </script>
 <style>
-
+.wrapper{
+  background-color: #455879;
+  position: relative;
+  width: 98vw;
+  height: 97vh;
+}
 </style>
