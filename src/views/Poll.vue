@@ -166,6 +166,7 @@ this.languages.push(b);
   position: fixed;
   width: 98vw;
   height: 97vh;
+  display: flex;
 }
 .errorwrapper{
   background-color: #455879;
@@ -205,24 +206,23 @@ this.languages.push(b);
   height: 5%;
   font-size: 1vw;
 }
+.flag{
+  width:2vw;
+  height:auto;
+}
 
-.loader{
-  border: 16px solid  #f3f3f3;
-  border-top: 16px solid #455879; /* w3schools loader */
+.loader {
+  width: 10%;
+  aspect-ratio: 1;
+  margin: auto;
+  margin-bottom: 10%;
+  border: 10px solid #f3f3f3;
+  border-top-color: transparent;
   border-radius: 50%;
-  width: 20%;
-  aspect-ratio:1;
   animation: spin 2s linear infinite;
-  position: absolute;
-  left:50%;
-  top:50%;
-  transform:  translate(-50%,-50%);
-
 }
 
 @keyframes spin {
-
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  to { transform: rotate(1turn); }
 }
 </style>
