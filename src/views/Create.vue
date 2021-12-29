@@ -3,7 +3,8 @@
 <template>
   <section class="wrapper" v-if="this.inOverview">
     <div class="PollCreation">
-      <!--  <p style="float:left">Poll link:</p> -->
+      <!--  här kanske det måste börjas om? dumt att ha en som bestämmer storlek
+    kan man inte låta varje objekt få sin storlek för sig-->
       <input type="text" class="pollId" v-model="pollId" placeholder="Poll link"> <br>
       <nav v-on:click="createPoll">
         <ul>
@@ -153,7 +154,9 @@ export default {
   justify-content: center;
   padding: 0;
   margin: 0;
-  position: relative;
+  position: fixed;
+  width: 99vw;
+  height: 97vh;
   background-color: #0097a7;
 }
 .changeLanguage{
@@ -162,6 +165,10 @@ export default {
   width: 12.5%;
   height: 5%;
   font-size: 1vw;
+}
+.flag{
+  width:2vw;
+  height:auto;
 }
 .PollCreation {
   width: 40vw;

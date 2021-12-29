@@ -93,7 +93,7 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
   .wrapper {
     display: grid;
     justify-content: center;
-    position: relative;
+    position: fixed;
     padding: 0;
     margin: 0;
     background-color:#0097a7;

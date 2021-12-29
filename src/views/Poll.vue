@@ -157,19 +157,19 @@ this.languages.push(b);
 <style lang="css" scoped>
 .lobbyWrapper{
   background-color: #455879;
-  position: relative;
+  position: fixed;
   width: 98vw;
   height: 97vh;
 }
 .waitwrapper{
   background-color: #455879;
-  position: relative;
+  position: fixed;
   width: 98vw;
   height: 97vh;
 }
 .errorwrapper{
   background-color: #455879;
-  position: relative;
+  position: fixed;
   width: 98vw;
   height: 97vh;
 }

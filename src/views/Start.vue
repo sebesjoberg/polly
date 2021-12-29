@@ -175,7 +175,7 @@
       background-color: #455879;
       width: 99vw;
       height: 97vh;
-      position: relative;
+      position: fixed;
     }
     .host_wrapper{
       padding:0;
@@ -183,7 +183,7 @@
       background-color: #0097a7;
       width: 99vw;
       height: 97vh;
-      position: relative;
+      position: fixed;
     }
     .result_wrapper{
       padding:0;
@@ -191,7 +191,7 @@
       background-color: #0097a7;
       width: 99vw;
       height: 97vh;
-      position: relative;
+      position: fixed;
     }
 
 

@@ -23,7 +23,7 @@ export default {
 <style lang="css" scoped>
 .wrapper{
   background-color: #455879;
-  position: relative;
+  position: fixed;
   width: 98vw;
   height: 97vh;
 }
