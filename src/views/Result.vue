@@ -40,7 +40,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="css" scoped>
 .wrapper {
   display: grid;
   justify-content: center;

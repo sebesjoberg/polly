@@ -1,7 +1,7 @@
 <!-- <html> -->
 <!-- grid view till svaren med något maxtak
 och att denna då alltid håller samma storlek så sidan blir nsygg -->
-<template v-if='this.inQuestionMaker'>
+<template>
 
   <section class="wrapper">
     <div class="Question">

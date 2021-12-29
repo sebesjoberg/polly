@@ -20,7 +20,7 @@ export default {
   }
 }
 </script>
-<style>
+<style lang="css" scoped>
 .wrapper{
   background-color: #455879;
   position: relative;

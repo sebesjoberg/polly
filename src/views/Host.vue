@@ -76,7 +76,7 @@ export default {
 
 
 
-<style>
+<style lang="css" scoped>
 .bigWrapper{
   background-color: #0097a7;
 }

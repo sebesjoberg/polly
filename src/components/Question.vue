@@ -42,7 +42,7 @@ export default {
   }
 }
 </script>
-<style>
+<style lang="css" scoped>
 :root{
   --col: "";
   --row: "";

@@ -154,7 +154,7 @@ this.languages.push(b);
   }
 }
 </script>
-<style>
+<style lang="css" scoped>
 .lobbyWrapper{
   background-color: #455879;
   position: relative;

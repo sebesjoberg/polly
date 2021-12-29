@@ -4,7 +4,7 @@
     <div v-bind:style="{height: item + 'px'}">
       <span> {{item}} </span>
     </div>
-    <div> 
+    <div>
       {{key}}
     </div>
   </div>
@@ -21,7 +21,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="css" scoped>
 .bar {
   display: inline-block;
   width: 50px;

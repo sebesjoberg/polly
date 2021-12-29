@@ -146,7 +146,7 @@ export default {
   }
 }
 </script>
-<style>
+<style lang="css" scoped>
 @import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
 .wrapper {
   display: grid;
