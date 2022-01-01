@@ -158,7 +158,7 @@
       }
     }
     </script>
-    <style>
+    <style lang="css" scoped>
     @import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
 
     .wrapper{
@@ -169,6 +169,32 @@
       width: 99vw;
       height: 97vh;
     }
+    .join_wrapper{
+      padding:0;
+      margin:0;
+      background-color: #455879;
+      width: 99vw;
+      height: 97vh;
+      position: fixed;
+    }
+    .host_wrapper{
+      padding:0;
+      margin:0;
+      background-color: #0097a7;
+      width: 99vw;
+      height: 97vh;
+      position: fixed;
+    }
+    .result_wrapper{
+      padding:0;
+      margin:0;
+      background-color: #0097a7;
+      width: 99vw;
+      height: 97vh;
+      position: fixed;
+    }
+
+
 
     .wrap_Left{
       padding:0;
@@ -292,7 +318,7 @@
       left:50%;
       top:50%;
       width:50%;
-      height: 22.5%;
+      height: 30%;
       transform: translate(-50%,-50%);
     }
     .input_2{
@@ -304,7 +330,7 @@
       left:50%;
       top:50%;
       width:50%;
-      height: 22.5%;
+      height: 30%;
       transform: translate(-50%,-50%);
     }
     .changeLanguage_1{
@@ -326,31 +352,6 @@
       width:2vw;
       height:auto;
     }
-    .join_wrapper{
-      padding:0;
-      margin:0;
-      background-color: #455879;
-      width: 99vw;
-      height: 97vh;
-      position: relative;
-    }
-    .host_wrapper{
-      padding:0;
-      margin:0;
-      background-color: #0097a7;
-      width: 99vw;
-      height: 97vh;
-      position: relative;
-    }
-    .result_wrapper{
-      padding:0;
-      margin:0;
-      background-color: #0097a7;
-      width: 99vw;
-      height: 97vh;
-      position: relative;
-    }
-
 
 
     </style>
