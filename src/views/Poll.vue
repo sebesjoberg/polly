@@ -25,6 +25,7 @@
              v-bind:correctAnswer="correctAnswer"
              v-else-if="this.result"/>
 <section class="waitwrapper" v-else>
+<div class="wait">{{uiLabels.wait}}</div>
 <div class="loader"></div>
 </section>
 
@@ -167,6 +168,8 @@ this.languages.push(b);
   width: 98vw;
   height: 97vh;
   display: flex;
+  flex-direction: column;
+
 }
 .errorwrapper{
   background-color: #455879;
@@ -210,15 +213,21 @@ this.languages.push(b);
   width:2vw;
   height:auto;
 }
+.wait{
+  font-size: 2vw;
+  color:white;
+  margin: auto;
+}
 
 .loader {
+
   width: 10%;
   aspect-ratio: 1;
-  margin: auto;
-  margin-bottom: 10%;
   border: 10px solid #f3f3f3;
   border-top-color: transparent;
   border-radius: 50%;
+  margin: auto;
+
   animation: spin 2s linear infinite;
 }
 
