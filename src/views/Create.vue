@@ -1,7 +1,7 @@
 <!-- <html> -->
 
 <template>
-  <section class="wrapper" v-if="this.inOverview">
+  <section class="wrapper1" v-if="this.inOverview">
     <div class="PollCreation">
       <!--  här kanske det måste börjas om? dumt att ha en som bestämmer storlek
     kan man inte låta varje objekt få sin storlek för sig-->
@@ -149,6 +149,18 @@ export default {
 </script>
 <style lang="css" scoped>
 @import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
+.wrapper1 {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  /*width: 99vw;
+  height: 97vh;*/
+  background-color: #0097a7;
+}
 .wrapper {
   display: grid;
   justify-content: center;
@@ -171,25 +183,28 @@ export default {
   height:auto;
 }
 .PollCreation {
-  width: 40vw;
-  height: 70vh;
+  /*width: 40vw;
+  height: 70vh;*/
   place-self: center;
 }
 .QuestionName {
-  grid-row: 1;
-  grid-column: 2;
+  grid-row: 2;
+  grid-column: 1;
   margin-left: -10%;
-  margin-top: 35%;
+  margin-top: 10%;
 }
 
 .AddQuestion {
-  grid-row: 1;
-  grid-column: 2;
-  margin-top: 40%;
+  grid-row: 2;
+  grid-column: 1;
+  margin-top: 15%;
   margin-left: 20%;
+  width: 150%;
 }
 .GoBackButton{
   margin-left: 30%;
+  grid-row: 3;
+  grid-column: 1;
 }
 
 nav ul {
@@ -259,7 +274,6 @@ i template
     </button>
   </div>*/
 .pollId {
-  margin: 10px;
   width: 40vw;
   height: 5vw;
   border-radius: 10px;
