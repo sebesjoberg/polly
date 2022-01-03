@@ -55,7 +55,7 @@ export default {
       leaderBoard:{nicknames:[],
       scores:[]    },
       pollId: "inactive poll",
-      lobby: true,
+      lobby: false,
       onQuestion: false,
       correctAnswer: false,
       result: false,
@@ -64,7 +64,7 @@ export default {
       lang:'en',
       uiLabels:{},
       languages: ['en', 'sv'],
-      invalid: false,
+      invalid: true,
 
 
 
@@ -105,7 +105,12 @@ this.languages.push(b);
         this.result=true;
       });//här får vi alla nickNames som är valda kan även användas till att kolla om pollen existerar
       socket.on("nickNames", (nicknames) =>{
-
+              if(this.invalid){
+                this.invalid=false;
+                this.onQuestion=false;
+                this.lobby=true;
+                this.result=false;
+              }
               if(nicknames !== null){
                 this.leaderBoard.nicknames = nicknames
               }else{
@@ -130,8 +135,12 @@ this.languages.push(b);
         this.setNick = true;
         this.lobby = false;
         this.onQuestion = false;
-
         this.result = false;
+        socket.on("kick",(nickname)=>{
+          if(nickname==this.nickname){
+            alert("you have been kicked")
+          }
+        })
         //gör lite mer här efter man satt nick ex gå till question
       }else{
       alert(this.uiLabels.occupied)

@@ -9,7 +9,7 @@
 
   <div class="participants">
     <button class="participant" v-for="i in this.leaderBoard.nicknames.length"
-    v-on:click="kickfunchere(i)"
+    v-on:click="kick(this.leaderBoard.nicknames[i-1])"
   v-bind:key=i> {{this.leaderBoard.nicknames[i-1]}}
 
     </button>
@@ -54,6 +54,12 @@ const socket = io();
 //skulle ex kunna låta servern veta att man inte längre är host och att någon annan då kan ta den?
 
 window.onbeforeunload = function(){
+  if(!this.invalid){
+    for(let nick in this.leaderBoard.nicknames.length){
+      this.kick(nick);
+    }
+  socket.emit("unHostPoll",this.pollId)
+}
     return null;
 }
 export default {
@@ -90,6 +96,13 @@ export default {
             }else{
             this.invalid=true;
           }})
+        },
+        methods: {
+          kick: function(nick){
+            
+            socket.emit("kick",{nickname: nick,
+            pollId: this.pollId});
+          }
         }
 
 }

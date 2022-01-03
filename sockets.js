@@ -20,14 +20,20 @@ function sockets(io, socket, data) {
   });
 
   socket.on('joinPoll', function(pollId) {
-    socket.join(pollId);
-    io.to(pollId).emit('nickNames',data.getnickNames(pollId));
 
-    });
+    if(data.joinable(pollId)){
+      socket.join(pollId);
+    io.to(pollId).emit('nickNames',data.getnickNames(pollId));
+  }
+});
+
+
   socket.on('hostPoll', function(pollId){
-    //om man int ehar någon annan host
+    if(data.hostable(pollId)){
+      data.hosted(pollId)
    socket.join(pollId)
    io.to(pollId).emit('nickNames',data.getnickNames(pollId));
+ }
   });
 
   socket.on('runQuestion', function(d) {
@@ -43,6 +49,12 @@ function sockets(io, socket, data) {
   socket.on('setNickname',function(d){
   data.setNickname(d);
   io.to(d.pollId).emit('nickNames',data.getnickNames(d.pollId));
+  });
+
+  socket.on("kick", function(d){
+    data.removeNick(d)
+    io.to(d.pollId).emit("kick",d.nickname);
+    io.to(d.pollId).emit('nickNames',data.getnickNames(d.pollId));
   });
 //kolla på denna vid nystart av quiz? reseta typ answers och så
   socket.on('resetAll', () => {

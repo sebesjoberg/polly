@@ -25,6 +25,7 @@ Data.prototype.createPoll = function(pollId, lang="en") {
     poll.questions = [];
     poll.joinable=false; //använd joinable till att se om man kan joina kanske ej är det
     //då den körs?
+    poll.hostable=true;
     poll.answers = [];
     poll.correctAnswers=[]; //en array med correctAnswers som man jämför med/skickar ut en bit av
     poll.currentQuestion = 0;
@@ -109,5 +110,42 @@ Data.prototype.setNickname = function(d){
     poll.leaderBoard.nicknames.push(d.nickname);
 
   }
+}
+
+Data.prototype.joinable = function(pollId){
+  const poll = this.polls[pollId];
+  if(typeof poll!=='undefined'){
+  return poll.joinable;
+}else{
+  return false;
+}
+}
+
+Data.prototype.hostable = function(pollId){
+  const poll = this.polls[pollId];
+  if(typeof poll!=='undefined'){
+  return poll.hostable;
+}else{
+  return false;
+}
+}
+
+Data.prototype.hosted = function(pollId){
+  const poll = this.polls[pollId];
+  poll.hostable=false;
+  poll.joinable=true;
+}
+
+Data.prototype.removeNick = function(d){
+  const poll = this.polls[d.pollId];
+  console.log(poll.leaderBoard.nicknames)
+  if(typeof poll!=='undefined'){
+    
+  const index = poll.leaderBoard.nicknames.indexOf(d.nickname)
+
+  if (index > -1) {
+  poll.leaderBoard.nicknames.splice(index, 1);
+}}
+
 }
 module.exports = Data;
