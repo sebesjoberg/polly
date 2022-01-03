@@ -1,7 +1,8 @@
 <template>
-  <section class="bigWrapper">
+  <section class="invalid" v-if="this.invalid"><!--allt som händer när quizen inte finns -->
+  </section>
 
-<section class="beforeQuiz"> <!--allt innan quizen börjar -->
+<section class="beforeQuiz" v-else-if="this.beforeQuiz"> <!--allt innan quizen börjar -->
   <header class="head">
     <h1>Game ID: </h1>
   </header>
@@ -27,22 +28,21 @@
 
 
 
-<section class="betweenQuestion"> <!--allt mellan frågor -->
+<section class="betweenQuestion" v-else-if="this.betweenQuestion"> <!--allt mellan frågor -->
 </section>
 
-<section class="onQuestion"> <!--allt som händer under en fråga -->
+<section class="onQuestion" v-else-if="this.onQuestion"> <!--allt som händer under en fråga -->
   <button class="endQuestion">
   </button>
   <!--här ska frågan visas anväänd componenten -->
 </section>
 
-<section class="afterQuiz"><!--allt som händer när quizen är färdig -->
+<section class="afterQuiz" v-else-if="this.afterQuiz"><!--allt som händer när quizen är färdig -->
 </section>
 
-<section class="invalid"><!--allt som händer när quizen inte finns -->
-</section>
 
-</section>
+
+
 </template>
 
 
@@ -62,6 +62,15 @@ export default {
       leaderBoard:{nicknames:[],
       scores:[]    },
       pollId: "inactive poll",
+      beforeQuiz: true,
+      invalid: false,
+      betweenQuestion: false,
+      onQuestion: false,
+      afterQuiz: false
+
+
+
+
     }
   },
     created: function () {
@@ -75,6 +84,7 @@ export default {
     socket.on("nickNames", (nicknames) =>{
 
             if(nicknames !== null){
+
               this.leaderBoard.nicknames = nicknames
 
             }else{
@@ -89,9 +99,7 @@ export default {
 
 
 <style lang="css" scoped>
-.bigWrapper{
-  background-color: #0097a7;
-}
+
 .participant{
   text-align: center;
   overflow:hidden;
@@ -102,6 +110,8 @@ export default {
   background-color: #ff2929;
 }
 .participants{
+  background-color: #0097a7;
+  width: 98vw;
   height: 60vh;
   display:grid;
   grid-template-columns: repeat(9, 1fr);
@@ -112,7 +122,8 @@ export default {
 
 .head{
   height: 125px;
-  border-bottom: 2px solid;
+  width: 98vw;
+
 }
 
 .head > h1{

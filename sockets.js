@@ -27,7 +27,7 @@ function sockets(io, socket, data) {
   socket.on('hostPoll', function(pollId){
     //om man int ehar någon annan host
    socket.join(pollId)
-   
+   io.to(pollId).emit('nickNames',data.getnickNames(pollId));
   });
 
   socket.on('runQuestion', function(d) {
