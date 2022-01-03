@@ -88,11 +88,14 @@ this.languages.push(b);
     })
     socket.emit('joinPoll', this.pollId)
     socket.on("newQuestion", (q) => {
-        if(this.setNick){
+        if(this.setNick){ //kan endast joina om man satt sitt nick
         this.question = q;
         this.lobby=false;
         this.onQuestion=true;
         this.result=false;}
+        else{ //annars blir man utskickad
+          this.invalid=true;
+        }
       });
       //server skickar leaderBoard vill vi visa den? kan ha if runt result
       socket.on("LeaderBoard", (LeaderBoard) => {

@@ -20,6 +20,6 @@
 	"setNick":"Sätt smeknamn",
 	"bigger":"Välj ett smeknamn med mer än 3 karaktärer",
 	"occupied":"Välj ett annat smeknamn ditt nuvarande är upptaget",
-	"invalid": "Ingen poll med id:",
+	"invalid": "Ingen spelbar poll med id:",
 	"wait": "Väntar på order"
 }

@@ -20,6 +20,6 @@
 	"setNick":"Set nickName",
 	"bigger": "Choose a nickname with more than three characters",
 	"occupied":"Choose another nickname that one is taken",
-	"invalid": "No poll with id:",
+	"invalid": "No joinable poll with id:",
 	"wait": "Awaiting orders"
 }

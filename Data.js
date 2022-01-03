@@ -25,10 +25,8 @@ Data.prototype.createPoll = function(pollId, lang="en") {
     poll.questions = [];
     poll.joinable=false; //använd joinable till att se om man kan joina kanske ej är det
     //då den körs?
-    //använd sedan onquestion för att handla diverse mellanfönster och så
-    poll.onQuestion=false;
-    poll.answers = []; //en array med correctAnswers som man jämför med/skickar ut en bit av
-    poll.correctAnswers=[]
+    poll.answers = [];
+    poll.correctAnswers=[]; //en array med correctAnswers som man jämför med/skickar ut en bit av
     poll.currentQuestion = 0;
     poll.leaderBoard={nicknames: [], scores:[]};
     this.polls[pollId] = poll;
