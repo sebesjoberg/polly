@@ -36,6 +36,17 @@ function sockets(io, socket, data) {
  }
   });
 
+  socket.on('closePoll',function(pollId){
+
+    nicknames=data.getnickNames(pollId);
+    data.resetPoll(pollId)
+
+    for(let i in nicknames){
+     nick=nicknames[i];
+    io.to(pollId).emit("kick",nick);
+  }
+  })
+
   socket.on('runQuestion', function(d) {
     io.to(d.pollId).emit('newQuestion', data.getQuestion(d.pollId, d.questionNumber));
     io.to(d.pollId).emit('dataUpdate', data.getAnswers(d.pollId));

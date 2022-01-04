@@ -94,7 +94,8 @@ this.languages.push(b);
         this.onQuestion=true;
         this.result=false;}
         else{ //annars blir man utskickad
-          this.invalid=true;
+          this.invalid=true; //stäng socket behöver inte lyssna nu
+          socket.close()
         }
       });
       //server skickar leaderBoard vill vi visa den? kan ha if runt result
@@ -114,7 +115,8 @@ this.languages.push(b);
               if(nicknames !== null){
                 this.leaderBoard.nicknames = nicknames
               }else{
-              this.invalid=true
+              this.invalid=true//vi stänger socket här eftersom vi inte behöver lyssna längre
+              socket.close()
 
              }
       });
@@ -137,13 +139,11 @@ this.languages.push(b);
         this.onQuestion = false;
         this.result = false;
         socket.on("kick",(nickname)=>{
+          alert(this.uiLabels.kicked)
           if(nickname==this.nickname){
-            this.setNick = false;
-            this.lobby = true;
-            this.onQuestion = false;
-            this.result = false;
-            this.nickname="";
-            alert(this.uiLabels.kicked)
+            setTimeout(function(){
+            window.location.href = '/';
+         }, 2000);
           }})
         //gör lite mer här efter man satt nick ex gå till question
       }else{

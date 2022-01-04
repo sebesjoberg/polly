@@ -144,7 +144,19 @@ Data.prototype.removeNick = function(d){
 
   if (index > -1) {
   poll.leaderBoard.nicknames.splice(index, 1);
-}}
+}}}
+
+Data.prototype.resetPoll = function(pollId){
+  const poll = this.polls[pollId];
+  if(typeof poll!=='undefined'){
+  poll.leaderBoard={nicknames: [], scores:[]};
+  poll.joinable=false;
+  poll.hostable=true;
+  poll.answers = [];
+  poll.currentQuestion=0;
+}
 
 }
+
+
 module.exports = Data;

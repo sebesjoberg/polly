@@ -17,9 +17,9 @@
   <div>
     <router-link
     v-bind:to="'/'"
-    v-slot="{href, navigate}"
+    v-slot="{href}"
     >
-    <button :href="href" @click="navigate" class="goBack">
+    <button :href="href" @click="goBack" class="goBack">
       {{uiLabels.goBack}}
     </button></router-link>
   </div>
@@ -53,15 +53,6 @@ const socket = io();
 //i denna kan man lägga lite vad man vill på stängning och reloading så körs det
 //skulle ex kunna låta servern veta att man inte längre är host och att någon annan då kan ta den?
 
-window.onbeforeunload = function(){
-  if(!this.invalid){
-    for(let nick in this.leaderBoard.nicknames.length){
-      this.kick(nick);
-    }
-  socket.emit("unHostPoll",this.pollId)
-}
-    return null;
-}
 export default {
   data: function(){
     return{
@@ -98,8 +89,11 @@ export default {
           }})
         },
         methods: {
+          goBack: function(){
+            socket.emit("closePoll",this.pollId);
+          },
           kick: function(nick){
-            
+
             socket.emit("kick",{nickname: nick,
             pollId: this.pollId});
           }
