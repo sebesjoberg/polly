@@ -21,5 +21,6 @@
 	"bigger": "Choose a nickname with more than three characters",
 	"occupied":"Choose another nickname that one is taken",
 	"invalid": "No joinable poll with id:",
-	"wait": "Awaiting orders"
+	"wait": "Awaiting orders",
+	"kicked": "You have been kicked"
 }

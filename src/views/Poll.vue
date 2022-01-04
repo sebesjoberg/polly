@@ -138,9 +138,13 @@ this.languages.push(b);
         this.result = false;
         socket.on("kick",(nickname)=>{
           if(nickname==this.nickname){
-            alert("you have been kicked")
-          }
-        })
+            this.setNick = false;
+            this.lobby = true;
+            this.onQuestion = false;
+            this.result = false;
+            this.nickname="";
+            alert(this.uiLabels.kicked)
+          }})
         //gör lite mer här efter man satt nick ex gå till question
       }else{
       alert(this.uiLabels.occupied)

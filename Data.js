@@ -1,6 +1,6 @@
 'use strict';
 
-const languages = ["en", "se"];
+
 
 // Store data in an object to keep the global namespace clean
 function Data() {
@@ -138,9 +138,8 @@ Data.prototype.hosted = function(pollId){
 
 Data.prototype.removeNick = function(d){
   const poll = this.polls[d.pollId];
-  console.log(poll.leaderBoard.nicknames)
   if(typeof poll!=='undefined'){
-    
+
   const index = poll.leaderBoard.nicknames.indexOf(d.nickname)
 
   if (index > -1) {
