@@ -1,7 +1,14 @@
 <template>
 
 <section class="errorwrapper" v-if="this.invalid">
-{{uiLabels.invalid}}{{this.pollId}}
+<div class="error">{{uiLabels.invalid}}{{this.pollId}}</div>
+<router-link
+v-bind:to="'/'"
+v-slot="{href, navigate}"
+>
+<button :href="href" @click="navigate" class="goBack">
+  {{uiLabels.goBack}}
+</button></router-link>
 </section>
 
 <section class="lobbyWrapper" v-else-if="this.lobby">
@@ -234,7 +241,27 @@ this.languages.push(b);
   color:white;
   margin: auto;
 }
-
+.goBack{
+  font-size: 2vw;
+  background-color:#0097a7;
+  color:white;
+  border-radius: 10px;
+  left:15%;
+  top:85%;
+  width:11.25%;
+  height: 10%;
+  position: absolute;
+}
+.error{
+  font-size: 2vw;
+  background-color:#455879;
+  color:white;
+  left:50%;
+  top:50%;
+  width:11.25%;
+  height: 10%;
+  position: absolute;
+}
 .loader {
 
   width: 10%;
