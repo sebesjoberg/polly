@@ -22,5 +22,6 @@
 	"occupied":"Välj ett annat smeknamn ditt nuvarande är upptaget",
 	"invalid": "Ingen spelbar poll med id:",
 	"wait": "Väntar på order",
-	"kicked": "Du har blivit kickad"
+	"kicked": "Du har blivit kickad",
+	"startQuiz": "Starta quiz"
 }

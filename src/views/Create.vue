@@ -111,7 +111,7 @@ export default {
     },
     goBackToCreate: function(){
       this.inOverview=true;
-      this.inQuestionMaker=false;
+      this.inQuestionMaker=false; //sätt qnr här redan
     },
     getFlagUrl: function(){
       return require('../../data/flag-'+this.languages[1]+'.png')
@@ -132,7 +132,8 @@ export default {
       socket.emit("addQuestion", {
         pollId: this.pollId,
         q: load.question,
-        a: load.answers
+        a: load.answers,
+        qnr: load.qnr
       })
     },
     addAnswer: function() {

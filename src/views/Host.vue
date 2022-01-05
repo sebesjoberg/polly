@@ -4,7 +4,7 @@
 
 <section class="beforeQuiz" v-else-if="this.beforeQuiz"> <!--allt innan quizen börjar -->
   <header class="head">
-    <h1>Game ID: </h1>
+    <h1>Game ID:{{this.pollId}} </h1>
   </header>
 
   <div class="participants">
@@ -14,7 +14,7 @@
 
     </button>
   </div>
-  <div>
+
     <router-link
     v-bind:to="'/'"
     v-slot="{href}"
@@ -22,7 +22,8 @@
     <button :href="href" @click="goBack" class="goBack">
       {{uiLabels.goBack}}
     </button></router-link>
-  </div>
+    <button class="startQuiz" v-if="this.leaderBoard.nicknames.length>0"
+      v-on:click="nextQuestion()"> {{uiLabels.startQuiz}}</button>
 </section>
 
 
@@ -89,6 +90,10 @@ export default {
           }})
         },
         methods: {
+          nextQuestion: function(){
+            socket.emit("nextQuestion",this.pollId);
+
+          },
           goBack: function(){
             socket.emit("closePoll",this.pollId);
           },
@@ -106,7 +111,11 @@ export default {
 
 
 <style lang="css" scoped>
-
+.beforeQuiz{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
 .participant{
   text-align: center;
   overflow:hidden;
@@ -118,18 +127,20 @@ export default {
 }
 .participants{
   background-color: #0097a7;
-  width: 98vw;
-  height: 60vh;
+  width: 100%;
+  height: 60%;
   display:grid;
+  position: absolute;
   grid-template-columns: repeat(9, 1fr);
   grid-template-rows: repeat(6,1fr);
   border: 2px solid;
-  margin-top: 5px;
+
+
 }
 
 .head{
-  height: 125px;
-  width: 98vw;
+  height: 15%;
+  width: 100%;
 
 }
 
@@ -151,6 +162,19 @@ export default {
   width:11.25%;
   height: 10%;
   position: absolute;
+  transform: translate(-15%, -85%);
+}
+.startQuiz{
+  font-size: 2vw;
+  background-color:#455879;
+  color:white;
+  border-radius: 10px;
+  left:85%;
+  top:85%;
+  width:11.25%;
+  height: 10%;
+  position: absolute;
+  transform: translate(-85%, -85%);
 }
 
 </style>

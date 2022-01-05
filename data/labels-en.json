@@ -22,5 +22,6 @@
 	"occupied":"Choose another nickname that one is taken",
 	"invalid": "No joinable poll with id:",
 	"wait": "Awaiting orders",
-	"kicked": "You have been kicked"
+	"kicked": "You have been kicked",
+	"startQuiz": "Start quiz"
 }

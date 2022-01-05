@@ -5,6 +5,7 @@
 // Store data in an object to keep the global namespace clean
 function Data() {
   this.polls = {};
+  this.hostedpolls = [];
 }
 
 /***********************************************
@@ -28,7 +29,7 @@ Data.prototype.createPoll = function(pollId, lang="en") {
     poll.hostable=true;
     poll.answers = [];
     poll.correctAnswers=[]; //en array med correctAnswers som man jämför med/skickar ut en bit av
-    poll.currentQuestion = 0;
+    poll.currentQuestion = -1;
     poll.leaderBoard={nicknames: [], scores:[]};
     this.polls[pollId] = poll;
     console.log("poll created", pollId, poll);
@@ -36,22 +37,20 @@ Data.prototype.createPoll = function(pollId, lang="en") {
   return this.polls[pollId];
 }
 
-Data.prototype.addQuestion = function(pollId, q) {
+Data.prototype.addQuestion = function(pollId, d) {
   const poll = this.polls[pollId];
-  console.log("question added to", pollId, q);
+  console.log("question added to", pollId, d);
   if (typeof poll !== 'undefined') {
-    poll.questions.push(q);
+    poll.questions.splice(q.qnr,0,{q: d.q, a:d.a})
   }
 }
 
-Data.prototype.getQuestion = function(pollId, qId=null) {
+Data.prototype.nextQuestion = function(pollId) {
   const poll = this.polls[pollId];
-  console.log("question requested for ", pollId, qId);
   if (typeof poll !== 'undefined') {
-    if (qId !== null) {
-      poll.currentQuestion = qId;
-    }
+    poll.currentQuestion +=1;
     return poll.questions[poll.currentQuestion];
+
   }
   return []
 }
