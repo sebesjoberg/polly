@@ -77,7 +77,7 @@ export default {
       question: "",
       answers: ["", ""],
       questionNumber: 0,
-      data: {},
+      data: {},//innehåller nu questions och qnr använda detta i questionmaker sen
       uiLabels: {},
       languages: ['en', 'sv'],
       inQuestionMaker: false,

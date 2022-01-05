@@ -157,5 +157,16 @@ Data.prototype.resetPoll = function(pollId){
 
 }
 
+Data.prototype.getQuestions = function(pollId) {
+  const poll = this.polls[pollId];
+  if (typeof poll !== 'undefined') {
+    const qs = poll.questions;
+    if (typeof qs !== 'undefined') {
+      return {questions: qs, correctAnswers: poll.correctAnswers}
+    }
+  }
+  return {}
+}
+
 
 module.exports = Data;

@@ -11,12 +11,13 @@ function sockets(io, socket, data) {
   });
 
   socket.on('createPoll', function(d) {
+    socket.join(d.pollId)
     socket.emit('pollCreated', data.createPoll(d.pollId, d.lang));
   });
 
   socket.on('addQuestion', function(d) { // La till questionNumber (qnr)
     data.addQuestion(d.pollId, {qnr: d.qnr, q: d.q, a: d.a});
-    socket.emit('dataUpdate', data.getAnswers(d.pollId));
+    io.to(d.pollId).emit('dataUpdate', data.getQuestions(d.pollId));
   });
 
   socket.on('joinPoll', function(pollId) {
