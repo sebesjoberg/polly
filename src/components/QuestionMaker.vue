@@ -7,47 +7,47 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
 
     <div class="Question">
       <label for="Question">{{uiLabels.question}}</label><br>
-      <input v-model="id" type="text" class="Question" >
+      <input v-model="this.question" type="text" class="Question" >
     </div>
 
     <div class="wrap">
       {{uiLabels.answersInCreate}}
       <div  class="answers">
-    <input v-for="i in answers.length"  v-bind:key="i"></div>
+    <input v-for="i in answers.length"  v-bind:key="i" v-model="this.answers[i-1]"></div>
     </div>
-        <button v-on:click="removeAnswer" class="removeAnswer">
+        <button v-on:click="removeAnswer" class="removeAnswer" v-if="this.answers.length>1">
           {{uiLabels.removeAnswer}}
         </button>
-        <button v-on:click="addAnswer" class="addAnswer">
+        <button v-on:click="addAnswer" class="addAnswer" v-if="this.answers.length<4">
           {{uiLabels.AddAnswerAlternative}}
         </button>
 
 
 
-        <button class="return" v-on:click="goBackToCreate">
+        <button class="return" v-on:click="addQuestion">
           {{uiLabels.saveAndReturn}}
         </button>
-
+       <button class="goBack" v-on:click="goBackToCreate">
+         {{uiLabels.goBack}}</button>
 
   </section>
 </template>
 
 <script>
-  import io from 'socket.io-client';
-  const socket = io();
+
 
   export default {
     name: 'Create',
     props:{
       uiLabels: Object,
-      lang: String
+      lang: String,
+      questionNumber: Number
     },
     data: function() {
       return {
         pollId: "",
         question: "",
         answers: ["", ""],
-        questionNumber: 0,
         data: {},
         languages: ["en", "sv"],
         inQuestionMaker: true,
@@ -59,8 +59,8 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
       //createPoll sker i create
       addQuestion: function() {//skickas kanske inte exakt det som behövs för tillfället
 
-        this.questionNumber += 1;
-        socket.$emit("madeQuestion", {
+
+        this.$emit("madeQuestion", {
           q: this.question,
           a: this.answers,
           qnr: this.questionNumber
@@ -74,6 +74,7 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
       },
       removeAnswer: function() {
         this.answers.pop();
+
       }
       // runQuestion har legat här men borde inte behövas på create sidan
       // lägg till en funktion för att komma tillbaka till Create.vue med sparade frågor

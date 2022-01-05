@@ -23,5 +23,6 @@
 	"invalid": "Ingen spelbar poll med id:",
 	"wait": "Väntar på order",
 	"kicked": "Du har blivit kickad",
-	"startQuiz": "Starta quiz"
+	"startQuiz": "Starta quiz",
+	"loadPoll": "Ladda/skapa quiz"
 }

@@ -32,17 +32,21 @@ Data.prototype.createPoll = function(pollId, lang="en") {
     poll.currentQuestion = -1;
     poll.leaderBoard={nicknames: [], scores:[]};
     this.polls[pollId] = poll;
-    console.log("poll created", pollId, poll);
+    console.log("poll created", pollId);
+  }else{
+    console.log("poll loaded", pollId);
   }
   return this.polls[pollId];
+
 }
 
 Data.prototype.addQuestion = function(pollId, d) {
   const poll = this.polls[pollId];
   console.log("question added to", pollId, d);
   if (typeof poll !== 'undefined') {
-    poll.questions.splice(q.qnr,0,{q: d.q, a:d.a})
+    poll.questions.splice(d.qnr,0,{q: d.q, a:d.a})
   }
+  console.log(poll.questions)
 }
 
 Data.prototype.nextQuestion = function(pollId) {

@@ -23,5 +23,6 @@
 	"invalid": "No joinable poll with id:",
 	"wait": "Awaiting orders",
 	"kicked": "You have been kicked",
-	"startQuiz": "Start quiz"
+	"startQuiz": "Start quiz",
+	"loadPoll": "Load/create quiz"
 }
