@@ -2,49 +2,20 @@
 
 <template>
   <section class="wrapper1" v-if="this.inOverview">
-    <div class="PollCreation">
+
       <!--  här kanske det måste börjas om? dumt att ha en som bestämmer storlek
     kan man inte låta varje objekt få sin storlek för sig-->
-      <input type="text" class="pollId" v-model="pollId" placeholder="Poll link"> <br>
-      <nav v-on:click="createPoll">
-        <ul>
-          <li>
-            {{uiLabels.creatingPoll}}
-            <span></span><span></span><span></span><span></span>
-          </li>
-        </ul>
-      </nav>
-    </div>
-    <div class="QuestionName">
-      {{uiLabels.question}}:
-      <input type="text" v-model="question">
-    </div>
-    <div class="AddQuestion">
-      <nav v-on:click="goToAddQuestion">
-        <ul>
-          <li>
-            {{uiLabels.addQuestion}}
-            <span></span><span></span><span></span><span></span>
-          </li>
-        </ul>
-      </nav>
-    </div>
+      <input type="text" class="pollId" v-model="pollId" placeholder="Poll name">
+      <button class="AddQuestion" v-on:click="goToAddQuestion">
+             {{uiLabels.addQuestion}}
+</button>
 
     <router-link
         v-bind:to="'/'+this.lang"
-        v-slot="{href, navigate}"
-        class="GoBackButton"
-    >
-      <div>
-        <nav>
-          <ul>
-            <li :href="href" @click="navigate">
+        v-slot="{href, navigate}">
+            <button :href="href" @click="navigate" class="goBack">
               {{uiLabels.goBack}}
-              <span></span><span></span><span></span><span></span>
-            </li>
-          </ul>
-        </nav>
-      </div>
+            </button>
     </router-link>
 
     <button v-on:click="switchLanguage" class="changeLanguage">
@@ -55,8 +26,8 @@
   </section>
   <QuestionMaker v-bind:lang='this.lang'
                  v-bind:uiLabels='this.uiLabels'
-                 v-if='this.inQuestionMaker'
-                 v-on:madeQuestion="addQuestion(question)"
+                 v-else-if='this.inQuestionMaker'
+
                  v-on:return="goBackToCreate"/>
 
 </template>
@@ -77,7 +48,7 @@ export default {
       question: "",
       answers: ["", ""],
       questionNumber: 0,
-      data: {},//innehåller nu questions och qnr använda detta i questionmaker sen
+      data: {},//innehåller nu questions kan användas för att redigera på ett vistt ställe eller liknande
       uiLabels: {},
       languages: ['en', 'sv'],
       inQuestionMaker: false,
@@ -151,25 +122,11 @@ export default {
 <style lang="css" scoped>
 @import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
 .wrapper1 {
-  display: grid;
   height: 100%;
   width: 100%;
-  justify-content: center;
   padding: 0;
   margin: 0;
   position: fixed;
-  /*width: 99vw;
-  height: 97vh;*/
-  background-color: #0097a7;
-}
-.wrapper {
-  display: grid;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
-  position: fixed;
-  width: 99vw;
-  height: 97vh;
   background-color: #0097a7;
 }
 .changeLanguage{
@@ -183,11 +140,7 @@ export default {
   width:2vw;
   height:auto;
 }
-.PollCreation {
-  /*width: 40vw;
-  height: 70vh;*/
-  place-self: center;
-}
+
 .QuestionName {
   grid-row: 2;
   grid-column: 1;
@@ -196,88 +149,42 @@ export default {
 }
 
 .AddQuestion {
-  grid-row: 2;
-  grid-column: 1;
-  margin-top: 15%;
-  margin-left: 20%;
-  width: 150%;
+  font-size: 2vw;
+  background-color: #455879;
+  color:white;
+  position:absolute;
+  left:70%;
+  top:90%;
+  width:11.25%;
+  height: 15%;
+  transform: translate(-70%,-90%);
+  border-radius: 10px;
 }
-.GoBackButton{
-  margin-left: 30%;
-  grid-row: 3;
-  grid-column: 1;
+.goBack{
+  font-size: 2vw;
+  background-color: #455879;
+  color:white;
+  position:absolute;
+  left:30%;
+  top:90%;
+  width:11.25%;
+  height: 15%;
+  transform: translate(-30%,-90%);
+  border-radius: 10px;
 }
 
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  height: 50%;
-  width: 50%;
-}
-nav ul li {
-  --c: #455879;
-  color: black;
-  font-size: 16px;
-  border: 0.3em solid var(--c);
-  border-radius: 0.5em;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-family: sans-serif;
-  letter-spacing: 0.1em;
-  text-align: center;
-  line-height: 3em;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  transition: 0.5s;
-}
-nav ul li span {
-  position: absolute;
-  width: 25%;
-  height: 100%;
-  background-color: var(--c);
-  transform: translateY(150%);
-  border-radius: 50%;
-  left: calc((var(--n) - 1) * 25%);
-  transition: 0.5s;
-  transition-delay: calc((var(--n) - 1) * 0.1s);
-  z-index: -1;
-}
-nav ul li:hover {
-  color: white;
-}
-nav ul li:hover span {
-  transform: translateY(0) scale(2);
-}
-nav ul li span:nth-child(1) {
-  --n: 1;
-}
-nav ul li span:nth-child(2) {
-  --n: 2;
-}
-nav ul li span:nth-child(3) {
-  --n: 3;
-}
-nav ul li span:nth-child(4) {
-  --n: 4;
-}
-/*<div class="Answers"> här ligger kod för answerknappar
-detta eftersom det inte funkat att kommentera bort dem
-i template
-    {{uiLabels.answersInCreate}}
-    <input v-for="(_, i) in answers" v-model="answers[i]" v-bind:key="'answer'+i">
-    <button v-on:click="addAnswer" class="button">
-      {{uiLabels.AddAnswerAlternative}}
-    </button>
-    <button v-on:click="RemoveAnswer" class="button">
-      {{uiLabels.removeAnswer}}
-    </button>
-  </div>*/
+
 .pollId {
-  width: 40vw;
-  height: 5vw;
+  font-size: 3vw;
+  background-color: #455879;
+  color:white;
   border-radius: 10px;
+  position:absolute;
+  left:50%;
+  top:5%;
+  width:50%;
+  height: 10%;
+  transform: translate(-50%,-5%);
   text-align: center;
 }
 </style>

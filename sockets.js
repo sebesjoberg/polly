@@ -50,7 +50,7 @@ function sockets(io, socket, data) {
 
   socket.on('nextQuestion', function(pollId) {
     io.to(pollId).emit('newQuestion', data.nextQuestion(pollId));
-    io.to(d.pollId).emit('dataUpdate', data.getAnswers(d.pollId));
+    io.to(pollId).emit('dataUpdate', data.getAnswers(pollId));
   });
 
   socket.on('submitAnswer', function(d) {

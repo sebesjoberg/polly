@@ -4,38 +4,31 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
 <template>
 
   <section class="wrapper">
+
     <div class="Question">
-      <!-- Create question name -->
-      {{uiLabels.question}}: <br>
-      <input type="text" v-model="question" class="question">
+      <label for="Question">{{uiLabels.question}}</label><br>
+      <input v-model="id" type="text" class="Question" >
     </div>
-    <div class="Answers">
-      <!-- Create answers -->
-      {{uiLabels.answersInCreate}} <br>
-      <div class="answerGrid">
-        <input v-for="(_, i) in answers" v-model="answers[i]" v-bind:key="'answer'+i" class="answers">
-      </div>
-      <div class="answerButtons">
-        <button v-on:click="removeAnswer" class="button">
+
+    <div class="wrap">
+      {{uiLabels.answersInCreate}}
+      <div  class="answers">
+    <input v-for="i in answers.length"  v-bind:key="i"></div>
+    </div>
+        <button v-on:click="removeAnswer" class="removeAnswer">
           {{uiLabels.removeAnswer}}
         </button>
-        <button v-on:click="addAnswer" class="button">
+        <button v-on:click="addAnswer" class="addAnswer">
           {{uiLabels.AddAnswerAlternative}}
         </button>
-      </div>
-    </div>
-    <div class="return">
-        <button class="button" v-on:click="goBackToCreate">
+
+
+
+        <button class="return" v-on:click="goBackToCreate">
           {{uiLabels.saveAndReturn}}
         </button>
-    </div>
-    <div class="addQuestion">
-      <!-- Adds question to the poll, should also move onto create another question -->
-      <button v-on:click="addQuestion" class="button">
-        {{uiLabels.addQuestion}}
-      </button>
-      <!--  <input type="number" v-model="questionNumber"> -->
-    </div>
+
+
   </section>
 </template>
 
@@ -91,14 +84,34 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
 
 <style lang="css" scoped>
   .wrapper {
-    display: grid;
-    justify-content: center;
     position: fixed;
-    padding: 0;
-    margin: 0;
+    width: 100%;
+    height: 100%;
     background-color:#0097a7;
-  }
+    padding:0;
+    margin:0;
 
+}
+.wrap{
+  width:100%;
+  height:50%
+}
+.answers{
+  display:grid;
+  width:100%;
+  height: 100%;
+  position: relative;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2,1fr);
+
+}
+.answer{
+ position: relative;
+ width: 100%;
+ height: 100%;
+
+
+}
   .changeLanguage {
     left: 87.5%;
     position: absolute;
@@ -108,61 +121,56 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
   }
 
   .Question {
-    grid-row: 1;
-    grid-column-start: 1;
-    grid-column-end: end;
-    place-self: center;
-    position: relative;
+
   }
 
   .question {
-    width: 40vw;
-    height: 7vh;
-  }
-
-  .answers {
-    width: 40vw;
-    height: 7vh;
-    text-align: center;
-    overflow: scroll;
-  }
-
-  .Answers {
-    /*grid-row: 2; */
-    place-self: stretch;
-    grid-area: 2 / 1/ span 3/ span 3;
-    display: grid;
-    grid-template-rows: auto 1fr 1fr;
-    /*justify-content: center; */
-  }
-
-  .answerGrid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 10%;
-    grid-row-gap: 10%;
-    justify-content: center;
-    grid-column-start: 1;
-    place-self: center;
-  }
-
-  .answerButtons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 0%;
-    justify-content: center;
-  }
-
-
-  .addQuestion {}
-
-  .button {
-    font-size: 3vh;
-    background-color:  #455879;
-    color: white;
+    font-size: 1.5vw;
+    background-color: #0097a7;
+    color:white;
     border-radius: 10px;
-    height: 50%;
-    width: 50%;
-    place-self: center;
+    width:50%;
+  }
+
+
+.removeAnswer{
+  font-size: 2vw;
+  background-color: #455879;
+  color:white;
+  border-radius: 10px;
+  position:absolute;
+  left:20%;
+  top:90%;
+  width:11.25%;
+  height: 15%;
+  transform: translate(-20%,-90%);
+}
+
+.addAnswer{
+  font-size: 2vw;
+  background-color: #455879;
+  color:white;
+  border-radius: 10px;
+  position:absolute;
+  left:80%;
+  top:90%;
+  width:11.25%;
+  height: 15%;
+  transform: translate(-80%,-90%);
+}
+
+
+
+  .return {
+    font-size: 2vw;
+    background-color: #455879;
+    color:white;
+    border-radius: 10px;
+    position:absolute;
+    left:50%;
+    top:90%;
+    width:11.25%;
+    height: 15%;
+    transform: translate(-50%,-90%);
   }
 </style>

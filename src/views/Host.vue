@@ -33,8 +33,11 @@
 </section>
 
 <section class="onQuestion" v-else-if="this.onQuestion"> <!--allt som händer under en fråga -->
-  <button class="endQuestion">
-  </button>
+
+  <button class="endQuestion">{{uiLabels.endQuestion}}</button>
+  <Question v-bind:question="question"
+            
+            />
   <!--här ska frågan visas anväänd componenten -->
 </section>
 
@@ -92,7 +95,11 @@ export default {
         methods: {
           nextQuestion: function(){
             socket.emit("nextQuestion",this.pollId);
-
+            this.beforeQuiz = false
+            this.invalid = false
+            this.betweenQuestion = false
+            this.onQuestion = true
+            this.afterQuiz = false
           },
           goBack: function(){
             socket.emit("closePoll",this.pollId);
