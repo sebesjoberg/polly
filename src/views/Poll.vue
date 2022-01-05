@@ -182,14 +182,14 @@ this.languages.push(b);
 .lobbyWrapper{
   background-color: #455879;
   position: fixed;
-  width: 98vw;
-  height: 97vh;
+  width: 100%;
+  height: 100%;
 }
 .waitwrapper{
   background-color: #455879;
   position: fixed;
-  width: 98vw;
-  height: 97vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
 
@@ -197,8 +197,8 @@ this.languages.push(b);
 .errorwrapper{
   background-color: #455879;
   position: fixed;
-  width: 98vw;
-  height: 97vh;
+  width: 100%;
+  height: 100%;
 }
 .setNick{
   font-size: 2vw;
@@ -261,6 +261,7 @@ this.languages.push(b);
   width:11.25%;
   height: 10%;
   position: absolute;
+  transform: translate(-50%,-50%);
 }
 .loader {
 

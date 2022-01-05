@@ -165,32 +165,33 @@
       padding:0;
       margin:0;
       display: grid;
+      position: fixed;
       grid-template-columns: repeat(2, 1fr);
-      width: 99vw;
-      height: 97vh;
+      width: 100%;
+      height: 100%;
     }
     .join_wrapper{
       padding:0;
       margin:0;
       background-color: #455879;
-      width: 99vw;
-      height: 97vh;
+      width: 100%;
+      height: 100%;
       position: fixed;
     }
     .host_wrapper{
       padding:0;
       margin:0;
       background-color: #0097a7;
-      width: 99vw;
-      height: 97vh;
+      width: 100%;
+      height: 100%;
       position: fixed;
     }
     .result_wrapper{
       padding:0;
       margin:0;
       background-color: #0097a7;
-      width: 99vw;
-      height: 97vh;
+      width: 100%;
+      height: 100%;
       position: fixed;
     }
 
