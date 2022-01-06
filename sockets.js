@@ -39,11 +39,11 @@ function sockets(io, socket, data) {
 
   socket.on('closePoll',function(pollId){
 
-    nicknames=data.getnickNames(pollId);
+    const nicknames=data.getnickNames(pollId);
     data.resetPoll(pollId)
 
     for(let i in nicknames){
-     nick=nicknames[i];
+     let nick=nicknames[i];
     io.to(pollId).emit("kick",nick);
   }
   })

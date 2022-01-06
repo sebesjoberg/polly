@@ -47,6 +47,7 @@ export default {
     return {
       lang: 'en',
       pollId: "",
+      pollSave: "",
       question: "",
       answers: ["", ""],
       questionNumber: 0,
@@ -98,14 +99,16 @@ export default {
       socket.emit("switchLanguage", this.languages[0])
     },
     createPoll: function() {
+      this.pollSave=this.pollId;
+      if(this.pollSave.length>0){
       socket.emit("createPoll", {
-        pollId: this.pollId,
+        pollId: this.pollSave,
         lang: this.lang
-      })
+      });}
     },
     addQuestion: function(load) {
       socket.emit("addQuestion", {
-        pollId: this.pollId,
+        pollId: this.pollSave,
         q: load.q,
         a: load.a,
         qnr: load.qnr
