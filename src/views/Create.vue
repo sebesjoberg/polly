@@ -85,6 +85,11 @@ export default {
         this.data = data)
   },
   methods: {
+    edit: function(index){
+      this.questionNumber=index;
+      this.inOverview=false;
+      this.inQuestionMaker=true;
+    },
     goToAddQuestion: function(){
       this.questionNumber=this.data.questions.length
       this.inOverview=false;
@@ -208,7 +213,8 @@ export default {
 }
 .question{
   text-align: center;
-  
+  font-size: 1vw;
+  color:white;
   overflow:hidden;
   margin:10px;
   background-color:#455879;
