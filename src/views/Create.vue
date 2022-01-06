@@ -8,12 +8,12 @@
       <input type="text" class="pollId" v-model="pollId" placeholder="Poll id">
       <button class="load" v-on:click="createPoll"> {{uiLabels.loadPoll}} </button>
       <div class="grid">
-        <button v-for="i in this.data.questions.length" v-on:click="edit(i-1)" v-bind:key="i">
+        <button class="question" v-for="i in this.data.questions.length" v-on:click="edit(i-1)" v-bind:key="i">
         {{ this.data.questions[i-1].q }}
       </button></div>
 
 
-      <button class="AddQuestion" v-on:click="goToAddQuestion">
+      <button class="AddQuestion" v-on:click="goToAddQuestion" v-if="this.data.questions.length<24">
              {{uiLabels.addQuestion}}
 </button>
 
@@ -206,10 +206,20 @@ export default {
   transform: translate(-35%,-5%);
   text-align: center;
 }
-
+.question{
+  text-align: center;
+  
+  overflow:hidden;
+  margin:10px;
+  background-color:#455879;
+}
 .grid{
   display: grid;
+
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4,1fr);
   position: absolute;
+  height: 50%;
   width:100%;
   left: 50%;
   top: 50%;
