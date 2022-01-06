@@ -5,7 +5,7 @@
 
       <!--  här kanske det måste börjas om? dumt att ha en som bestämmer storlek
     kan man inte låta varje objekt få sin storlek för sig-->
-      <input type="text" class="pollId" v-model="pollId" placeholder="Poll id">
+      <input type="text" class="pollId" v-model="pollId" placeholder="Poll name">
       <button class="load" v-on:click="createPoll"> {{uiLabels.loadPoll}} </button>
       <div class="grid">
         <button class="question" v-for="i in this.data.questions.length" v-on:click="edit(i-1)" v-bind:key="i">
@@ -13,7 +13,8 @@
       </button></div>
 
 
-      <button class="AddQuestion" v-on:click="goToAddQuestion" v-if="this.data.questions.length<24">
+      <button class="AddQuestion" v-on:click="goToAddQuestion"
+      v-if="this.data.questions.length<24 && this.pollSave!==''">
              {{uiLabels.addQuestion}}
 </button>
 
@@ -25,6 +26,13 @@
             </button>
     </router-link>
 
+    <router-link
+        v-bind:to="'/host/'+this.pollSave+'/'+this.lang"
+        v-slot="{href, navigate}">
+            <button :href="href" @click="navigate" class="host">
+              {{uiLabels.HostPoll}}
+            </button>
+    </router-link>
     <button v-on:click="switchLanguage" class="changeLanguage">
       <img v-bind:src="getFlagUrl()"
            class="flag">{{uiLabels.changeLanguage}}</button>
@@ -164,17 +172,28 @@ export default {
   width:2vw;
   height:auto;
 }
-
+.host{
+  font-size: 2vw;
+  background-color: #455879;
+  color:white;
+  position:absolute;
+  left:80%;
+  top:90%;
+  width:11.25%;
+  height: 15%;
+  transform: translate(-80%,-90%);
+  border-radius: 10px;
+}
 .AddQuestion {
   font-size: 2vw;
   background-color: #455879;
   color:white;
   position:absolute;
-  left:70%;
+  left:50%;
   top:90%;
   width:11.25%;
   height: 15%;
-  transform: translate(-70%,-90%);
+  transform: translate(-50%,-90%);
   border-radius: 10px;
 }
 .goBack{
@@ -182,11 +201,11 @@ export default {
   background-color: #455879;
   color:white;
   position:absolute;
-  left:30%;
+  left:20%;
   top:90%;
   width:11.25%;
   height: 15%;
-  transform: translate(-30%,-90%);
+  transform: translate(-20%,-90%);
   border-radius: 10px;
 }
 .load{

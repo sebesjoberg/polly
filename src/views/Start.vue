@@ -32,7 +32,7 @@
         <input v-model="id" type="text" class="input_2" >
       </div>
       <router-link
-      v-bind:to="'/host/'+this.id"
+      v-bind:to="'/host/'+this.id+'/'+this.lang"
       v-slot="{href, navigate}"
       >
       <button :href="href" @click="navigate" class="host_result">

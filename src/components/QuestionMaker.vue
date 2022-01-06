@@ -55,8 +55,8 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
     },
     created: function(){
       if(typeof this.data.questions[this.questionNumber]!=='undefined'){
-      this.question=this.data.questions[this.questionNumber].q}
-      
+      this.question=this.data.questions[this.questionNumber].q
+      this.answers=this.data.questions[this.questionNumber].a}
     },
 
     methods: {
