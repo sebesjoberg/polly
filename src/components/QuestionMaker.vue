@@ -13,7 +13,9 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
     <label for="answer" class="label">
       {{uiLabels.answersInCreate}}</label>
       <div  class="answers">
-    <input class="answer" v-for="i in answers.length"  v-bind:key="i" v-model="this.answers[i-1]"></div>
+    <div  v-for="i in answers.length"  v-bind:key="i" >
+      <input class="answer" v-model="this.answers[i-1]"><button> </button>
+    </div></div>
 
         <button v-on:click="removeAnswer" class="removeAnswer" v-if="this.answers.length>1">
           {{uiLabels.removeAnswer}}
@@ -112,10 +114,13 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
 }
 .answer{
   text-align: center;
+  position: relative;
+  width:auto;
+  height: 50%;
   font-size: 2vw;
   color:white;
   overflow:hidden;
-  margin:5%;
+  margin: 5%;
   background-color:#455879;
 
 
