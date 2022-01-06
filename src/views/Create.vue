@@ -7,6 +7,11 @@
     kan man inte låta varje objekt få sin storlek för sig-->
       <input type="text" class="pollId" v-model="pollId" placeholder="Poll id">
       <button class="load" v-on:click="createPoll"> {{uiLabels.loadPoll}} </button>
+      <div class="grid">
+        <button v-for="i in this.data.questions.length" v-on:click="edit(i-1)" v-bind:key="i">
+        {{ this.data.questions[i-1].q }}
+      </button></div>
+
 
       <button class="AddQuestion" v-on:click="goToAddQuestion">
              {{uiLabels.addQuestion}}
@@ -51,7 +56,7 @@ export default {
       question: "",
       answers: ["", ""],
       questionNumber: 0,
-      data: {},//innehåller nu questions kan användas för att redigera på ett vistt ställe eller liknande
+      data: {questions: "", correctAnswers:""},//innehåller nu questions kan användas för att redigera på ett vistt ställe eller liknande
       uiLabels: {},
       languages: ['en', 'sv'],
       inQuestionMaker: false,
@@ -150,13 +155,6 @@ export default {
   height:auto;
 }
 
-.QuestionName {
-  grid-row: 2;
-  grid-column: 1;
-  margin-left: -10%;
-  margin-top: 10%;
-}
-
 .AddQuestion {
   font-size: 2vw;
   background-color: #455879;
@@ -207,5 +205,15 @@ export default {
   height: 10%;
   transform: translate(-35%,-5%);
   text-align: center;
+}
+
+.grid{
+  display: grid;
+  position: absolute;
+  width:100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+
 }
 </style>
