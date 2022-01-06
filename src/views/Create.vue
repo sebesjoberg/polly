@@ -34,6 +34,8 @@
   <QuestionMaker v-bind:lang='this.lang'
                  v-bind:uiLabels='this.uiLabels'
                  v-bind:questionNumber='this.questionNumber'
+                 v-bind:data='this.data'
+                 v-bind:inQuestionMaker='this.inQuestionMaker'
                  v-else-if='this.inQuestionMaker'
                  v-on:madeQuestion="addQuestion($event)"/>
 
@@ -89,6 +91,7 @@ export default {
       this.questionNumber=index;
       this.inOverview=false;
       this.inQuestionMaker=true;
+
     },
     goToAddQuestion: function(){
       this.questionNumber=this.data.questions.length
@@ -97,7 +100,8 @@ export default {
     },
     goBackToCreate: function(){
       this.inOverview=true;
-      this.inQuestionMaker=false; //sätt qnr här redan
+      this.inQuestionMaker=false;
+       //sätt qnr här redan
     },
     getFlagUrl: function(){
       return require('../../data/flag-'+this.languages[1]+'.png')
@@ -125,6 +129,7 @@ export default {
       })
       this.inOverview=true;
       this.inQuestionMaker=false;
+
     },
     addAnswer: function() {
       this.answers.push("");

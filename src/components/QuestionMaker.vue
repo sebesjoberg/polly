@@ -41,18 +41,22 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
     props:{
       uiLabels: Object,
       lang: String,
-      questionNumber: Number
+      questionNumber: Number,
+      data: Object
     },
     data: function() {
       return {
         pollId: "",
         question: "",
         answers: ["", ""],
-        data: {},
         languages: ["en", "sv"],
-        inQuestionMaker: true,
-        inOverview: false
+
       }
+    },
+    created: function(){
+      if(typeof this.data.questions[this.questionNumber]!=='undefined'){
+      this.question=this.data.questions[this.questionNumber].q}
+      
     },
 
     methods: {
