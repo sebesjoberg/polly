@@ -7,14 +7,14 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
 
     <div class="Question">
       <label for="Question">{{uiLabels.question}}</label><br>
-      <input v-model="this.question" type="text" class="Question" >
+      <input v-model="this.question" type="text" class="question" >
     </div>
 
-    <div class="wrap">
-      {{uiLabels.answersInCreate}}
+    <label for="answer" class="label">
+      {{uiLabels.answersInCreate}}</label>
       <div  class="answers">
-    <input v-for="i in answers.length"  v-bind:key="i" v-model="this.answers[i-1]"></div>
-    </div>
+    <input class="answer" v-for="i in answers.length"  v-bind:key="i" v-model="this.answers[i-1]"></div>
+
         <button v-on:click="removeAnswer" class="removeAnswer" v-if="this.answers.length>1">
           {{uiLabels.removeAnswer}}
         </button>
@@ -97,23 +97,26 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
     margin:0;
 
 }
-.wrap{
-  width:100%;
-  height:50%
-}
+
 .answers{
   display:grid;
   width:100%;
-  height: 100%;
-  position: relative;
+  height:50%;
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+  position: absolute;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2,1fr);
 
 }
 .answer{
- position: relative;
- width: 100%;
- height: 100%;
+  text-align: center;
+  font-size: 2vw;
+  color:white;
+  overflow:hidden;
+  margin:5%;
+  background-color:#455879;
 
 
 }
@@ -125,18 +128,42 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
     font-size: 1vw;
   }
 
+
+
   .Question {
-
-  }
-
-  .question {
-    font-size: 1.5vw;
+    font-size: 3vw;
     background-color: #0097a7;
     color:white;
+    position: absolute;
     border-radius: 10px;
     width:50%;
+    height: 15%;
+    left:50%;
+    top:2.5%;
+    transform: translate(-50%,-2.5%);
   }
+.question{
+  font-size: 2vw;
+  background-color: #0097a7;
+  color:white;
+  text-align: center;
+  border-radius: 10px;
+  width:100%;
+  height: 50%;
 
+}
+.label{
+  font-size: 3vw;
+  background-color: #0097a7;
+  color:white;
+  position: absolute;
+  border-radius: 10px;
+  width:50%;
+  height: 15%;
+  left:50%;
+  top:25%;
+  transform: translate(-50%,-25%);
+}
 
 .removeAnswer{
   font-size: 2vw;
@@ -144,11 +171,11 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
   color:white;
   border-radius: 10px;
   position:absolute;
-  left:20%;
+  left:62.5%;
   top:90%;
   width:11.25%;
   height: 15%;
-  transform: translate(-20%,-90%);
+  transform: translate(-62.5%,-90%);
 }
 
 .addAnswer{
@@ -157,14 +184,25 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
   color:white;
   border-radius: 10px;
   position:absolute;
-  left:80%;
+  left:87.5%;
   top:90%;
   width:11.25%;
   height: 15%;
-  transform: translate(-80%,-90%);
+  transform: translate(-87.5%,-90%);
 }
 
-
+.goBack {
+  font-size: 2vw;
+  background-color: #455879;
+  color:white;
+  border-radius: 10px;
+  position:absolute;
+  left:12.5%;
+  top:90%;
+  width:11.25%;
+  height: 15%;
+  transform: translate(-12.5%,-90%);
+}
 
   .return {
     font-size: 2vw;
@@ -172,10 +210,10 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
     color:white;
     border-radius: 10px;
     position:absolute;
-    left:50%;
+    left:37.5%;
     top:90%;
     width:11.25%;
     height: 15%;
-    transform: translate(-50%,-90%);
+    transform: translate(-37.5%,-90%);
   }
 </style>

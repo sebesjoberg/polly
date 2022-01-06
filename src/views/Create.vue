@@ -7,6 +7,7 @@
     kan man inte låta varje objekt få sin storlek för sig-->
       <input type="text" class="pollId" v-model="pollId" placeholder="Poll name">
       <button class="load" v-on:click="createPoll"> {{uiLabels.loadPoll}} </button>
+      <label class="label" for="grid" v-if='this.data.questions.length>0'>questions</label>
       <div class="grid">
         <button class="question" v-for="i in this.data.questions.length" v-on:click="edit(i-1)" v-bind:key="i">
         {{ this.data.questions[i-1].q }}
@@ -243,9 +244,17 @@ export default {
   margin:10px;
   background-color:#455879;
 }
+.label{
+  font-size: 3vw;
+  color:white;
+  position: absolute;
+
+  left: 2.5%;
+  top: 20%;
+  transform: translate(-2.5%,-20%);
+}
 .grid{
   display: grid;
-
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(4,1fr);
   position: absolute;
