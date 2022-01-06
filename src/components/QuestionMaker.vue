@@ -14,7 +14,10 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
       {{uiLabels.answersInCreate}}</label>
       <div  class="answers">
     <div  v-for="i in answers.length"  v-bind:key="i" >
-      <input class="answer" v-model="this.answers[i-1]"><button> </button>
+      <input class="answer" v-model="this.answers[i-1]">
+
+        <img v-on:click="trueFalse(i-1)" v-bind:src="getUrl(i-1)"
+        class="img">
     </div></div>
 
         <button v-on:click="removeAnswer" class="removeAnswer" v-if="this.answers.length>1">
@@ -51,6 +54,7 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
         pollId: "",
         question: "",
         answers: ["", ""],
+        correctIndexes:[],
         languages: ["en", "sv"],
 
       }
@@ -62,6 +66,22 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
     },
 
     methods: {
+      trueFalse: function(index){
+       if(this.correctIndexes.includes(index)){
+      const i = this.correctIndexes.indexOf(index)
+      this.correctIndexes.splice(i, 1);
+       }else{
+         this.correctIndexes.push(index);
+       }
+      },
+      getUrl: function(index){
+        let path= "redcross.png"
+         if(this.correctIndexes.includes(index)){
+          path = "greentick.png"
+         }
+
+        return require('../../data/'+path)
+      },
       //createPoll sker i create
       addQuestion: function() {//skickas kanske inte exakt det som behövs för tillfället
 
@@ -132,7 +152,13 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
     height: 5%;
     font-size: 1vw;
   }
-
+.img{
+  width:2vw;
+  height:auto;
+}
+.checker{
+  background-color:#0097a7;
+}
 
 
   .Question {
