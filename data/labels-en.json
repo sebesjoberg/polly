@@ -26,5 +26,8 @@
 	"kicked": "You have been kicked",
 	"startQuiz": "Start quiz",
 	"loadPoll": "Load/create quiz",
-	"delete": "Delete question"
+	"delete": "Delete question",
+	"noCorrect": "No correct answer",
+	"aSmall": "One or more answers are blank",
+	"qSmall": "The question is blank"
 }

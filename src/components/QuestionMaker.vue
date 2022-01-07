@@ -101,13 +101,33 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
       //createPoll sker i create
       addQuestion: function() {//skickas kanske inte exakt det som behövs för tillfället
 
+      if(this.question.length>0){
+        let bool = true;
+        for(let i in this.answers){
+          if(this.answers[i].length<=0){
+            bool = false;
+          }
+        }
+        if(bool){
+          if(this.correctIndexes.length>0){
+          this.$emit("madeQuestion", {
+            q: this.question,
+            a: this.answers,
+            qnr: this.questionNumber,
+            i: this.correctIndexes
+          })
+        }else{
+          alert(this.uiLabels.noCorrect)
+        }
+      }else{
+          alert(this.uiLabels.aSmall)
+        }
 
-        this.$emit("madeQuestion", {
-          q: this.question,
-          a: this.answers,
-          qnr: this.questionNumber,
-          i: this.correctIndexes
-        })
+      }else{
+        alert(this.uiLabels.qSmall)
+      }
+
+
       },
       goBackToCreate: function(){
         this.$parent.goBackToCreate();

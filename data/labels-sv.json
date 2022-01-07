@@ -26,5 +26,8 @@
 	"kicked": "Du har blivit kickad",
 	"startQuiz": "Starta quiz",
 	"loadPoll": "Ladda/skapa quiz",
-	"delete": "Radera frågan"
+	"delete": "Radera frågan",
+	"noCorrect": "Inget rätt svar",
+	"aSmall": "Ett eller flera svar är blanka",
+	"qSmall": "Frågan är blank"
 }
