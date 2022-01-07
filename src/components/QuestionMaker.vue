@@ -62,7 +62,8 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
     created: function(){
       if(typeof this.data.questions[this.questionNumber]!=='undefined'){
       this.question=this.data.questions[this.questionNumber].q
-      this.answers=this.data.questions[this.questionNumber].a}
+      this.answers=this.data.questions[this.questionNumber].a
+      this.correctIndexes=this.data.questions[this.questionNumber].i}
     },
 
     methods: {
@@ -89,7 +90,8 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
         this.$emit("madeQuestion", {
           q: this.question,
           a: this.answers,
-          qnr: this.questionNumber
+          qnr: this.questionNumber,
+          i: this.correctIndexes
         })
       },
       goBackToCreate: function(){

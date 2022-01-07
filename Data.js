@@ -44,7 +44,7 @@ Data.prototype.addQuestion = function(pollId, d) {
   const poll = this.polls[pollId];
   console.log("question added to", pollId, d);
   if (typeof poll !== 'undefined') {
-    poll.questions.splice(d.qnr,1,{q: d.q, a:d.a})
+    poll.questions.splice(d.qnr,1,{q: d.q, a:d.a, i: d.i})
   }
   console.log(poll.questions)
 }

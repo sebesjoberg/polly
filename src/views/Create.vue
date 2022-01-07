@@ -134,7 +134,8 @@ export default {
         pollId: this.pollSave,
         q: load.q,
         a: load.a,
-        qnr: load.qnr
+        qnr: load.qnr,
+        i: load.i
       })
       this.inOverview=true;
       this.inQuestionMaker=false;

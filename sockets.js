@@ -16,7 +16,7 @@ function sockets(io, socket, data) {
   });
 
   socket.on('addQuestion', function(d) { // La till questionNumber (qnr)
-    data.addQuestion(d.pollId, {qnr: d.qnr, q: d.q, a: d.a});
+    data.addQuestion(d.pollId, {qnr: d.qnr, q: d.q, a: d.a, i: d.i});
     io.to(d.pollId).emit('dataUpdate', data.getQuestions(d.pollId));
   });
 
