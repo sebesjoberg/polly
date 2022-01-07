@@ -25,5 +25,6 @@
 	"wait": "Awaiting orders",
 	"kicked": "You have been kicked",
 	"startQuiz": "Start quiz",
-	"loadPoll": "Load/create quiz"
+	"loadPoll": "Load/create quiz",
+	"delete": "Delete question"
 }

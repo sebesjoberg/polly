@@ -27,14 +27,17 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
           {{uiLabels.AddAnswerAlternative}}
         </button>
 
-
+      <button class="delete" v-on:click="deleteQuestion" v-if="this.editing">
+        {{uiLabels.delete}}</button>
 
         <button class="return" v-on:click="addQuestion">
           {{uiLabels.saveAndReturn}}
         </button>
        <button class="goBack" v-on:click="goBackToCreate">
          {{uiLabels.goBack}}</button>
-
+         <button v-on:click="switchLanguage" class="changeLanguage">
+           <img v-bind:src="getFlagUrl()"
+                class="flag">{{uiLabels.changeLanguage}}</button>
   </section>
 </template>
 
@@ -56,6 +59,7 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
         answers: ["", ""],
         correctIndexes:[],
         languages: ["en", "sv"],
+        editing: false
 
       }
     },
@@ -63,10 +67,21 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
       if(typeof this.data.questions[this.questionNumber]!=='undefined'){
       this.question=this.data.questions[this.questionNumber].q
       this.answers=this.data.questions[this.questionNumber].a
-      this.correctIndexes=this.data.questions[this.questionNumber].i}
+      this.correctIndexes=this.data.questions[this.questionNumber].i
+      this.editing=true;
+      }
     },
 
     methods: {
+      deleteQuestion: function(){
+
+      },
+      getFlagUrl: function(){
+        return this.$parent.getFlagUrl();
+      },
+      switchLanguage: function() {
+           this.$parent.switchLanguage();
+      },
       trueFalse: function(index){
        if(this.correctIndexes.includes(index)){
       const i = this.correctIndexes.indexOf(index)
@@ -197,6 +212,18 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
   top:25%;
   transform: translate(-50%,-25%);
 }
+.delete{
+  font-size: 1vw;
+  background-color: #455879;
+  color:white;
+  border-radius: 10px;
+  position:absolute;
+  left:2.5%;
+  top:2.5%;
+  width:5.625%;
+  height: 7.5%;
+  transform: translate(-2.5%,-2.5%);
+}
 
 .removeAnswer{
   font-size: 2vw;
@@ -248,5 +275,16 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
     width:11.25%;
     height: 15%;
     transform: translate(-37.5%,-90%);
+  }
+  .changeLanguage{
+    left:87.5%;
+    position:absolute;
+    width: 12.5%;
+    height: 5%;
+    font-size: 1vw;
+  }
+  .flag{
+    width:2vw;
+    height:auto;
   }
 </style>
