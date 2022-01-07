@@ -74,7 +74,7 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
 
     methods: {
       deleteQuestion: function(){
-
+        this.$emit("deleteQuestion", this.questionNumber)
       },
       getFlagUrl: function(){
         return this.$parent.getFlagUrl();

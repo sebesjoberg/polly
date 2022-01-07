@@ -20,6 +20,11 @@ function sockets(io, socket, data) {
     io.to(d.pollId).emit('dataUpdate', data.getQuestions(d.pollId));
   });
 
+  socket.on('deleteQuestion', function(d){
+    data.deleteQuestion(d.pollId,d.qnr);
+    io.to(d.pollId).emit('dataUpdate', data.getQuestions(d.pollId));
+  });
+
   socket.on('joinPoll', function(pollId) {
 
     if(data.joinable(pollId)){

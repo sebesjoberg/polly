@@ -49,6 +49,14 @@ Data.prototype.addQuestion = function(pollId, d) {
   console.log(poll.questions)
 }
 
+Data.prototype.deleteQuestion = function(pollId, index) {
+  const poll = this.polls[pollId];
+  if (typeof poll !== 'undefined') {
+    poll.questions.splice(index, 1)
+  }
+  console.log("deleting",poll.questions)
+}
+
 Data.prototype.nextQuestion = function(pollId) {
   const poll = this.polls[pollId];
   if (typeof poll !== 'undefined') {

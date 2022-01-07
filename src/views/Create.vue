@@ -46,7 +46,8 @@
                  v-bind:data='this.data'
                  v-bind:inQuestionMaker='this.inQuestionMaker'
                  v-else-if='this.inQuestionMaker'
-                 v-on:madeQuestion="addQuestion($event)"/>
+                 v-on:madeQuestion="addQuestion($event)"
+                 v-on:deleteQuestion="deleteQuestion($event)"/>
 
 </template>
 
@@ -128,6 +129,13 @@ export default {
         pollId: this.pollSave,
         lang: this.lang
       });}
+    },
+    deleteQuestion: function(index) {
+      socket.emit("deleteQuestion", {pollId: this.pollSave,
+      qnr: index})
+      this.inOverview=true;
+      this.inQuestionMaker=false;
+
     },
     addQuestion: function(load) {
       socket.emit("addQuestion", {
