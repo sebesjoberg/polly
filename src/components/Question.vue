@@ -3,7 +3,7 @@
 <div class="question">{{question.q}}</div>
 <div class="answers">
 <button v-for="i in question.a.length" v-on:click="answer(question.a[i-1])" v-bind:key="i"
-v-bind:style="{backgroundColor: this.Colors[i-1]}">
+v-bind:style="{backgroundColor: this.Colors[i-1]}" class="answer">
   {{ question.a[i-1] }}
 </button>
 </div>
@@ -22,18 +22,6 @@ export default {
      //mer färger om man vill ha fler än 4 frågor
    }
   },
-  watch: {
-    //detta är från w3schools alltså setpropert och :root i style
-    question: function(){
-    var r = document.querySelector(':root');
-    r.style.setProperty('--row', Math.ceil(this.question.a.length/2));
-    if(this.question.a.length>1){
-      r.style.setProperty('--col', 2);
-    }else{
-      r.style.setPropert('--col',1);
-    }
-  }
-  },
   methods: {
     answer: function (answer) {
       this.$emit("answer", answer);
@@ -43,25 +31,40 @@ export default {
 }
 </script>
 <style lang="css" scoped>
-:root{
-  --col: "";
-  --row: "";
-}
+
 .wrapper{
   background-color: #455879;
   position: fixed;
-  width: 98vw;
-  height: 97vh;
+  width: 100%;
+  height: 100%;
 }
 .question{
-
+ width:100%;
+ height:20%;
+ font-size: 6vw;
+ color:white;
+ overflow:hidden;
+ text-align: center;
+ position: relative;
+ top:2.5%;
+ left:50%;
+ transform: translate(-50%,-2.5%);
+}
+.answer{
+  margin:5%;
+  font-size: 2vw;
+  color:white;
+  overflow:hidden;
+  text-align: center;
+  position: relative;
 }
 .answers{
-  width: 99vw;
-  height: 90vh;
-  display:grid;
-  grid-template-columns: repeat(var(--col), 1fr);
-  grid-template-rows: repeat(var(--row),1fr);
+  width: 100%;
+  height: 80%;
 
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2,1fr);
+  
 }
 </style>
