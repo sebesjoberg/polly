@@ -140,6 +140,9 @@ export default {
 
 
 <style lang="css" scoped>
+button:hover{
+cursor:pointer;
+}
 .beforeQuiz{
   width: 100%;
   height: 100%;

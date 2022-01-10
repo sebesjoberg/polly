@@ -171,6 +171,9 @@ export default {
   position: fixed;
   background-color: #0097a7;
 }
+button:hover{
+cursor:pointer;
+}
 .changeLanguage{
   left:87.5%;
   position:absolute;

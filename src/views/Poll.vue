@@ -179,7 +179,7 @@ this.languages.push(b);
       return require('../../data/flag-'+this.languages[1]+'.png')
     },
     submitAnswer: function (index) {
-      
+
       socket.emit("submitAnswer", {pollId: this.pollId, index: index,
         nickname: this.nickname});
       this.onQuestion = false;
@@ -190,6 +190,9 @@ this.languages.push(b);
 }
 </script>
 <style lang="css" scoped>
+button:hover{
+cursor:pointer;
+}
 .lobbyWrapper{
   background-color: #455879;
   position: fixed;

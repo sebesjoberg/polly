@@ -160,7 +160,9 @@
     </script>
     <style lang="css" scoped>
     @import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
-
+    button:hover{
+    cursor:pointer;
+    }
     .wrapper{
       padding:0;
       margin:0;

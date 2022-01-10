@@ -23,7 +23,7 @@ export default {
   data: function(){
    return{
      Colors: ["blue", "red", "purple", "green"]
-     //mer färger om man vill ha fler 
+     //mer färger om man vill ha fler
    }
   },
   created: function(){
@@ -39,7 +39,9 @@ export default {
 }
 </script>
 <style lang="css" scoped>
-
+button:hover{
+cursor:pointer;
+}
 .wrapper{
   background-color: #455879;
   position: fixed;

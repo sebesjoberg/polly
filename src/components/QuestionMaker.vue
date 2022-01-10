@@ -147,6 +147,9 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
 </script>
 
 <style lang="css" scoped>
+button:hover{
+cursor:pointer;
+}
   .wrapper {
     position: fixed;
     width: 100%;

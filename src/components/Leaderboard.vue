@@ -21,6 +21,9 @@ export default {
 }
 </script>
 <style lang="css" scoped>
+button:hover{
+cursor:pointer;
+}
 .wrapper{
   background-color: #455879;
   position: fixed;

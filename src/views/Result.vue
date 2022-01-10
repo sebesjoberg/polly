@@ -41,6 +41,9 @@ export default {
 </script>
 
 <style lang="css" scoped>
+button:hover{
+cursor:pointer;
+}
 .wrapper {
   display: grid;
   justify-content: center;
