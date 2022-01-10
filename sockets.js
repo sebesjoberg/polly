@@ -36,7 +36,7 @@ function sockets(io, socket, data) {
 
   socket.on('hostPoll', function(pollId){
     if(data.hostable(pollId)){
-      data.hosted(pollId)
+      
    socket.join(pollId)
    io.to(pollId).emit('nickNames',data.getnickNames(pollId));
  }
