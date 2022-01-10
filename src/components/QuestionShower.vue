@@ -7,7 +7,7 @@ v-bind:style="{backgroundColor: this.Colors[i-1]}" class="answer">
   {{ question.a[i-1] }}
 </button>
 </div>
-<button class="endQuestion">{{uiLabels.endQuestion}}</button>
+<button class="endQuestion" v-on:click="endQuestion">{{uiLabels.endQuestion}}{{this.participants}}</button>
 </section>
 </template>
 <script>
@@ -16,7 +16,8 @@ export default {
   name: 'Bars',
   props: {
     question: Object,
-    uiLabels: Object
+    uiLabels: Object,
+    participants: Number
 
   },
   data: function(){
@@ -30,10 +31,10 @@ export default {
 
   methods: {
 
-    answer: function (answer) {
-      this.$emit("answer", answer);
-
+    endQuestion: function () {
+      this.$emit("endQuestion", );
     }
+
   }
 }
 </script>
@@ -77,5 +78,11 @@ export default {
 
 .endQuestion{
   background-color: pink;
+  position: absolute;
+  width:11.25%;
+  height: 15%;
+  top:20%;
+  left:80%;
+  transform: translate(-20%,-80%);
 }
 </style>
