@@ -91,6 +91,9 @@ export default {
     socket.on("init", (labels) => {
       this.uiLabels = labels
     })
+    socket.on("newQuestion", (q) => {
+        this.question = q;
+      });
     socket.on("nickNames", (nicknames) =>{
 
             if(nicknames !== null){
