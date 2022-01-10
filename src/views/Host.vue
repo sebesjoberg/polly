@@ -38,7 +38,6 @@
   <Question v-bind:question="question"
    v-bind:uiLabels='this.uiLabels'
             />
-  <!--här ska frågan visas anväänd componenten -->
 </section>
 
 
