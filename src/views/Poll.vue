@@ -37,6 +37,7 @@ v-slot="{href, navigate}"
 
 <LeaderBoard v-bind:leaderBoard="leaderBoard"
              v-bind:correctAnswer="correctAnswer"
+             v-bind:uiLabels='this.uiLabels'
              v-else-if="this.result"/>
 <section class="waitwrapper" v-else>
 <div class="wait">{{uiLabels.wait}}</div>
