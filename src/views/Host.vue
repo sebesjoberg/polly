@@ -33,6 +33,7 @@
 </section>
 
 
+<section class="onQuestion" v-else-if="this.onQuestion">
 
   <Question v-bind:question="question"
    v-bind:uiLabels='this.uiLabels'
