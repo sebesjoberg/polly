@@ -34,15 +34,10 @@
 
 
 
-<<<<<<< HEAD
   <Question v-bind:question="question"
    v-bind:uiLabels='this.uiLabels'
             />
   <!--här ska frågan visas anväänd componenten -->
-=======
-<section class="onQuestion" v-else-if="this.onQuestion"> <!--allt som händer under en fråga -->
-  <Question v-bind:question="question"/>
->>>>>>> 7049e3d79c2c22bc94c747a49c46ebe544330a46
 </section>
 
 
