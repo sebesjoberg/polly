@@ -30,5 +30,6 @@
 	"noCorrect": "Inget rätt svar",
 	"aSmall": "Ett eller flera svar är blanka",
 	"qSmall": "Frågan är blank",
-	"newNick": "Ändra smeknamn"
+	"newNick": "Ändra smeknamn",
+	"endQuestion": "Avsluta frågan"
 }
