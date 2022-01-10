@@ -7,7 +7,11 @@ v-bind:style="{backgroundColor: this.Colors[i-1]}" class="answer">
   {{ question.a[i-1] }}
 </button>
 </div>
+<<<<<<< HEAD
 <button class="endQuestion">{{uiLabels.endQuestion}}</button>
+=======
+  <button class="endQuestion">{{uiLabels.endQuestion}}</button>
+>>>>>>> 7049e3d79c2c22bc94c747a49c46ebe544330a46
 </section>
 </template>
 <script>
@@ -25,7 +29,11 @@ export default {
      //mer färger om man vill ha fler än 4 frågor
    }
   },
+  created: function(){
+},
+
   methods: {
+
     answer: function (answer) {
       this.$emit("answer", answer);
 

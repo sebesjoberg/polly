@@ -32,14 +32,20 @@
 <section class="betweenQuestion" v-else-if="this.betweenQuestion"> <!--allt mellan frågor -->
 </section>
 
-<section class="onQuestion" v-else-if="this.onQuestion"> <!--allt som händer under en fråga -->
 
 
+<<<<<<< HEAD
   <Question v-bind:question="question"
    v-bind:uiLabels='this.uiLabels'
             />
   <!--här ska frågan visas anväänd componenten -->
+=======
+<section class="onQuestion" v-else-if="this.onQuestion"> <!--allt som händer under en fråga -->
+  <Question v-bind:question="question"/>
+>>>>>>> 7049e3d79c2c22bc94c747a49c46ebe544330a46
 </section>
+
+
 
 <section class="afterQuiz" v-else-if="this.afterQuiz"><!--allt som händer när quizen är färdig -->
 </section>
@@ -53,7 +59,7 @@
 
 <script>
 import io from 'socket.io-client';
-import Question from '@/components/Question.vue';
+import Question from '@/components/QuestionShower.vue';
 const socket = io();
 //i denna kan man lägga lite vad man vill på stängning och reloading så körs det
 //skulle ex kunna låta servern veta att man inte längre är host och att någon annan då kan ta den?
