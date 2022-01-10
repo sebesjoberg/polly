@@ -30,6 +30,7 @@
 
 
 <section class="betweenQuestion" v-else-if="this.betweenQuestion"> <!--allt mellan frågor -->
+  awhehsajl
 </section>
 
 
@@ -37,6 +38,8 @@
 
   <Question v-bind:question="question"
    v-bind:uiLabels='this.uiLabels'
+   v-bind:participants='this.leaderBoard.nicknames.length'
+   v-on:endQuestion='endQuestion'
             />
 </section>
 
@@ -121,6 +124,12 @@ export default {
 
             socket.emit("kick",{nickname: nick,
             pollId: this.pollId});
+          },
+          endQuestion: function(){
+            socket.emit("endQuestion", )
+            this.betweenQuestion = true
+            this.onQuestion = false
+
           }
         }
 
