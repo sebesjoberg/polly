@@ -41,15 +41,6 @@ v-slot="{href, navigate}"
 <section class="waitwrapper" v-else>
 <div class="wait">{{uiLabels.wait}}</div>
 <div class="loader"></div>
-<button class="newNick" v-on:click="newNick">
-  {{uiLabels.newNick}}</button>
-<router-link
-v-bind:to="'/'"
-v-slot="{href, navigate}"
->
-<button :href="href" @click="navigate" class="goBack_3">
-  {{uiLabels.goBack}}
-</button></router-link>
 </section>
 
 
@@ -187,8 +178,11 @@ this.languages.push(b);
 
       return require('../../data/flag-'+this.languages[1]+'.png')
     },
-    submitAnswer: function (answer) {
-      socket.emit("submitAnswer", {pollId: this.pollId, answer: answer});
+    submitAnswer: function (index) {
+      
+      socket.emit("submitAnswer", {pollId: this.pollId, index: index,
+        nickname: this.nickname});
+      this.onQuestion = false;
       //gör så man får ett waitwindow medans man väntar på svar stora sitt svar någontstans
 
     }

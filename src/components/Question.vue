@@ -2,7 +2,7 @@
 <section class="wrapper">
 <div class="question">{{question.q}}</div>
 <div class="answers">
-<button v-for="i in question.a.length" v-on:click="answer(question.a[i-1])" v-bind:key="i"
+<button v-for="i in question.a.length" v-on:click="answer(i-1)" v-bind:key="i"
 v-bind:style="{backgroundColor: this.Colors[i-1]}" class="answer">
   {{ question.a[i-1] }}
 </button>
@@ -23,8 +23,9 @@ export default {
    }
   },
   methods: {
-    answer: function (answer) {
-      this.$emit("answer", answer);
+    answer: function (index) {
+      
+      this.$emit("answer", index);
 
     }
   }
@@ -65,6 +66,6 @@ export default {
   display:grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2,1fr);
-  
+
 }
 </style>

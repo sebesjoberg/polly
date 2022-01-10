@@ -36,7 +36,7 @@ function sockets(io, socket, data) {
 
   socket.on('hostPoll', function(pollId){
     if(data.hostable(pollId)){
-      
+
    socket.join(pollId)
    io.to(pollId).emit('nickNames',data.getnickNames(pollId));
  }
@@ -59,7 +59,7 @@ function sockets(io, socket, data) {
   });
 
   socket.on('submitAnswer', function(d) {
-    data.submitAnswer(d.pollId, d.answer);
+    data.submitAnswer(d.pollId, d.index, d.nickname);
     io.to(d.pollId).emit('dataUpdate', data.getAnswers(d.pollId));
   });
 

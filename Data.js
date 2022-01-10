@@ -24,11 +24,10 @@ Data.prototype.createPoll = function(pollId, lang="en") {
     let poll = {};
     poll.lang = lang;
     poll.questions = [];
-    poll.joinable=false; //använd joinable till att se om man kan joina kanske ej är det
+    poll.joinable=true; //använd joinable till att se om man kan joina kanske ej är det
     //då den körs?
     poll.hostable=true;
     poll.answers = [];
-    poll.correctAnswers=[]; //en array med correctAnswers som man jämför med/skickar ut en bit av
     poll.currentQuestion = -1;
     poll.leaderBoard={nicknames: [], scores:[]};
     this.polls[pollId] = poll;
@@ -67,10 +66,16 @@ Data.prototype.nextQuestion = function(pollId) {
   return []
 }
 
-Data.prototype.submitAnswer = function(pollId, answer) {
+Data.prototype.submitAnswer = function(pollId, index, nickname) {
   const poll = this.polls[pollId];
-  console.log("answer submitted for ", pollId, answer);
-  if (typeof poll !== 'undefined') {
+
+  console.log(typeof poll.questions[poll.currentQuestion].a)
+  const answer = poll.questions[poll.currentQuestion].a[index];
+  const indexn = poll.leaderBoard.nicknames.indexOf(nickname);
+  if(poll.questions[poll.currentQuestion].i.includes(index)){
+  poll.leaderBoard.scores[indexn] +=1000
+}
+if (typeof poll !== 'undefined') {
     let answers = poll.answers[poll.currentQuestion];
     if (typeof answers !== 'object') {
       answers = {};
@@ -81,9 +86,10 @@ Data.prototype.submitAnswer = function(pollId, answer) {
       answers[answer] = 1;
     else
       answers[answer] += 1
-    console.log("answers looks like ", answers, typeof answers);
-  }
-}
+   console.log("answer submitted for ", answers, typeof answers)
+   console.log("leaderboard looks like",poll.leaderBoard)
+ }}
+
 
 Data.prototype.getAnswers = function(pollId) {
   const poll = this.polls[pollId];
@@ -119,6 +125,7 @@ Data.prototype.setNickname = function(d){
   const poll = this.polls[d.pollId];
   if(typeof poll !== 'undefined'){
     poll.leaderBoard.nicknames.push(d.nickname);
+    poll.leaderBoard.scores.push(0);
 
   }
 }
@@ -155,6 +162,7 @@ Data.prototype.removeNick = function(d){
 
   if (index > -1) {
   poll.leaderBoard.nicknames.splice(index, 1);
+  poll.leaderBoard.scores.splice(index,1)
 }}}
 
 Data.prototype.resetPoll = function(pollId){
