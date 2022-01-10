@@ -6,15 +6,15 @@
       <!--  här kanske det måste börjas om? dumt att ha en som bestämmer storlek
     kan man inte låta varje objekt få sin storlek för sig-->
       <input type="text" class="pollId" v-model="pollId" placeholder="Poll name">
-      <button class="load" v-on:click="createPoll"> {{uiLabels.loadPoll}} </button>
+      <button class="load button-effect" v-on:click="createPoll"> {{uiLabels.loadPoll}} </button>
       <label class="label" for="grid" v-if='this.data.questions.length>0'>{{uiLabels.questions}}</label>
       <div class="grid">
-        <button class="question" v-for="i in this.data.questions.length" v-on:click="edit(i-1)" v-bind:key="i">
+        <button class="question button-effect" v-for="i in this.data.questions.length" v-on:click="edit(i-1)" v-bind:key="i">
         {{ this.data.questions[i-1].q }}
       </button></div>
 
 
-      <button class="AddQuestion" v-on:click="goToAddQuestion"
+      <button class="AddQuestion button-effect" v-on:click="goToAddQuestion"
       v-if="this.data.questions.length<24 && this.pollSave!==''">
              {{uiLabels.addQuestion}}
 </button>
@@ -22,7 +22,7 @@
     <router-link
         v-bind:to="'/'+this.lang"
         v-slot="{href, navigate}">
-            <button :href="href" @click="navigate" class="goBack">
+            <button :href="href" @click="navigate" class="goBack button-effect">
               {{uiLabels.goBack}}
             </button>
     </router-link>
@@ -30,7 +30,7 @@
     <router-link
         v-bind:to="'/host/'+this.pollSave+'/'+this.lang"
         v-slot="{href, navigate}">
-            <button :href="href" @click="navigate" class="host">
+            <button :href="href" @click="navigate" class="host button-effect">
               {{uiLabels.HostPoll}}
             </button>
     </router-link>
@@ -275,6 +275,12 @@ cursor:pointer;
   left: 50%;
   top: 50%;
   transform: translate(-50%,-50%);
-
+}
+.button-effect{
+  transition: all 0.2s ease-in-out;
+}
+.button-effect:hover{
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 5px 15px rgba(145, 92, 182, .8);
 }
 </style>

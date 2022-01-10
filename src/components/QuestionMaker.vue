@@ -20,20 +20,20 @@ och att denna då alltid håller samma storlek så sidan blir nsygg -->
         class="img">
     </div></div>
 
-        <button v-on:click="removeAnswer" class="removeAnswer" v-if="this.answers.length>1">
+        <button v-on:click="removeAnswer" class="removeAnswer button-effect" v-if="this.answers.length>1">
           {{uiLabels.removeAnswer}}
         </button>
-        <button v-on:click="addAnswer" class="addAnswer" v-if="this.answers.length<4">
+        <button v-on:click="addAnswer" class="addAnswer button-effect" v-if="this.answers.length<4">
           {{uiLabels.AddAnswerAlternative}}
         </button>
 
-      <button class="delete" v-on:click="deleteQuestion" v-if="this.editing">
+      <button class="delete button-effect" v-on:click="deleteQuestion" v-if="this.editing">
         {{uiLabels.delete}}</button>
 
-        <button class="return" v-on:click="addQuestion">
+        <button class="return button-effect" v-on:click="addQuestion">
           {{uiLabels.saveAndReturn}}
         </button>
-       <button class="goBack" v-on:click="goBackToCreate">
+       <button class="goBack button-effect" v-on:click="goBackToCreate">
          {{uiLabels.goBack}}</button>
          <button v-on:click="switchLanguage" class="changeLanguage">
            <img v-bind:src="getFlagUrl()"
@@ -309,5 +309,12 @@ cursor:pointer;
   .flag{
     width:2vw;
     height:auto;
+  }
+  .button-effect{
+    transition: all 0.2s ease-in-out;
+  }
+  .button-effect:hover{
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0 5px 15px rgba(145, 92, 182, .8);
   }
 </style>

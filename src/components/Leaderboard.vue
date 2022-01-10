@@ -2,6 +2,7 @@
   <section class="wrapper">
   <div class="1st">{{uiLabels.first}}: {{this.leaderBoard.nicknames[0]}}
     {{this.leaderBoard.scores[0]}} {{uiLabels.points}}
+  </div>
 </section>
 </template>
 <script>

@@ -13,14 +13,14 @@
     v-bind:to="'/poll/'+this.lang+'/'+this.id"
     v-slot="{href, navigate}"
     >
-    <button :href="href" @click="navigate" class="join_2">
+    <button :href="href" @click="navigate" class="join_2 button-effect">
       {{uiLabels.participatePoll}}
     </button></router-link>
 
     <button v-on:click="switchLanguage" class="changeLanguage_2">
       <img v-bind:src="getFlagUrl()"
       class="flag">{{uiLabels.changeLanguage}}</button>
-      <button class="goBack_1" v-on:click="join">
+      <button class="goBack_1 button-effect" v-on:click="join">
         {{uiLabels.goBack}}
       </button>
     </section>
@@ -35,13 +35,13 @@
       v-bind:to="'/host/'+this.id+'/'+this.lang"
       v-slot="{href, navigate}"
       >
-      <button :href="href" @click="navigate" class="host_result">
+      <button :href="href" @click="navigate" class="host_result button-effect">
         {{uiLabels.HostPoll}}
       </button></router-link>
       <button v-on:click="switchLanguage" class="changeLanguage_2">
         <img v-bind:src="getFlagUrl()"
         class="flag">{{uiLabels.changeLanguage}}</button>
-        <button class="goBack_2" v-on:click="host">
+        <button class="goBack_2 button-effect" v-on:click="host">
           {{uiLabels.goBack}}
         </button>
       </section>
@@ -49,19 +49,19 @@
 <section class="result_wrapper" v-else-if="this.clickedresult">
   <div class="input_2">
     <label for="input_2">{{uiLabels.inputId}}</label><br>
-    <input v-model="id" type="text" class="input_2" >
+    <input v-model="id" type="text" class="input_2 button-effect" >
   </div>
   <router-link
   v-bind:to="'/result/'+this.lang+'/'+this.id"
   v-slot="{href, navigate}"
   >
-  <button :href="href" @click="navigate" class="host_result">
+  <button :href="href" @click="navigate" class="host_result button-effect">
     {{uiLabels.CheckResult}}
   </button></router-link>
   <button v-on:click="switchLanguage" class="changeLanguage_2">
     <img v-bind:src="getFlagUrl()"
     class="flag">{{uiLabels.changeLanguage}}</button>
-    <button class="goBack_2" v-on:click="result">
+    <button class="goBack_2 button-effect" v-on:click="result">
       {{uiLabels.goBack}}
     </button>
 </section>
@@ -69,7 +69,7 @@
       <section class="wrapper" v-else>
         <div class="wrap_Left">
 
-          <button class="join_1" v-on:click="join">
+          <button class="join_1 button-effect" v-on:click="join">
             {{uiLabels.participatePoll}}
           </button>
 
@@ -82,14 +82,14 @@
             v-bind:to="'/create/'+lang"
             v-slot="{href, navigate}"
             >
-            <button :href="href" @click="navigate" class="create">
+            <button :href="href" @click="navigate" class="create button-effect">
               {{uiLabels.createPoll}}
             </button>
           </router-link>
-          <button class="host_1" v-on:click="host">
+          <button class="host_1 button-effect" v-on:click="host">
             {{uiLabels.HostPoll}}
           </button>
-          <button class="result_1" v-on:click="result">
+          <button class="result_1 button-effect" v-on:click="result">
             {{uiLabels.CheckResult}}
           </button>
         </div>
@@ -299,6 +299,13 @@
       height: 15%;
       transform: translate(-50%,-20%);
       border-radius: 10px;
+    }
+    .button-effect{
+      transition: all 0.2s ease-in-out;
+    }
+    .button-effect:hover{
+      color: rgba(255, 255, 255, 1);
+      box-shadow: 0 5px 15px rgba(145, 92, 182, .8);
     }
     .result_1{
       font-size: 2vw;
