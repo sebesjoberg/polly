@@ -6,7 +6,7 @@
 v-bind:to="'/'"
 v-slot="{href, navigate}"
 >
-<button :href="href" @click="navigate" class="goBack">
+<button :href="href" @click="navigate" class="goBack_1">
   {{uiLabels.goBack}}
 </button></router-link>
 </section>
@@ -19,6 +19,13 @@ v-slot="{href, navigate}"
 <button class="setNick" v-on:click="setNickname">
   {{uiLabels.setNick}}
 </button>
+<router-link
+v-bind:to="'/'"
+v-slot="{href, navigate}"
+>
+<button :href="href" @click="navigate" class="goBack_2">
+  {{uiLabels.goBack}}
+</button></router-link>
 <button v-on:click="switchLanguage" class="changeLanguage">
   <img v-bind:src="getFlagUrl()"
   class="flag">{{uiLabels.changeLanguage}}</button>
@@ -34,6 +41,15 @@ v-slot="{href, navigate}"
 <section class="waitwrapper" v-else>
 <div class="wait">{{uiLabels.wait}}</div>
 <div class="loader"></div>
+<button class="newNick" v-on:click="newNick">
+  {{uiLabels.newNick}}</button>
+<router-link
+v-bind:to="'/'"
+v-slot="{href, navigate}"
+>
+<button :href="href" @click="navigate" class="goBack_3">
+  {{uiLabels.goBack}}
+</button></router-link>
 </section>
 
 
@@ -146,8 +162,9 @@ this.languages.push(b);
         this.onQuestion = false;
         this.result = false;
         socket.on("kick",(nickname)=>{
-          alert(this.uiLabels.kicked)
+
           if(nickname==this.nickname){
+            alert(this.uiLabels.kicked)
             setTimeout(function(){
             window.location.href = '/';
          }, 2000);
@@ -193,6 +210,7 @@ this.languages.push(b);
   display: flex;
   flex-direction: column;
 
+
 }
 .errorwrapper{
   background-color: #455879;
@@ -206,11 +224,11 @@ this.languages.push(b);
   color:white;
   border-radius: 10px;
   position:absolute;
-  left:50%;
+  left:60%;
   top:70%;
   width: 11.25%;
   height: 15%;
-  transform: translate(-50%,-70%);
+  transform: translate(-60%,-70%);
 }
 .nickName{
   font-size: 3vw;
@@ -236,12 +254,8 @@ this.languages.push(b);
   width:2vw;
   height:auto;
 }
-.wait{
-  font-size: 2vw;
-  color:white;
-  margin: auto;
-}
-.goBack{
+
+.goBack_1{
   font-size: 2vw;
   background-color:#0097a7;
   color:white;
@@ -251,6 +265,44 @@ this.languages.push(b);
   width:11.25%;
   height: 10%;
   position: absolute;
+}
+.goBack_2{
+  font-size: 2vw;
+  background-color: #0097a7;
+  color:white;
+  border-radius: 10px;
+  position:absolute;
+  left:40%;
+  top:70%;
+  width: 11.25%;
+  height: 15%;
+  transform: translate(-40%,-70%);
+}
+.goBack_3{
+  font-size: 2vw;
+  background-color: #0097a7;
+  color:white;
+  border-radius: 10px;
+  position: absolute;
+  left:30%;
+  top:50%;
+
+  width: 11.25%;
+  height: 15%;
+  transform: translate(-30%,-50%);
+}
+.newNick{
+  font-size: 2vw;
+  background-color: #0097a7;
+  color:white;
+  border-radius: 10px;
+  position: absolute;
+  left:70%;
+  top:50%;
+
+  width: 11.25%;
+  height: 15%;
+  transform: translate(-70%,-50%);
 }
 .error{
   font-size: 2vw;
@@ -263,6 +315,12 @@ this.languages.push(b);
   position: absolute;
   transform: translate(-50%,-50%);
 }
+.wait{
+  font-size: 2vw;
+  color:white;
+  margin: auto;
+
+}
 .loader {
 
   width: 10%;
@@ -271,6 +329,7 @@ this.languages.push(b);
   border-top-color: transparent;
   border-radius: 50%;
   margin: auto;
+
 
   animation: spin 2s linear infinite;
 }

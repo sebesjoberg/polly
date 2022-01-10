@@ -29,5 +29,6 @@
 	"delete": "Delete question",
 	"noCorrect": "No correct answer",
 	"aSmall": "One or more answers are blank",
-	"qSmall": "The question is blank"
+	"qSmall": "The question is blank",
+	"newNick": "Change nickname"
 }
