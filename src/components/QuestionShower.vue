@@ -23,7 +23,7 @@ export default {
   data: function(){
    return{
      Colors: ["blue", "red", "purple", "green"]
-     //mer färger om man vill ha fler än 4 frågor
+     //mer färger om man vill ha fler 
    }
   },
   created: function(){
