@@ -36,7 +36,7 @@
 
   <button class="endQuestion">{{uiLabels.endQuestion}}</button>
   <Question v-bind:question="question"
-            
+
             />
   <!--här ska frågan visas anväänd componenten -->
 </section>
@@ -53,13 +53,22 @@
 
 <script>
 import io from 'socket.io-client';
+import Question from '@/components/Question.vue';
 const socket = io();
 //i denna kan man lägga lite vad man vill på stängning och reloading så körs det
 //skulle ex kunna låta servern veta att man inte längre är host och att någon annan då kan ta den?
 
 export default {
+  components: {
+    Question
+  },
+
   data: function(){
     return{
+      question: {
+        q: "",
+        a: []
+      },
       leaderBoard:{nicknames:[],
       scores:[]    },
       pollId: "inactive poll",
