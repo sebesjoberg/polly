@@ -7,6 +7,7 @@ v-bind:style="{backgroundColor: this.Colors[i-1]}" class="answer">
   {{ question.a[i-1] }}
 </button>
 </div>
+<button class="endQuestion">{{uiLabels.endQuestion}}</button>
 </section>
 </template>
 <script>
@@ -14,7 +15,9 @@ v-bind:style="{backgroundColor: this.Colors[i-1]}" class="answer">
 export default {
   name: 'Bars',
   props: {
-    question: Object
+    question: Object,
+    uiLabels: Object
+
   },
   data: function(){
    return{
@@ -66,5 +69,9 @@ export default {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2,1fr);
 
+}
+
+.endQuestion{
+  background-color: pink;
 }
 </style>

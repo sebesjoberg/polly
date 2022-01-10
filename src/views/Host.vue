@@ -34,9 +34,9 @@
 
 <section class="onQuestion" v-else-if="this.onQuestion"> <!--allt som händer under en fråga -->
 
-  <button class="endQuestion">{{uiLabels.endQuestion}}</button>
-  <Question v-bind:question="question"
 
+  <Question v-bind:question="question"
+   v-bind:uiLabels='this.uiLabels'
             />
   <!--här ska frågan visas anväänd componenten -->
 </section>
