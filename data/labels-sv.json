@@ -39,5 +39,9 @@
 	"third": "3.",
 	"fourth": "4.",
 	"fifth": "5.",
+<<<<<<< HEAD
 	"myPoints": "Mina Poäng"
+=======
+	"nextQuestion":"Gå till nästa fråga"
+>>>>>>> 368b1cd7994a35ee8e610e8f7501156071b69a72
 }

@@ -24,6 +24,7 @@
           {{this.leaderBoard.scores[this.indexes[4]]}} {{uiLabels.points}}
       </div>
     </div>
+    <button class="nextQuestion" v-on:click="nextQuestion" v-if='this.cnr<this.totq'>{{uiLabels.nextQuestion}}</button>
 </section>
 </template>
 <script>
@@ -59,6 +60,9 @@ export default {
         }
     }
     return outp;
+},
+  nextQuestion: function () {
+    this.$emit("nextQuestion");
 }
  }
 }
@@ -89,5 +93,17 @@ cursor:pointer;
   color:white;
   font-size: 3vw;
   margin-top: 5%;
+}
+
+.nextQuestion{
+  background-color: #0097a7;
+  font-size: 20px;
+  color: white;
+  position: absolute;
+  width:11.25%;
+  height: 15%;
+  top:85%;
+  left:92%;
+  transform: translate(-85%,-92%);
 }
 </style>
