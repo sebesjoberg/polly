@@ -37,18 +37,19 @@ export default {
   created: function(){
 
     //Tagit baskod av timer från stackoverflow
-      var sec=0;
-      function pad ( val ) { return val > 9 ? val : "0" + val; }
+    var sec=0;
+    function pad ( val ) { return val > 9 ? val : "0" + val; }
 
-      setInterval( function(){
-          document.getElementById("seconds").innerHTML=pad(++sec);
-      }, 1000);
+    setInterval( function(){
+        document.getElementById("seconds").innerHTML=pad(++sec);
+    }, 1000);
 
 },
 
   methods: {
 
     endQuestion: function () {
+      clearInterval()
       this.$emit("endQuestion", );
     }
 
