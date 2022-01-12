@@ -1,28 +1,29 @@
 <template>
   <section class="wrapper">
     <div class="placing">
-      <div class="first">{{uiLabels.first}}: {{this.leaderBoard.nicknames[this.indexes[0]]}}
+      <div class="first">{{uiLabels.first}} {{this.leaderBoard.nicknames[this.indexes[0]]}}
         {{this.leaderBoard.scores[this.indexes[0]]}} {{uiLabels.points}}
       </div>
       <div class="second" v-if='this.leaderBoard.nicknames.length>1'>
-        {{uiLabels.second}}: {{this.leaderBoard.nicknames[this.indexes[1]]}}
+        {{uiLabels.second}} {{this.leaderBoard.nicknames[this.indexes[1]]}}
           {{this.leaderBoard.scores[this.indexes[1]]}} {{uiLabels.points}}
       </div>
       <div class="third" v-if='this.leaderBoard.nicknames.length>2'>
-        {{uiLabels.third}}: {{this.leaderBoard.nicknames[this.indexes[2]]}}
+        {{uiLabels.third}} {{this.leaderBoard.nicknames[this.indexes[2]]}}
           {{this.leaderBoard.scores[this.indexes[2]]}} {{uiLabels.points}}
       </div>
       <div class="fourth" v-if='this.leaderBoard.nicknames.length>3'>
-        {{uiLabels.fourth}}: {{this.leaderBoard.nicknames[this.indexes[3]]}}
+        {{uiLabels.fourth}} {{this.leaderBoard.nicknames[this.indexes[3]]}}
           {{this.leaderBoard.scores[this.indexes[3]]}} {{uiLabels.points}}
       </div>
       <div class="fifth" v-if='this.leaderBoard.nicknames.length>4'>
-        {{uiLabels.fifth}}: {{this.leaderBoard.nicknames[this.indexes[4]]}}
+        {{uiLabels.fifth}} {{this.leaderBoard.nicknames[this.indexes[4]]}}
           {{this.leaderBoard.scores[this.indexes[4]]}} {{uiLabels.points}}
       </div>
     </div>
     <div class="amountQuestions">
       {{this.totq}}
+      {{this.cnr}}
     </div>
 </section>
 </template>

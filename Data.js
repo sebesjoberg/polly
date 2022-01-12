@@ -170,5 +170,14 @@ Data.prototype.getQuestions = function(pollId) {
   return {}
 }
 
+Data.prototype.totq = function(pollId){
+  const poll = this.hostedpolls[pollId];
+  return poll.questions.length;
+}
+
+Data.prototype.getqnr = function(pollId){
+  const poll = this.hostedpolls[pollId];
+  return poll.currentQuestion+1;
+}
 
 module.exports = Data;
