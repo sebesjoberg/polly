@@ -78,7 +78,8 @@ function sockets(io, socket, data) {
 
   socket.on("endQuestion", function(pollId){
     io.to(pollId).emit("leaderboard",{l:data.getLeaderBoard(pollId),
-    totq: data.totq(pollId), qnr: data.getqnr(pollId)}
+    totq: data.totq(pollId), qnr: data.getqnr(pollId),
+    correctIndexes: data.getcorrindexes(pollId)}
   );
   })
 //kolla på denna vid nystart av quiz? reseta typ answers och så

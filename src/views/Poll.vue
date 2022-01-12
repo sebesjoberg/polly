@@ -42,7 +42,7 @@ v-slot="{href, navigate}"
              v-else-if="this.result"/>
 
 
-             
+
 <section class="waitwrapper" v-else>
 <div class="wait">{{uiLabels.wait}}</div>
 <div class="loader"></div>
@@ -84,6 +84,7 @@ export default {
       uiLabels:{},
       languages: ['en', 'sv'],
       invalid: true,
+      lastanswer:""
 
 
 
@@ -119,8 +120,12 @@ this.languages.push(b);
       });
       //server skickar leaderBoard vill vi visa den? kan ha if runt result
       socket.on("leaderboard", (d) => {
-
         this.leaderBoard=d.l;
+        if(d.correctIndexes.includes(this.lastanswer)){
+          this.correctAnswer=true;
+        }else{
+          this.correctAnswer=false;
+        }
         this.onQuestion=false;
         this.result=true;
       });//här får vi alla nickNames som är valda kan även användas till att kolla om pollen existerar
@@ -187,6 +192,7 @@ this.languages.push(b);
 
       socket.emit("submitAnswer", {pollId: this.pollId, index: index,
         nickname: this.nickname});
+      this.lastanswer=index;
       this.onQuestion = false;
       //gör så man får ett waitwindow medans man väntar på svar stora sitt svar någontstans
 

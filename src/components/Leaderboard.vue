@@ -1,5 +1,7 @@
 <template>
-  <section class="wrapper" id="wrapper">
+  <section class="wrapper" id='back'>
+    <div v-if='this.correctAnswer' class="wrong"> {{uiLabels.wrong}}</div>
+    <div v-else class="right"> {{uiLabels.right}}</div>
     <div class="placing">
       <div class="first">{{uiLabels.first}} {{this.leaderBoard.nicknames[this.indexes[0]]}}
         {{this.leaderBoard.scores[this.indexes[0]]}} {{uiLabels.points}}
@@ -45,12 +47,6 @@ export default {
  created: function(){//put logic to get the indexes of the first 5 places and ourself
   this.indexes=this.findIndicesOfMax(this.leaderBoard.scores, 5);
   this.self=this.leaderBoard.nicknames.indexOf(this.nickname);
-  if(this.correctAnswer){
-  document.body.style.backgroundColor = "green";
-}else{
-  document.body.style.backgroundColor = "red";
-}
-
 },
  methods: {
    //findIndicesOfMax tagen från stackO
@@ -74,6 +70,7 @@ button:hover{
 cursor:pointer;
 }
 .wrapper{
+  background-color: #455879;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -82,11 +79,36 @@ cursor:pointer;
   color: white;
   font-size: 4vw;
   display: grid;
+  position:absolute;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: repeat(6, 1fr);
   width: 100%;
-  height: 100%;
-  margin-top: 10%;
+  height: 75%;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+.wrong{
+  font-size: 3vw;
+  background-color: red;
+  color: white;
+  width:100%;
+  height:10%;
+  position: absolute;
+  top:2.5%;
+  left:50%;
+  transform: translate(-50%,-2.5%);
+}
+.right{
+  font-size: 3vw;
+  background-color: green;
+  color: white;
+  width:100%;
+  height:10%;
+  position: absolute;
+  top:2.5%;
+  left:50%;
+  transform: translate(-50%,-2.5%);
 }
 
 

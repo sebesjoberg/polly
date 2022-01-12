@@ -180,4 +180,9 @@ Data.prototype.getqnr = function(pollId){
   return poll.currentQuestion+1;
 }
 
+Data.prototype.getcorrindexes = function(pollId){
+   const poll = this.hostedpolls[pollId];
+   return poll.questions[poll.currentQuestion].i
+}
+
 module.exports = Data;
