@@ -28,7 +28,7 @@
     <!--Denna section innehåller Host -->
     <section class="host_wrapper" v-else-if="this.clickedhost">
       <div class="input_2">
-        <label for="input_2">{{uiLabels.inputId}}</label><br>
+        <label for="input_2">{{uiLabels.pollName}}</label><br>
         <input v-model="id" type="text" class="input_2" >
       </div>
       <router-link

@@ -5,7 +5,7 @@
 
       <!--  här kanske det måste börjas om? dumt att ha en som bestämmer storlek
     kan man inte låta varje objekt få sin storlek för sig-->
-      <input type="text" class="pollId" v-model="pollId" placeholder="Poll name">
+      <input type="text" class="pollId" v-model="pollId" v-bind:placeholder='uiLabels.pollName'>
       <button class="load button-effect" v-on:click="createPoll"> {{uiLabels.loadPoll}} </button>
       <label class="label" for="grid" v-if='this.data.questions.length>0'>{{uiLabels.questions}}</label>
       <div class="grid">

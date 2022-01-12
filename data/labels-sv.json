@@ -31,5 +31,6 @@
 	"aSmall": "Ett eller flera svar är blanka",
 	"qSmall": "Frågan är blank",
 	"newNick": "Ändra smeknamn",
-	"endQuestion": "Avsluta frågan"
+	"endQuestion": "Avsluta frågan",
+	"pollName": "Poll namn"
 }
