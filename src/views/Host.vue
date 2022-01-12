@@ -29,9 +29,12 @@
 
 
 
-<section class="betweenQuestion" v-else-if="this.betweenQuestion"> <!--allt mellan frågor -->
-  awhehsajl
-</section>
+<LeaderBoard v-else-if="this.betweenQuestion"
+v-bind:leaderBoard='this.leaderBoard'
+v-bind:correctAnswer="false"
+v-bind:uiLabels='this.uiLabels'/> <!--allt mellan frågor -->
+
+
 
 
 <section class="onQuestion" v-else-if="this.onQuestion">
@@ -58,13 +61,15 @@
 <script>
 import io from 'socket.io-client';
 import Question from '@/components/QuestionShower.vue';
+import LeaderBoard from '@/components/Leaderboard.vue';
 const socket = io();
 //i denna kan man lägga lite vad man vill på stängning och reloading så körs det
 //skulle ex kunna låta servern veta att man inte längre är host och att någon annan då kan ta den?
 
 export default {
   components: {
-    Question
+    Question,
+    LeaderBoard
   },
 
   data: function(){
@@ -110,6 +115,11 @@ export default {
             }else{
             this.invalid=true;
           }})
+    socket.on("leaderboard", (l) =>{
+      this.leaderBoard=l
+      this.betweenQuestion = true
+      this.onQuestion = false
+    })
         },
         methods: {
           nextQuestion: function(){
@@ -129,9 +139,8 @@ export default {
             pollId: this.pollId});
           },
           endQuestion: function(){
-            socket.emit("endQuestion", )
-            this.betweenQuestion = true
-            this.onQuestion = false
+            socket.emit("endQuestion", this.pollId )
+
 
           }
         }

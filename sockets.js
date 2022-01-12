@@ -75,6 +75,11 @@ function sockets(io, socket, data) {
     io.to(d.pollId).emit("kick",d.nickname);
     io.to(d.pollId).emit('nickNames',data.getnickNames(d.pollId));
   });
+
+  socket.on("endQuestion", function(pollId){
+    console.log(data.getLeaderBoard(pollId))
+    io.to(pollId).emit("leaderboard",data.getLeaderBoard(pollId));
+  })
 //kolla på denna vid nystart av quiz? reseta typ answers och så
   socket.on('resetAll', () => {
     data = new Data();

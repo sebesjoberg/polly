@@ -22,6 +22,7 @@ export default {
  },
  created: function(){//put logic to get the indexes of the first 5 places and ourself
   this.indexes=this.findIndicesOfMax(this.leaderBoard.scores, 5)
+
  },
  methods: {
    //findIndicesOfMax tagen från stackO

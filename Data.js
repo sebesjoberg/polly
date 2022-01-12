@@ -103,7 +103,7 @@ Data.prototype.getAnswers = function(pollId) {
 Data.prototype.getLeaderBoard = function(pollId){
   const poll = this.hostedpolls[pollId];
   if(typeof poll !== 'undefined'){
-  return this.polls[pollId].leaderBoard;}
+  return poll.leaderBoard;}
   else{
     return {}
   }
