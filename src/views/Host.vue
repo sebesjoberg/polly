@@ -60,7 +60,7 @@ v-bind:uiLabels='this.uiLabels'/> <!--allt mellan frågor -->
 <script>
 import io from 'socket.io-client';
 import Question from '@/components/QuestionShower.vue';
-import LeaderBoard from '@/components/Leaderboard.vue';
+import LeaderBoard from '@/components/LeaderboardShower.vue';
 const socket = io();
 //i denna kan man lägga lite vad man vill på stängning och reloading så körs det
 //skulle ex kunna låta servern veta att man inte längre är host och att någon annan då kan ta den?

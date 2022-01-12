@@ -1,23 +1,7 @@
 <template>
   <section class="wrapper">
-  <div class="first">{{uiLabels.first}}: {{this.leaderBoard.nicknames[this.indexes[0]]}}
+  <div class="1st">{{uiLabels.first}}: {{this.leaderBoard.nicknames[this.indexes[0]]}}
     {{this.leaderBoard.scores[this.indexes[0]]}} {{uiLabels.points}}
-  </div>
-  <div class="second">
-    {{uiLabels.second}}: {{this.leaderBoard.nicknames[this.indexes[1]]}}
-      {{this.leaderBoard.scores[this.indexes[1]]}} {{uiLabels.points}}
-  </div>
-  <div class="third">
-    {{uiLabels.third}}: {{this.leaderBoard.nicknames[this.indexes[2]]}}
-      {{this.leaderBoard.scores[this.indexes[2]]}} {{uiLabels.points}}
-  </div>
-  <div class="fourth">
-    {{uiLabels.fourth}}: {{this.leaderBoard.nicknames[this.indexes[3]]}}
-      {{this.leaderBoard.scores[this.indexes[3]]}} {{uiLabels.points}}
-  </div>
-  <div class="fifth">
-    {{uiLabels.fifth}}: {{this.leaderBoard.nicknames[this.indexes[4]]}}
-      {{this.leaderBoard.scores[this.indexes[4]]}} {{uiLabels.points}}
   </div>
 </section>
 </template>
@@ -27,17 +11,20 @@ export default {
   name: 'Bars',
   props: {
     leaderBoard: Object,
-    uiLabels: Object
+    correctAnswer: Boolean,
+    uiLabels: Object,
+    nickname: String
   },
 
   data: function(){
    return{
-     indexes:[]
+     indexes:[],
+     self:""
    }
  },
  created: function(){//put logic to get the indexes of the first 5 places and ourself
   this.indexes=this.findIndicesOfMax(this.leaderBoard.scores, 5)
-
+  this.self=this.leaderBoard.indexOf(this.nickname)
  },
  methods: {
    //findIndicesOfMax tagen från stackO
@@ -65,9 +52,5 @@ cursor:pointer;
   position: fixed;
   width: 100%;
   height: 100%;
-}
-
-.first{
-
 }
 </style>
