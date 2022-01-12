@@ -24,6 +24,7 @@ export default {
   this.indexes=this.findIndicesOfMax(this.leaderBoard.scores, 5)
  },
  methods: {
+   //findIndicesOfMax tagen från stackO
    findIndicesOfMax: function (inp, count) {
     var outp = [];
     for (var i = 0; i < inp.length; i++) {
