@@ -77,7 +77,7 @@ function sockets(io, socket, data) {
   });
 
   socket.on("endQuestion", function(pollId){
-    console.log(data.getLeaderBoard(pollId))
+    
     io.to(pollId).emit("leaderboard",data.getLeaderBoard(pollId));
   })
 //kolla på denna vid nystart av quiz? reseta typ answers och så
