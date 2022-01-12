@@ -27,7 +27,6 @@ export default {
   name: 'Bars',
   props: {
     leaderBoard: Object,
-    correctAnswer: Boolean,
     uiLabels: Object
   },
 

@@ -31,7 +31,6 @@
 
 <LeaderBoard v-else-if="this.betweenQuestion"
 v-bind:leaderBoard='this.leaderBoard'
-v-bind:correctAnswer="false"
 v-bind:uiLabels='this.uiLabels'/> <!--allt mellan frågor -->
 
 
