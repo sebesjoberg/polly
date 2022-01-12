@@ -7,7 +7,14 @@ v-bind:style="{backgroundColor: this.Colors[i-1]}" class="answer">
   {{ question.a[i-1] }}
 </button>
 </div>
-<button class="endQuestion" v-on:click="endQuestion">{{uiLabels.endQuestion}}{{this.participants}}</button>
+<button class="endQuestion" v-on:click="endQuestion">{{uiLabels.endQuestion}}</button>
+<div class="players">
+  {{this.participants}}
+</div>
+<div class="clock">
+  <span id="seconds"></span>
+</div>
+
 </section>
 </template>
 <script>
@@ -22,11 +29,20 @@ export default {
   },
   data: function(){
    return{
-     Colors: ["blue", "red", "purple", "green"]
+     Colors: ["blue", "red", "purple", "green"],
      //mer färger om man vill ha fler
    }
   },
+
   created: function(){
+
+    //Tagit baskod av timer från stackoverflow
+    var sec=0;
+      function pad ( val ) { return val > 9 ? val : "0" + val; }
+      setInterval( function(){
+          document.getElementById("seconds").innerHTML=pad(++sec);
+      }, 1000);
+
 },
 
   methods: {
@@ -37,7 +53,9 @@ export default {
 
   }
 }
+
 </script>
+
 <style lang="css" scoped>
 button:hover{
 cursor:pointer;
@@ -79,12 +97,32 @@ cursor:pointer;
 }
 
 .endQuestion{
-  background-color: pink;
+  background-color: #0097a7;
+  color: white;
   position: absolute;
   width:11.25%;
   height: 15%;
-  top:20%;
-  left:80%;
-  transform: translate(-20%,-80%);
+  top:37%;
+  left:88%;
+  transform: translate(-37%,-88%);
 }
+
+.players{
+  color: white;
+  position: absolute;
+  font-size: 100px;
+  top:60%;
+  left:90%;
+  transform: translate(-60%,-90%);
+}
+
+.clock{
+  color: white;
+  position: absolute;
+  font-size: 100px;
+  top:80%;
+  left:92%;
+  transform: translate(-80%,-92%);
+}
+
 </style>
