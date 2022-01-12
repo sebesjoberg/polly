@@ -1,7 +1,7 @@
 <template>
-  <section>
+  <section class="wrapper">
     <div class="placing">
-      <div class="first">{{uiLabels.first}} {{this.leaderBoard.nicknames[this.indexes[0]]}}
+      <div class="first" v-if='this.leaderBoard.nicknames.length>0'>{{uiLabels.first}} {{this.leaderBoard.nicknames[this.indexes[0]]}}
         {{this.leaderBoard.scores[this.indexes[0]]}} {{uiLabels.points}}
       </div>
       <div class="second" v-if='this.leaderBoard.nicknames.length>1'>
@@ -19,6 +19,25 @@
       <div class="fifth" v-if='this.leaderBoard.nicknames.length>4'>
         {{uiLabels.fifth}} {{this.leaderBoard.nicknames[this.indexes[4]]}}
           {{this.leaderBoard.scores[this.indexes[4]]}} {{uiLabels.points}}
+      </div>
+      <div class="sixth" v-if='this.leaderBoard.nicknames.length>5'>{{uiLabels.first}} {{this.leaderBoard.nicknames[this.indexes[5]]}}
+        {{this.leaderBoard.scores[this.indexes[5]]}} {{uiLabels.points}}
+      </div>
+      <div class="svth" v-if='this.leaderBoard.nicknames.length>6'>
+        {{uiLabels.second}} {{this.leaderBoard.nicknames[this.indexes[6]]}}
+          {{this.leaderBoard.scores[this.indexes[6]]}} {{uiLabels.points}}
+      </div>
+      <div class="eigth" v-if='this.leaderBoard.nicknames.length>7'>
+        {{uiLabels.third}} {{this.leaderBoard.nicknames[this.indexes[7]]}}
+          {{this.leaderBoard.scores[this.indexes[7]]}} {{uiLabels.points}}
+      </div>
+      <div class="ninth" v-if='this.leaderBoard.nicknames.length>8'>
+        {{uiLabels.fourth}} {{this.leaderBoard.nicknames[this.indexes[8]]}}
+          {{this.leaderBoard.scores[this.indexes[8]]}} {{uiLabels.points}}
+      </div>
+      <div class="tenth" v-if='this.leaderBoard.nicknames.length>9'>
+        {{uiLabels.fifth}} {{this.leaderBoard.nicknames[this.indexes[9]]}}
+          {{this.leaderBoard.scores[this.indexes[9]]}} {{uiLabels.points}}
       </div>
     </div>
   </section>
@@ -60,7 +79,7 @@ this.languages.push(b);
     socket.emit("result",this.pollId)
     socket.on("rresult", (leaderboard) => {
       this.leaderBoard=leaderboard;
-      this.indexes=this.findIndicesOfMax(this.leaderBoard.scores, 5);
+      this.indexes=this.findIndicesOfMax(this.leaderBoard.scores, 10);
 
     })
   },
@@ -85,10 +104,20 @@ button:hover{
 cursor:pointer;
 }
 .wrapper {
+    background-color: #455879;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+
+}
+.placing{
+  color: white;
+  font-size: 4vw;
   display: grid;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
-  background-color: #455879;
+  position:absolute;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  width: 100%;
+  height: 100%;
 }
 </style>
