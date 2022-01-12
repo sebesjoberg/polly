@@ -1,7 +1,7 @@
 <template>
   <section class="wrapper" id='back'>
-    <div v-if='this.correctAnswer' class="wrong"> {{uiLabels.wrong}}</div>
-    <div v-else class="right"> {{uiLabels.right}}</div>
+    <div v-if='this.correctAnswer' class="right"> {{uiLabels.right}}</div>
+    <div v-else class="wrong"> {{uiLabels.wrong}}</div>
     <div class="placing">
       <div class="first">{{uiLabels.first}} {{this.leaderBoard.nicknames[this.indexes[0]]}}
         {{this.leaderBoard.scores[this.indexes[0]]}} {{uiLabels.points}}
