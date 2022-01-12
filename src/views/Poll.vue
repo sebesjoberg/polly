@@ -35,10 +35,14 @@ v-slot="{href, navigate}"
           v-on:answer="submitAnswer"
           v-else-if="this.onQuestion"/>
 
-<LeaderBoard v-bind:leaderBoard="leaderBoard"
-             v-bind:correctAnswer="correctAnswer"
+<LeaderBoard v-bind:leaderBoard='this.leaderBoard'
+             v-bind:correctAnswer='this.correctAnswer'
              v-bind:uiLabels='this.uiLabels'
+             v-bind:nickname='this.nickname'
              v-else-if="this.result"/>
+
+
+             
 <section class="waitwrapper" v-else>
 <div class="wait">{{uiLabels.wait}}</div>
 <div class="loader"></div>
@@ -114,9 +118,9 @@ this.languages.push(b);
         }
       });
       //server skickar leaderBoard vill vi visa den? kan ha if runt result
-      socket.on("leaderBoard", (d) => {
+      socket.on("leaderboard", (d) => {
+
         this.leaderBoard=d.l;
-        this.lobby=false;
         this.onQuestion=false;
         this.result=true;
       });//här får vi alla nickNames som är valda kan även användas till att kolla om pollen existerar

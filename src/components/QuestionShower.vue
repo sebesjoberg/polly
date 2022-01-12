@@ -29,7 +29,7 @@ export default {
   },
   data: function(){
    return{
-     Colors: ["blue", "red", "purple", "green"],
+     Colors: ["blue", "red", "purple", "green"]
      //mer färger om man vill ha fler
    }
   },
@@ -38,7 +38,9 @@ export default {
 
     //Tagit baskod av timer från stackoverflow
     var sec=0;
+
       function pad ( val ) { return val > 9 ? val : "0" + val; }
+
       setInterval( function(){
           document.getElementById("seconds").innerHTML=pad(++sec);
       }, 1000);

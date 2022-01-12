@@ -1,7 +1,7 @@
 <template>
-  <section class="wrapper">
+  <section class="wrapper" id="wrapper">
     <div class="placing">
-      <div class="first">{{uiLabels.first}}: {{this.leaderBoard.nicknames[this.indexes[0]]}}
+      <div class="first">{{uiLabels.first}} {{this.leaderBoard.nicknames[this.indexes[0]]}}
         {{this.leaderBoard.scores[this.indexes[0]]}} {{uiLabels.points}}
       </div>
       <div class="second" v-if='this.leaderBoard.nicknames.length>1'>
@@ -43,13 +43,15 @@ export default {
    }
  },
  created: function(){//put logic to get the indexes of the first 5 places and ourself
-  this.indexes=this.findIndicesOfMax(this.leaderBoard.scores, 5)
-  this.self=this.leaderBoard.indexOf(this.nickname)
-  var r = document.querySelector(':root');
-if(this.correctAnswer){
-  r.style.setProperty("--my-var","Green");
+  this.indexes=this.findIndicesOfMax(this.leaderBoard.scores, 5);
+  this.self=this.leaderBoard.nicknames.indexOf(this.nickname);
+  if(this.correctAnswer){
+  document.body.style.backgroundColor = "green";
+}else{
+  document.body.style.backgroundColor = "red";
 }
- },
+
+},
  methods: {
    //findIndicesOfMax tagen från stackO
    findIndicesOfMax: function (inp, count) {
@@ -58,7 +60,6 @@ if(this.correctAnswer){
         outp.push(i); // add index to output array
         outp.sort(function(a, b) { return inp[b] - inp[a]; }); // descending sort the output array
         if (outp.length > count) {
-
             outp.pop(); // remove the last index (index of smallest element in output array)
         }
     }
@@ -68,14 +69,11 @@ if(this.correctAnswer){
 }
 </script>
 <style lang="css" scoped>
-:root {
-  --bg-color:red;
-}
+
 button:hover{
 cursor:pointer;
 }
 .wrapper{
-  background-color: var(--bg-color);
   position: fixed;
   width: 100%;
   height: 100%;
@@ -90,4 +88,6 @@ cursor:pointer;
   height: 100%;
   margin-top: 10%;
 }
+
+
 </style>
