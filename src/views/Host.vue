@@ -33,7 +33,8 @@
 v-bind:leaderBoard='this.leaderBoard'
 v-bind:uiLabels='this.uiLabels'
 v-bind:totq='this.totQuestion'
-v-bind:cnr='this.currentQuestion'/> <!--allt mellan frågor -->
+v-bind:cnr='this.currentQuestion'
+v-on:nextQuestion='nextQuestion'/>
 
 
 
@@ -144,12 +145,12 @@ export default {
           },
           endQuestion: function(){
             socket.emit("endQuestion", this.pollId )
-
+            }
 
           }
         }
 
-}
+
 
 </script>
 
