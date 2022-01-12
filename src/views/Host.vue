@@ -88,10 +88,13 @@ export default {
     }
   },
     created: function () {
-    this.pollId = this.$route.params.id
+
     socket.emit("pageLoaded", this.lang || "en");
 
-    socket.emit('hostPoll', this.pollId)
+    socket.emit('hostPoll', this.$route.params.id)
+    socket.on('hosted', (Id) => {
+      this.pollId=Id;
+    })
     socket.on("init", (labels) => {
       this.uiLabels = labels
     })

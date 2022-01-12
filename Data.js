@@ -24,9 +24,7 @@ Data.prototype.createPoll = function(pollId, lang="en") {
     let poll = {};
     poll.lang = lang;
     poll.questions = [];
-    poll.joinable=true; //använd joinable till att se om man kan joina kanske ej är det
-    //då den körs?
-    poll.hostable=true;
+
     poll.answers = [];
     poll.currentQuestion = -1;
     poll.leaderBoard={nicknames: [], scores:[]};
@@ -57,7 +55,7 @@ Data.prototype.deleteQuestion = function(pollId, index) {
 }
 
 Data.prototype.nextQuestion = function(pollId) {
-  const poll = this.polls[pollId];
+  const poll = this.hostedpolls[pollId];
   if (typeof poll !== 'undefined') {
     poll.currentQuestion +=1;
     return poll.questions[poll.currentQuestion];
@@ -67,7 +65,7 @@ Data.prototype.nextQuestion = function(pollId) {
 }
 
 Data.prototype.submitAnswer = function(pollId, index, nickname) {
-  const poll = this.polls[pollId];
+  const poll = this.hostedpolls[pollId];
 
   console.log(typeof poll.questions[poll.currentQuestion].a)
   const answer = poll.questions[poll.currentQuestion].a[index];
@@ -92,7 +90,7 @@ if (typeof poll !== 'undefined') {
 
 
 Data.prototype.getAnswers = function(pollId) {
-  const poll = this.polls[pollId];
+  const poll = this.hostedpolls[pollId];
   if (typeof poll !== 'undefined') {
     const answers = poll.answers[poll.currentQuestion];
     if (typeof poll.questions[poll.currentQuestion] !== 'undefined') {
@@ -103,7 +101,7 @@ Data.prototype.getAnswers = function(pollId) {
 }
 
 Data.prototype.getLeaderBoard = function(pollId){
-  const poll = this.polls[pollId];
+  const poll = this.hostedpolls[pollId];
   if(typeof poll !== 'undefined'){
   return this.polls[pollId].leaderBoard;}
   else{
@@ -112,7 +110,7 @@ Data.prototype.getLeaderBoard = function(pollId){
 }
 
 Data.prototype.getnickNames = function(pollId){
-  const poll = this.polls[pollId];
+  const poll = this.hostedpolls[pollId];
 
   if(typeof poll !== 'undefined'){
   return poll.leaderBoard.nicknames;}
@@ -122,7 +120,7 @@ Data.prototype.getnickNames = function(pollId){
 }
 
 Data.prototype.setNickname = function(d){
-  const poll = this.polls[d.pollId];
+  const poll = this.hostedpolls[d.pollId];
   if(typeof poll !== 'undefined'){
     poll.leaderBoard.nicknames.push(d.nickname);
     poll.leaderBoard.scores.push(0);
@@ -131,7 +129,7 @@ Data.prototype.setNickname = function(d){
 }
 
 Data.prototype.joinable = function(pollId){
-  const poll = this.polls[pollId];
+  const poll = this.hostedpolls[pollId];
   if(typeof poll!=='undefined'){
   return poll.joinable;
 }else{
@@ -139,23 +137,17 @@ Data.prototype.joinable = function(pollId){
 }
 }
 
-Data.prototype.hostable = function(pollId){
-  const poll = this.polls[pollId];
-  if(typeof poll!=='undefined'){
-  return poll.hostable;
-}else{
-  return false;
-}
-}
 
-Data.prototype.hosted = function(pollId){
+
+Data.prototype.host = function(pollId){
   const poll = this.polls[pollId];
-  poll.hostable=false;
-  poll.joinable=true;
+  this.hostedpolls.push(poll)
+  let num = this.hostedpolls.length-1
+  return num.toString();
 }
 
 Data.prototype.removeNick = function(d){
-  const poll = this.polls[d.pollId];
+  const poll = this.hostedpolls[d.pollId];
   if(typeof poll!=='undefined'){
 
   const index = poll.leaderBoard.nicknames.indexOf(d.nickname)
@@ -165,17 +157,7 @@ Data.prototype.removeNick = function(d){
   poll.leaderBoard.scores.splice(index,1)
 }}}
 
-Data.prototype.resetPoll = function(pollId){
-  const poll = this.polls[pollId];
-  if(typeof poll!=='undefined'){
-  poll.leaderBoard={nicknames: [], scores:[]};
-  poll.joinable=false;
-  poll.hostable=true;
-  poll.answers = [];
-  poll.currentQuestion=0;
-}
 
-}
 
 Data.prototype.getQuestions = function(pollId) {
   const poll = this.polls[pollId];

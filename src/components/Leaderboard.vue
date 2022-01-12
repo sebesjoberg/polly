@@ -1,7 +1,7 @@
 <template>
   <section class="wrapper">
-  <div class="1st">{{uiLabels.first}}: {{this.leaderBoard.nicknames[0]}}
-    {{this.leaderBoard.scores[0]}} {{uiLabels.points}}
+  <div class="1st">{{uiLabels.first}}: {{this.leaderBoard.nicknames[this.indexes[0]]}}
+    {{this.leaderBoard.scores[this.indexes[0]]}} {{uiLabels.points}}
   </div>
 </section>
 </template>

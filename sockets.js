@@ -27,25 +27,26 @@ function sockets(io, socket, data) {
 
   socket.on('joinPoll', function(pollId) {
 
-    if(data.joinable(pollId)){
+
       socket.join(pollId);
     io.to(pollId).emit('nickNames',data.getnickNames(pollId));
-  }
+
 });
 
 
   socket.on('hostPoll', function(pollId){
-    if(data.hostable(pollId)){
 
-   socket.join(pollId)
-   io.to(pollId).emit('nickNames',data.getnickNames(pollId));
- }
+     let Id=data.host(pollId)
+   socket.join(Id)
+   io.to(Id).emit('hosted',Id);
+   io.to(Id).emit('nickNames',data.getnickNames(Id));
+
   });
 
   socket.on('closePoll',function(pollId){
 
     const nicknames=data.getnickNames(pollId);
-    data.resetPoll(pollId)
+
 
     for(let i in nicknames){
      let nick=nicknames[i];
@@ -65,6 +66,7 @@ function sockets(io, socket, data) {
 
   socket.on('setNickname',function(d){
   data.setNickname(d);
+
   io.to(d.pollId).emit('nickNames',data.getnickNames(d.pollId));
   });
 
