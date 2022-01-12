@@ -87,7 +87,10 @@ function sockets(io, socket, data) {
     data = new Data();
     data.initializeData();
   })
-
+  socket.on('result', function(pollId){
+    socket.join(pollId);
+    io.to(pollId).emit("rresult", data.getLeaderBoard(pollId))
+  })
 }
 
 module.exports = sockets;

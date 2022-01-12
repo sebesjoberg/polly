@@ -1,41 +1,67 @@
 <template>
-  <div class="wrapper">
-    <div>
-      {{question}}
+  <section>
+    <div class="placing">
+      <div class="first">{{uiLabels.first}} {{this.leaderBoard.nicknames[this.indexes[0]]}}
+        {{this.leaderBoard.scores[this.indexes[0]]}} {{uiLabels.points}}
+      </div>
+      <div class="second" v-if='this.leaderBoard.nicknames.length>1'>
+        {{uiLabels.second}} {{this.leaderBoard.nicknames[this.indexes[1]]}}
+          {{this.leaderBoard.scores[this.indexes[1]]}} {{uiLabels.points}}
+      </div>
+      <div class="third" v-if='this.leaderBoard.nicknames.length>2'>
+        {{uiLabels.third}} {{this.leaderBoard.nicknames[this.indexes[2]]}}
+          {{this.leaderBoard.scores[this.indexes[2]]}} {{uiLabels.points}}
+      </div>
+      <div class="fourth" v-if='this.leaderBoard.nicknames.length>3'>
+        {{uiLabels.fourth}} {{this.leaderBoard.nicknames[this.indexes[3]]}}
+          {{this.leaderBoard.scores[this.indexes[3]]}} {{uiLabels.points}}
+      </div>
+      <div class="fifth" v-if='this.leaderBoard.nicknames.length>4'>
+        {{uiLabels.fifth}} {{this.leaderBoard.nicknames[this.indexes[4]]}}
+          {{this.leaderBoard.scores[this.indexes[4]]}} {{uiLabels.points}}
+      </div>
     </div>
-    <Bars v-bind:data="data"/>
-  </div>
+  </section>
+
 </template>
 
 <script>
 // @ is an alias to /src
-import Bars from '@/components/Bars.vue';
 import io from 'socket.io-client';
 const socket = io();
 
 export default {
   name: 'Result',
-  components: {
-    Bars
-  },
+
   data: function () {
     return {
-      question: "",
-      data: {
-      }
+      leaderBoard:{nicknames:[],
+      scores:[]    },
+      indexes: [],
+      uiLabels:{}
     }
   },
   created: function () {
     this.pollId = this.$route.params.id
-    socket.emit('joinPoll', this.pollId)
-    socket.on("dataUpdate", (update) => {
-      this.data = update.a;
-      this.question = update.q;
-    });
-    socket.on("newQuestion", update => {
-      this.question = update.q;
-      this.data = {};
+    socket.emit("result",this.pollId)
+    socket.on("rresult", (leaderboard) => {
+      this.leaderboard=leaderboard;
+      this.indexes=this.findIndicesOfMax(this.leaderBoard.scores, 5);
+      alert(this.leaderBoard.scores)
     })
+  },
+  methods: {
+    findIndicesOfMax: function (inp, count) {
+     var outp = [];
+     for (var i = 0; i < inp.length; i++) {
+         outp.push(i); // add index to output array
+         outp.sort(function(a, b) { return inp[b] - inp[a]; }); // descending sort the output array
+         if (outp.length > count) {
+             outp.pop(); // remove the last index (index of smallest element in output array)
+         }
+     }
+     return outp;
+ }
   }
 }
 </script>
