@@ -69,27 +69,27 @@
       <section class="wrapper" v-else>
         <div class="wrap_Left">
 
-          <button class="join_1 button-effect" v-on:click="join">
+          <button class="join_1 button-effect face" v-on:click="join">
             {{uiLabels.participatePoll}}
           </button>
 
         </div>
         <div class="wrap_Right">
-          <button v-on:click="switchLanguage" class="changeLanguage_1">
+          <button v-on:click="switchLanguage" class="changeLanguage_1 face">
             <img v-bind:src="getFlagUrl()"
             class="flag">{{uiLabels.changeLanguage}}</button>
             <router-link
             v-bind:to="'/create/'+lang"
             v-slot="{href, navigate}"
             >
-            <button :href="href" @click="navigate" class="create button-effect">
+            <button :href="href" @click="navigate" class="create button-effect face">
               {{uiLabels.createPoll}}
             </button>
           </router-link>
-          <button class="host_1 button-effect" v-on:click="host">
+          <button class="host_1 button-effect face" v-on:click="host">
             {{uiLabels.HostPoll}}
           </button>
-          <button class="result_1 button-effect" v-on:click="result">
+          <button class="result_1 button-effect face" v-on:click="result">
             {{uiLabels.CheckResult}}
           </button>
         </div>
@@ -158,8 +158,34 @@
       }
     }
     </script>
+
     <style lang="css" scoped>
     @import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
+    .wrapper:hover
+      .face {
+        animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+      }
+
+    @keyframes shake {
+      10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+      }
+
+      20%, 80% {
+        transform: translate3d(2px, 0, 0);
+      }
+
+      30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+      }
+
+      40%, 60% {
+        transform: translate3d(4px, 0, 0);
+      }
+    }
     button:hover{
     cursor:pointer;
     }
@@ -221,11 +247,11 @@
       color:white;
       border-radius: 10px;
       position:absolute;
-      left:50%;
-      top:50%;
+      left:40%;
+      top:40%;
       width:22.5%;
       height: 15%;
-      transform: translate(-50%,-50%);
+
     }
     .join_2{
       font-size: 2vw;
@@ -245,11 +271,10 @@
       background-color: #455879;
       color:white;
       position:absolute;
-      left:50%;
-      top:50%;
+      left:40%;
+      top:45%;
       width:22.5%;
       height: 15%;
-      transform: translate(-50%,-50%);
       border-radius: 10px;
     }
     .host_result{
@@ -293,11 +318,10 @@
       background-color: #455879;
       color:white;
       position:absolute;
-      left:50%;
+      left:40%;
       top:20%;
       width:22.5%;
       height: 15%;
-      transform: translate(-50%,-20%);
       border-radius: 10px;
     }
     .button-effect{
@@ -312,11 +336,10 @@
       background-color: #455879;
       color:white;
       position:absolute;
-      left:50%;
-      top:80%;
+      left:40%;
+      top:70%;
       width:22.5%;
       height: 15%;
-      transform: translate(-50%,-80%);
       border-radius: 10px;
     }
     .input_1{
@@ -362,6 +385,5 @@
       width:2vw;
       height:auto;
     }
-
 
     </style>
