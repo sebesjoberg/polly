@@ -7,7 +7,7 @@ v-bind:style="{backgroundColor: this.Colors[i-1]}" class="answer">
   {{ question.a[i-1] }}
 </button>
 </div>
-<button class="endQuestion" v-on:click="endQuestion">{{uiLabels.endQuestion}}</button>
+<button class="endQuestion button-effect" v-on:click="endQuestion">{{uiLabels.endQuestion}}</button>
 <div class="players">
   {{this.participants}}
 </div>
@@ -128,6 +128,14 @@ cursor:pointer;
   top:80%;
   left:92%;
   transform: translate(-80%,-92%);
+}
+
+.button-effect{
+  transition: all 0.2s ease-in-out;
+}
+.button-effect:hover{
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 5px 15px rgba(145, 92, 182, .8);
 }
 
 </style>
