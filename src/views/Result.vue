@@ -38,11 +38,25 @@ export default {
       leaderBoard:{nicknames:[],
       scores:[]    },
       indexes: [],
-      uiLabels:{}
+      lang:'en',
+      uiLabels:{},
+      languages: ['en', 'sv'],
     }
   },
   created: function () {
     this.pollId = this.$route.params.id
+    if(this.languages.includes(this.$route.params.lang)){
+    this.lang = this.$route.params.lang;
+  }
+  while(this.lang!==this.languages[0]){
+var b = this.languages.shift();
+this.languages.push(b);
+}
+
+    socket.emit("pageLoaded", this.lang);
+    socket.on("init", (labels) => {
+      this.uiLabels = labels
+    })
     socket.emit("result",this.pollId)
     socket.on("rresult", (leaderboard) => {
       this.leaderBoard=leaderboard;
