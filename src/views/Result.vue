@@ -45,9 +45,9 @@ export default {
     this.pollId = this.$route.params.id
     socket.emit("result",this.pollId)
     socket.on("rresult", (leaderboard) => {
-      this.leaderboard=leaderboard;
+      this.leaderBoard=leaderboard;
       this.indexes=this.findIndicesOfMax(this.leaderBoard.scores, 5);
-      alert(this.leaderBoard.scores)
+
     })
   },
   methods: {

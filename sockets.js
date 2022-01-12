@@ -89,6 +89,7 @@ function sockets(io, socket, data) {
   })
   socket.on('result', function(pollId){
     socket.join(pollId);
+    console.log(data.getLeaderBoard(pollId))
     io.to(pollId).emit("rresult", data.getLeaderBoard(pollId))
   })
 }
