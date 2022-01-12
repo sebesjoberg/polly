@@ -34,5 +34,9 @@
 	"endQuestion": "Avsluta frågan",
 	"pollName": "Poll namn",
 	"points": "Poäng",
-	"first": "1st"
+	"first": "1st",
+	"second": "2st",
+	"third": "3st",
+	"fourth": "4st",
+	"fifth": "5st"
 }
