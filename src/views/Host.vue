@@ -44,14 +44,14 @@ v-on:nextQuestion='nextQuestion'/>
   <Question v-bind:question="question"
    v-bind:uiLabels='this.uiLabels'
    v-bind:participants='this.leaderBoard.nicknames.length'
+   v-bind:answered='this.answered'
    v-on:endQuestion='endQuestion'
             />
 </section>
 
 
 
-<section class="afterQuiz" v-else-if="this.afterQuiz"><!--allt som händer när quizen är färdig -->
-</section>
+
 
 
 
@@ -87,7 +87,8 @@ export default {
       invalid: false,
       betweenQuestion: false,
       onQuestion: false,
-      afterQuiz: false
+      afterQuiz: false,
+      answered:0
 
 
 
@@ -117,7 +118,11 @@ export default {
             }else{
             this.invalid=true;
           }})
+    socket.on("answer",() =>{
+      this.answered +=1
+    })
     socket.on("leaderboard", (d) =>{
+      this.answered=0;
       this.leaderBoard=d.l
       this.totQuestion=d.totq
       this.currentQuestion=d.qnr

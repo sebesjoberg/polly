@@ -62,6 +62,7 @@ function sockets(io, socket, data) {
   socket.on('submitAnswer', function(d) {
     data.submitAnswer(d.pollId, d.index, d.nickname);
     io.to(d.pollId).emit('dataUpdate', data.getAnswers(d.pollId));
+    io.to(d.pollId).emit('answer', );
   });
 
   socket.on('setNickname',function(d){

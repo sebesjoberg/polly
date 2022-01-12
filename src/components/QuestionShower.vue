@@ -9,7 +9,8 @@ v-bind:style="{backgroundColor: this.Colors[i-1]}" class="answer">
 </div>
 <button class="endQuestion button-effect" v-on:click="endQuestion">{{uiLabels.endQuestion}}</button>
 <div class="players">
-  {{this.participants}}
+  Answers
+  <div class="text">{{this.answered}}/{{this.participants}}</div>
 </div>
 <div class="clock">
   <span id="seconds"></span>
@@ -24,7 +25,8 @@ export default {
   props: {
     question: Object,
     uiLabels: Object,
-    participants: Number
+    participants: Number,
+    answered: Number
 
   },
   data: function(){
@@ -101,33 +103,36 @@ cursor:pointer;
 
 .endQuestion{
   background-color: #0097a7;
-  font-size: 20px;
+  font-size: 2vw;
   color: white;
   position: absolute;
   width:11.25%;
   height: 15%;
-  top:37%;
-  left:88%;
-  transform: translate(-37%,-88%);
+  top:85%;
+  left:92.5%;
+  transform: translate(-92.5%,-85%);
   border-radius: 10px;
 }
 
 .players{
   color: white;
   position: absolute;
-  font-size: 100px;
-  top:60%;
-  left:90%;
-  transform: translate(-60%,-90%);
+  font-size: 3vw;
+  top:50%;
+  left:92.5%;
+  transform: translate(-92.5%,-50%);
+}
+.text{
+  font-size: 6vw;
 }
 
 .clock{
   color: white;
   position: absolute;
-  font-size: 100px;
-  top:80%;
-  left:92%;
-  transform: translate(-80%,-92%);
+  font-size: 8vw;
+  top:10%;
+  left:92.5%;
+  transform: translate(-92.5%,-10%);
 }
 
 .button-effect{
