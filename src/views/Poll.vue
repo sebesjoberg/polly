@@ -84,7 +84,7 @@ export default {
       uiLabels:{},
       languages: ['en', 'sv'],
       invalid: true,
-      lastanswer:""
+      lastanswer:-1
 
 
 
@@ -126,6 +126,7 @@ this.languages.push(b);
         }else{
           this.correctAnswer=false;
         }
+        this.lastanswer=-1;
         this.onQuestion=false;
         this.result=true;
       });//här får vi alla nickNames som är valda kan även användas till att kolla om pollen existerar

@@ -42,5 +42,7 @@
 	"myPoints": "Mina Poäng",
 	"nextQuestion":"Gå till nästa fråga",
 	"finalResult":"Slutresultat",
-	"outOf":"utav"
+	"outOf":"utav",
+	"wrong":"Fel svar!",
+  "right": "Rätt svar"
 }
