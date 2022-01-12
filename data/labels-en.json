@@ -42,5 +42,7 @@
 	"myPoints": "My points",
 	"nextQuestion":"Next Question",
 	"finalResult":"Final Result",
-	"outOf":"out of"
+	"outOf":"out of",
+	"wrong":"Your answer were wrong!",
+	"right"; "Your answer were right!"
 }
