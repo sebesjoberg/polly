@@ -3,8 +3,8 @@
     <div class="amountQuestions" v-if='this.cnr<this.totq'>
       {{uiLabels.question}} {{this.cnr}} {{uiLabels.outOf}} {{this.totq}}
     </div>
-    <div class="Finished" v-if='this.cnr==this.totq'>{{uiLabels.finalResult}}>
-
+    <div class="Finished" v-if='this.cnr==this.totq'>
+      {{uiLabels.finalResult}}
     </div>
     <div class="placing">
       <div class="first">{{uiLabels.first}} {{this.leaderBoard.nicknames[this.indexes[0]]}}
@@ -27,7 +27,15 @@
           {{this.leaderBoard.scores[this.indexes[4]]}} {{uiLabels.points}}
       </div>
     </div>
-    <button class="nextQuestion" v-on:click="nextQuestion" v-if='this.cnr<this.totq'>{{uiLabels.nextQuestion}}</button>
+    <button class="nextQuestion button-effect" v-on:click="nextQuestion" v-if='this.cnr<this.totq'>{{uiLabels.nextQuestion}}</button>
+    <router-link
+        v-bind:to="'/'+this.lang"
+        v-slot="{href, navigate}"
+        v-else>
+            <button :href="href" @click="navigate" class="goBack button-effect">
+              {{uiLabels.goBack}}
+            </button>
+    </router-link>
 </section>
 </template>
 <script>
@@ -98,6 +106,12 @@ cursor:pointer;
   margin-top: 5%;
 }
 
+.Finished{
+  color:white;
+  font-size: 3vw;
+  margin-top: 5%;
+}
+
 .nextQuestion{
   background-color: #0097a7;
   font-size: 20px;
@@ -108,5 +122,27 @@ cursor:pointer;
   top:85%;
   left:92%;
   transform: translate(-85%,-92%);
+  border-radius:10px;
+}
+
+.goBack{
+  background-color: #0097a7;
+  font-size: 20px;
+  color: white;
+  position: absolute;
+  width:11.25%;
+  height: 15%;
+  top:85%;
+  left:92%;
+  transform: translate(-85%,-92%);
+  border-radius:10px;
+}
+
+.button-effect{
+  transition: all 0.2s ease-in-out;
+}
+.button-effect:hover{
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 5px 15px rgba(145, 92, 182, .8);
 }
 </style>
