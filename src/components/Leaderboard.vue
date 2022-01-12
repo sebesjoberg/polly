@@ -21,6 +21,7 @@
           {{this.leaderBoard.scores[this.indexes[4]]}} {{uiLabels.points}}
       </div>
       <div class="me">{{uiLabels.myPoints}}: {{this.leaderBoard.scores[this.self]}}
+      </div>
     </div>
 </section>
 </template>
@@ -77,7 +78,7 @@ cursor:pointer;
   font-size: 4vw;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   width: 100%;
   height: 50%;
   margin-top: 10%;
