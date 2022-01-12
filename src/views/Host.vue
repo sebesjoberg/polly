@@ -78,7 +78,7 @@ export default {
         a: []
       },
       leaderBoard:{nicknames:[],
-      scores:[]    },
+      scores:[]},
       pollId: "inactive poll",
       beforeQuiz: true,
       invalid: false,

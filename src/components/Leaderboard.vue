@@ -1,8 +1,27 @@
 <template>
   <section class="wrapper">
-  <div class="1st">{{uiLabels.first}}: {{this.leaderBoard.nicknames[this.indexes[0]]}}
-    {{this.leaderBoard.scores[this.indexes[0]]}} {{uiLabels.points}}
-  </div>
+    <div class="placing">
+      <div class="first">{{uiLabels.first}}: {{this.leaderBoard.nicknames[this.indexes[0]]}}
+        {{this.leaderBoard.scores[this.indexes[0]]}} {{uiLabels.points}}
+      </div>
+      <div class="second" v-if='this.leaderBoard.nicknames.length>1'>
+        {{uiLabels.second}}: {{this.leaderBoard.nicknames[this.indexes[1]]}}
+          {{this.leaderBoard.scores[this.indexes[1]]}} {{uiLabels.points}}
+      </div>
+      <div class="third" v-if='this.leaderBoard.nicknames.length>2'>
+        {{uiLabels.third}}: {{this.leaderBoard.nicknames[this.indexes[2]]}}
+          {{this.leaderBoard.scores[this.indexes[2]]}} {{uiLabels.points}}
+      </div>
+      <div class="fourth" v-if='this.leaderBoard.nicknames.length>3'>
+        {{uiLabels.fourth}}: {{this.leaderBoard.nicknames[this.indexes[3]]}}
+          {{this.leaderBoard.scores[this.indexes[3]]}} {{uiLabels.points}}
+      </div>
+      <div class="fifth" v-if='this.leaderBoard.nicknames.length>4'>
+        {{uiLabels.fifth}}: {{this.leaderBoard.nicknames[this.indexes[4]]}}
+          {{this.leaderBoard.scores[this.indexes[4]]}} {{uiLabels.points}}
+      </div>
+      <div class="me">{{uiLabels.myPoints}}: {{this.leaderBoard.scores[this.self]}}
+    </div>
 </section>
 </template>
 <script>
@@ -52,5 +71,15 @@ cursor:pointer;
   position: fixed;
   width: 100%;
   height: 100%;
+}
+.placing{
+  color: white;
+  font-size: 4vw;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  width: 100%;
+  height: 50%;
+  margin-top: 10%;
 }
 </style>
