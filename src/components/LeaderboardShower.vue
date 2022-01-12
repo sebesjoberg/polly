@@ -1,5 +1,8 @@
 <template>
   <section class="wrapper">
+    <div class="amountQuestions">
+      Question {{this.cnr}} out of {{this.totq}}
+    </div>
     <div class="placing">
       <div class="first">{{uiLabels.first}} {{this.leaderBoard.nicknames[this.indexes[0]]}}
         {{this.leaderBoard.scores[this.indexes[0]]}} {{uiLabels.points}}
@@ -20,10 +23,6 @@
         {{uiLabels.fifth}} {{this.leaderBoard.nicknames[this.indexes[4]]}}
           {{this.leaderBoard.scores[this.indexes[4]]}} {{uiLabels.points}}
       </div>
-    </div>
-    <div class="amountQuestions">
-      {{this.totq}}
-      {{this.cnr}}
     </div>
 </section>
 </template>
@@ -83,6 +82,12 @@ cursor:pointer;
   grid-template-rows: repeat(5, 1fr);
   width: 100%;
   height: 50%;
-  margin-top: 10%;
+  margin-top: 8%;
+}
+
+.amountQuestions{
+  color:white;
+  font-size: 3vw;
+  margin-top: 5%;
 }
 </style>
