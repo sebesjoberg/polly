@@ -45,6 +45,10 @@ export default {
  created: function(){//put logic to get the indexes of the first 5 places and ourself
   this.indexes=this.findIndicesOfMax(this.leaderBoard.scores, 5)
   this.self=this.leaderBoard.indexOf(this.nickname)
+  var r = document.querySelector(':root');
+if(this.correctAnswer){
+  r.style.setProperty("--my-var","Green");
+}
  },
  methods: {
    //findIndicesOfMax tagen från stackO
@@ -64,11 +68,14 @@ export default {
 }
 </script>
 <style lang="css" scoped>
+:root {
+  --bg-color:red;
+}
 button:hover{
 cursor:pointer;
 }
 .wrapper{
-  background-color: #455879;
+  background-color: var(--bg-color);
   position: fixed;
   width: 100%;
   height: 100%;
@@ -80,7 +87,7 @@ cursor:pointer;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: repeat(6, 1fr);
   width: 100%;
-  height: 50%;
+  height: 100%;
   margin-top: 10%;
 }
 </style>

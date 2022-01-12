@@ -114,8 +114,8 @@ this.languages.push(b);
         }
       });
       //server skickar leaderBoard vill vi visa den? kan ha if runt result
-      socket.on("LeaderBoard", (LeaderBoard) => {
-        this.leaderBoard=LeaderBoard;
+      socket.on("leaderBoard", (d) => {
+        this.leaderBoard=d.l;
         this.lobby=false;
         this.onQuestion=false;
         this.result=true;

@@ -140,7 +140,7 @@ Data.prototype.joinable = function(pollId){
 
 
 Data.prototype.host = function(pollId){
-  const poll = this.polls[pollId];
+  const poll = JSON.parse(JSON.stringify(this.polls[pollId])); //json argumenten deep kopierar ist för shallow
   this.hostedpolls.push(poll)
   let num = this.hostedpolls.length-1
   return num.toString();
