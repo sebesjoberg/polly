@@ -109,6 +109,7 @@ cursor:pointer;
   top:37%;
   left:88%;
   transform: translate(-37%,-88%);
+  border-radius: 10px;
 }
 
 .players{
