@@ -29,7 +29,8 @@ export default {
   },
   data: function(){
    return{
-     Colors: ["blue", "red", "purple", "green"]
+     Colors: ["blue", "red", "purple", "green"],
+     id:""
      //mer färger om man vill ha fler
    }
   },
@@ -40,7 +41,7 @@ export default {
     var sec=0;
     function pad ( val ) { return val > 9 ? val : "0" + val; }
 
-    setInterval( function(){
+    this.id=setInterval( function(){
         document.getElementById("seconds").innerHTML=pad(++sec);
     }, 1000);
 
@@ -49,7 +50,7 @@ export default {
   methods: {
 
     endQuestion: function () {
-      clearInterval()
+      clearInterval(this.id)
       this.$emit("endQuestion", );
     }
 
