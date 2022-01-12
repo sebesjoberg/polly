@@ -21,6 +21,9 @@
           {{this.leaderBoard.scores[this.indexes[4]]}} {{uiLabels.points}}
       </div>
     </div>
+    <div class="amountQuestions">
+      {{this.totq}}
+    </div>
 </section>
 </template>
 <script>
@@ -29,7 +32,9 @@ export default {
   name: 'Bars',
   props: {
     leaderBoard: Object,
-    uiLabels: Object
+    uiLabels: Object,
+    totq: Number,
+    cnr: Number
   },
 
   data: function(){

@@ -31,7 +31,9 @@
 
 <LeaderBoard v-else-if="this.betweenQuestion"
 v-bind:leaderBoard='this.leaderBoard'
-v-bind:uiLabels='this.uiLabels'/> <!--allt mellan frågor -->
+v-bind:uiLabels='this.uiLabels'
+v-bind:totq='this.totQuestion'
+v-bind:cnr='this.currentQuestion'/> <!--allt mellan frågor -->
 
 
 
@@ -114,10 +116,13 @@ export default {
             }else{
             this.invalid=true;
           }})
-    socket.on("leaderboard", (l) =>{
-      this.leaderBoard=l
+    socket.on("leaderboard", (d) =>{
+      this.leaderBoard=d.l
+      this.totQuestion=d.totq
+      this.currentQuestion=d.qnr
       this.betweenQuestion = true
       this.onQuestion = false
+
     })
         },
         methods: {
