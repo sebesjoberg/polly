@@ -40,5 +40,7 @@
 	"fourth": "4.",
 	"fifth": "5.",
 	"myPoints": "Mina Poäng",
-	"nextQuestion":"Gå till nästa fråga"
+	"nextQuestion":"Gå till nästa fråga",
+	"finalResult":"Slutresultat",
+	"outOf":"utav"
 }

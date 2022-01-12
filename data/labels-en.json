@@ -40,5 +40,7 @@
 	"fourth": "4.",
 	"fifth": "5.",
 	"myPoints": "My points",
-	"nextQuestion":"Next Question"
+	"nextQuestion":"Next Question",
+	"finalResult":"Final Result",
+	"outOf":"out of"
 }

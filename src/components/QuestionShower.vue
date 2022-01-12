@@ -37,8 +37,7 @@ export default {
   created: function(){
 
     //Tagit baskod av timer från stackoverflow
-    var sec=0;
-
+      var sec=0;
       function pad ( val ) { return val > 9 ? val : "0" + val; }
 
       setInterval( function(){
@@ -100,6 +99,7 @@ cursor:pointer;
 
 .endQuestion{
   background-color: #0097a7;
+  font-size: 20px;
   color: white;
   position: absolute;
   width:11.25%;

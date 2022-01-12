@@ -1,7 +1,10 @@
 <template>
   <section class="wrapper">
-    <div class="amountQuestions">
-      Question {{this.cnr}} out of {{this.totq}}
+    <div class="amountQuestions" v-if='this.cnr<this.totq'>
+      {{uiLabels.question}} {{this.cnr}} {{uiLabels.outOf}} {{this.totq}}
+    </div>
+    <div class="Finished" v-if='this.cnr==this.totq'>{{uiLabels.finalResult}}>
+
     </div>
     <div class="placing">
       <div class="first">{{uiLabels.first}} {{this.leaderBoard.nicknames[this.indexes[0]]}}
