@@ -30,8 +30,9 @@ export default {
     var outp = [];
     for (var i = 0; i < inp.length; i++) {
         outp.push(i); // add index to output array
+        outp.sort(function(a, b) { return inp[b] - inp[a]; }); // descending sort the output array
         if (outp.length > count) {
-            outp.sort(function(a, b) { return inp[b] - inp[a]; }); // descending sort the output array
+
             outp.pop(); // remove the last index (index of smallest element in output array)
         }
     }
